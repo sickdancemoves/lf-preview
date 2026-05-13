@@ -970,6 +970,62 @@
   }
   .form-card textarea::placeholder, .form-card select { color: rgba(0,0,0,0.5); }
 
+  /* ==== Full-width contact form (above footer) ==== */
+  .full-form-section {
+    padding: 60px 40px 80px;
+    background: var(--dark);
+  }
+  .full-form {
+    max-width: 1280px;
+    margin: 0 auto;
+    background: var(--purple);
+    color: var(--dark);
+    padding: 56px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .full-form__intro h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin: 0 0 12px;
+    color: var(--dark);
+    line-height: 1.15;
+  }
+  .full-form__intro p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    margin: 0;
+    color: var(--dark);
+    line-height: 1.6;
+  }
+  .full-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 8px;
+  }
+  .full-form__row input {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    background: rgba(0,0,0,0.1);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--dark);
+  }
+  .full-form__row input::placeholder { color: rgba(0,0,0,0.55); }
+  .full-form__row .btn {
+    background: var(--dark);
+    color: var(--white);
+    white-space: nowrap;
+    height: auto;
+    padding: 0 28px;
+  }
+
   /* ==== Newsletter ==== */
   .newsletter {
     max-width: 1280px; margin: 0 auto;
@@ -1014,6 +1070,8 @@
     .contact-layout, .newsletter { grid-template-columns: 1fr; gap: 32px; padding: 32px; }
     .list-row--blog, .list-row--event, .list-row--job { grid-template-columns: 1fr; gap: 8px; }
     .list-row__arrow { display: none; }
+    .full-form { grid-template-columns: 1fr; padding: 36px 28px; gap: 28px; }
+    .full-form__row { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -1285,6 +1343,22 @@
       <h2>Ready for an advanced<br>payment experience?</h2>
       <p>Contact our team of specialists for any inquiries.</p>
       <button class="btn btn-dark"><span>Contact us ›</span></button>
+    </div>
+  </section>
+
+  <!-- Full-width contact form (above footer) -->
+  <section class="full-form-section">
+    <div class="full-form">
+      <div class="full-form__intro">
+        <h3>Let's get familiar</h3>
+        <p>Fill out the form and we'll reach back to you within one business day.</p>
+      </div>
+      <form class="full-form__row" onsubmit="event.preventDefault();">
+        <input type="text" placeholder="Your name">
+        <input type="email" placeholder="Email">
+        <input type="tel" placeholder="Phone">
+        <button class="btn" type="submit"><span>Get a response</span></button>
+      </form>
     </div>
   </section>
 </div>
