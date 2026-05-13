@@ -1005,10 +1005,11 @@
   }
   .full-form__row {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr auto;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 8px;
   }
-  .full-form__row input {
+  .full-form__row input,
+  .full-form__row textarea {
     width: 100%;
     padding: 16px;
     border: none;
@@ -1017,13 +1018,21 @@
     font-size: 13px;
     color: var(--dark);
   }
-  .full-form__row input::placeholder { color: rgba(0,0,0,0.55); }
+  .full-form__row input::placeholder,
+  .full-form__row textarea::placeholder { color: rgba(0,0,0,0.55); }
+  .full-form__row textarea {
+    grid-column: span 3;
+    resize: vertical;
+    min-height: 110px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
   .full-form__row .btn {
+    grid-column: span 3;
     background: var(--dark);
     color: var(--white);
-    white-space: nowrap;
-    height: auto;
-    padding: 0 28px;
+    height: 52px;
+    justify-content: center;
+    width: 100%;
   }
 
   /* ==== Newsletter ==== */
@@ -1072,6 +1081,7 @@
     .list-row__arrow { display: none; }
     .full-form { grid-template-columns: 1fr; padding: 36px 28px; gap: 28px; }
     .full-form__row { grid-template-columns: 1fr; }
+    .full-form__row textarea, .full-form__row .btn { grid-column: span 1; }
   }
 </style>
 </head>
@@ -1357,6 +1367,7 @@
         <input type="text" placeholder="Your name">
         <input type="email" placeholder="Email">
         <input type="tel" placeholder="Phone">
+        <textarea placeholder="Message"></textarea>
         <button class="btn" type="submit"><span>Get a response</span></button>
       </form>
     </div>
