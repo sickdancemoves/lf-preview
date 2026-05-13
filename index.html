@@ -95,14 +95,12 @@
     position: relative;
   }
   .header__logo {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 500;
-    font-size: 18px;
-    color: var(--white);
-    letter-spacing: -0.5px;
+    display: inline-flex;
+    align-items: center;
     cursor: pointer;
   }
-  .header__logo .bracket { color: var(--purple); }
+  .header__logo-img { display: block; height: 22px; width: auto; }
+  .footer__logo-img { display: block; height: 26px; width: auto; }
   .header__menu { display: flex; gap: 36px; align-items: center; }
   .header__menu a {
     color: var(--white); text-decoration: none;
@@ -665,7 +663,7 @@
     padding-bottom: 40px;
     border-bottom: 1px solid var(--gray-line);
   }
-  .footer__brand .header__logo { font-size: 20px; }
+  .footer__logo { margin-bottom: 16px; }
   .footer__brand p {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 12px; color: var(--gray-text);
@@ -813,9 +811,9 @@
 
 <!-- ============ HEADER ============ -->
 <header class="header">
-  <div class="header__logo" onclick="goTo('home')">
-    <span class="bracket">&lt;</span>LaFinteca<span class="bracket">&gt;</span>
-  </div>
+  <a class="header__logo" onclick="goTo('home')">
+    <img src="Main%20logo%20white%20(1).svg" alt="LaFinteca" class="header__logo-img">
+  </a>
   <nav class="header__menu">
     <a class="active">Company <span class="caret">▼</span></a>
     <a data-page="methods" onclick="goTo('methods')">Methods <span class="caret">▼</span></a>
@@ -1213,8 +1211,8 @@
 <footer class="footer">
   <div class="footer__top">
     <div class="footer__brand">
-      <div class="header__logo">
-        <span class="bracket">&lt;</span>LaFinteca<span class="bracket">&gt;</span>
+      <div class="footer__logo">
+        <img src="Main%20logo%20white%20(1).svg" alt="LaFinteca" class="footer__logo-img">
       </div>
       <p>Regulated payment infrastructure for businesses in Brazil. Licensed by the Banco Central do Brasil.<br><br>R. Alvorada, 1289 — Vila Olímpia<br>São Paulo — SP, 04550-004, Brazil</p>
     </div>
