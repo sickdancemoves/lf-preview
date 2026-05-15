@@ -100,7 +100,6 @@
     cursor: pointer;
   }
   .header__logo-img { display: block; height: 22px; width: auto; }
-  .footer__logo-img { display: block; height: 26px; width: auto; }
   .header__menu { display: flex; gap: 36px; align-items: center; }
   .header__menu a {
     color: var(--white); text-decoration: none;
@@ -726,65 +725,114 @@
   /* ==== FOOTER ==== */
   .footer {
     background: var(--dark);
-    padding: 60px 40px 32px;
-    border-top: 1px solid var(--gray-line);
+    color: var(--white);
+    padding: 80px 64px 40px;
   }
-  .footer__top {
-    max-width: 1280px; margin: 0 auto;
+  .footer-inner { max-width: 1240px; margin: 0 auto; }
+  .footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: 1.4fr 1fr 1fr 1.2fr 1.2fr;
     gap: 40px;
-    padding-bottom: 40px;
-    border-bottom: 1px solid var(--gray-line);
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
-  .footer__logo { margin-bottom: 16px; }
-  .footer__brand p {
+  .footer-brand { padding-right: 24px; }
+  .footer-brand .logo { height: 28px; margin-bottom: 24px; display: block; }
+  .footer-brand p {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px; color: var(--gray-text);
+    font-size: 14px;
     line-height: 1.6;
-    max-width: 280px;
-    margin: 16px 0 0;
+    color: rgba(255, 255, 255, 0.45);
+    margin: 0 0 28px;
+    max-width: 240px;
   }
-  .footer h6 {
+  .social { display: flex; gap: 8px; }
+  .social-btn {
+    width: 40px; height: 40px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: grid; place-items: center;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .social-btn:hover {
+    background: var(--green);
+    color: var(--dark);
+    border-color: var(--green);
+  }
+  .footer-col h4 {
     font-family: 'IBM Plex Mono', monospace;
-    font-weight: 400;
-    font-size: 11px; text-transform: uppercase;
-    letter-spacing: 1.2px; color: var(--gray-text);
-    margin: 0 0 18px;
-  }
-  .footer h6 .meta { font-size: 9px; opacity: 0.6; }
-  .footer ul { list-style: none; padding: 0; margin: 0; }
-  .footer li { margin-bottom: 8px; font-size: 12px; }
-  .footer a {
-    font-family: 'IBM Plex Mono', monospace;
-    color: var(--white); text-decoration: none; cursor: pointer;
-    text-transform: uppercase; letter-spacing: 0.6px;
-    transition: color 0.15s;
-  }
-  .footer a:hover { color: var(--purple); }
-  .footer__contacts a {
-    display: inline-flex; align-items: center; gap: 8px;
-  }
-  .footer__socials {
-    display: flex; gap: 8px;
-    margin-top: 16px;
-  }
-  .footer__socials a {
-    width: 36px; height: 36px;
-    border: 1px solid var(--gray-line);
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 4px;
     font-size: 12px;
-  }
-  .footer__bot {
-    max-width: 1280px; margin: 24px auto 0;
-    display: flex; justify-content: space-between; align-items: center;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px; color: var(--gray-text);
+    font-weight: 700;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0 0 20px;
   }
-  .footer__bot a { font-size: 11px; color: var(--white); }
+  .footer-col ul {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex; flex-direction: column;
+    gap: 10px;
+  }
+  .footer-col a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--green); }
+  .footer-contact .contact-block { margin-bottom: 20px; }
+  .footer-contact .contact-block .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .footer-contact .contact-block .lines {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.4);
+    white-space: pre-line;
+  }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 32px;
+    gap: 40px;
+  }
+  .footer-bottom .legal {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.32);
+    max-width: 720px;
+  }
+  .footer-bottom .copy {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.32);
+    white-space: nowrap;
+  }
+  @media (max-width: 1024px) {
+    .footer { padding: 64px 32px 32px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
+    .footer-bottom { flex-wrap: wrap; }
+  }
+  @media (max-width: 640px) {
+    .footer { padding: 48px 20px 24px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; padding-bottom: 40px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .footer-bottom .copy { white-space: normal; }
+  }
 
   /* ==== Annotations ==== */
   .annotation {
@@ -1110,7 +1158,7 @@
 
   @media (max-width: 900px) {
     .header__menu { display: none; }
-    .hero__inner, .industries__inner, .industries__layout, .footer__top { grid-template-columns: 1fr; gap: 40px; }
+    .hero__inner, .industries__inner, .industries__layout { grid-template-columns: 1fr; gap: 40px; }
     .hero__right { display: none; }
     .methods-tiles { grid-template-columns: repeat(3, 1fr); }
     .why__grid, .industries__grid, .methods-grid { grid-template-columns: 1fr; }
@@ -1179,7 +1227,7 @@
       <div class="platform__card">
         <h2>One platform — all Brazilian payment rails</h2>
         <p>The LaFinteca team works with each client individually; we do not provide one-size-fits-all solutions, burden your system with unnecessary load, or impose additional work on your development team. We engage in negotiations and make the right proposal that will bring additional revenue to your business. You won't hear from your customers "how to pay?"</p>
-        <button class="btn btn-dark" onclick="goTo('methods')"><span>All payment methods ›</span></button>
+        <button class="btn btn-dark"><span>All payment methods ›</span></button>
       </div>
     </div>
 
@@ -1377,143 +1425,6 @@
         <textarea placeholder="Message"></textarea>
         <button class="btn" type="submit"><span>Get a response</span></button>
       </form>
-    </div>
-  </section>
-</div>
-
-<!-- ============ METHODS PAGE ============ -->
-<div class="page" id="page-methods">
-  <section class="hero" style="padding: 40px 40px 60px; min-height: auto;">
-    <div class="hero__inner" style="grid-template-columns: 1fr; gap: 0; min-height: auto;">
-      <div>
-        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 16px;">Home / Methods</p>
-        <h1 style="font-size: 48px; max-width: 1000px;">Explore <span class="underline">payment methods<svg viewBox="0 0 536 18" fill="none" preserveAspectRatio="none"><path d="M1 9C100 -3 250 15 380 8C460 3 510 12 535 6" stroke="#BFFE43" stroke-width="2.5" fill="none"/></svg></span> in Brazil</h1>
-      </div>
-    </div>
-  </section>
-
-  <section style="padding: 0 40px 100px;">
-    <div class="country-block">
-      <div class="country-block__head">
-        <div class="country-block__flag-circle"></div>
-        <h3>Brazil</h3>
-        <span class="badge-emi">EMI Licensed</span>
-      </div>
-      <div class="methods-grid">
-        <div class="method-card">
-          <span class="method-card__type">Instant</span>
-          <h4 class="method-card__name">Pix</h4>
-          <p class="method-card__desc">Brazil's instant payment system. Created by the Central Bank of Brazil. The default rail for consumer and B2B payments.</p>
-        </div>
-        <div class="method-card">
-          <span class="method-card__type">Instant · B2B</span>
-          <h4 class="method-card__name">Pix Direto</h4>
-          <p class="method-card__desc">Direct connection to the Pix network for high-volume merchants. Higher throughput, lower latency.</p>
-        </div>
-        <div class="method-card">
-          <span class="method-card__type">Recurring</span>
-          <h4 class="method-card__name">Pix Automático</h4>
-          <p class="method-card__desc">Recurring Pix for subscriptions, billing automation, and predictable revenue. Built for SaaS and digital services.</p>
-        </div>
-        <div class="method-card">
-          <span class="method-card__type">Cash voucher</span>
-          <h4 class="method-card__name">Boleto</h4>
-          <p class="method-card__desc">Standardized barcode system. Payable at banks, ATMs, lotéricas, and select retailers.</p>
-        </div>
-        <div class="method-card">
-          <span class="method-card__type">Bank transfer</span>
-          <h4 class="method-card__name">TED</h4>
-          <p class="method-card__desc">Same-day electronic transfer between Brazilian financial institutions. The infrastructure underneath higher-value B2B flows.</p>
-        </div>
-        <div class="method-card">
-          <span class="method-card__type">Open banking</span>
-          <h4 class="method-card__name">Open Finance</h4>
-          <p class="method-card__desc">Account aggregation and payment initiation under the Brazilian Open Finance framework.</p>
-        </div>
-      </div>
-      <div class="annotation">
-        <strong>Diff for Diego:</strong> Original /methods/ listed 7 countries. Stripped to Brazil only. Pix family broken into 3 sub-rails for SEO depth.
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta">
-    <div class="cta__inner">
-      <h2>Ready for an advanced<br>payment experience?</h2>
-      <button class="btn btn-dark"><span>Contact us ›</span></button>
-    </div>
-  </section>
-</div>
-
-<!-- ============ INDUSTRIES PAGE ============ -->
-<div class="page" id="page-industries">
-  <section class="hero" style="padding: 40px 40px 60px; min-height: auto;">
-    <div class="hero__inner" style="grid-template-columns: 1fr; gap: 0; min-height: auto;">
-      <div>
-        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--gray-text); text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 16px;">Home / Industries</p>
-        <h1 style="font-size: 48px; max-width: 1100px;">Industries which get the most <span class="underline">benefits<svg viewBox="0 0 536 18" fill="none" preserveAspectRatio="none"><path d="M1 9C100 -3 250 15 380 8C460 3 510 12 535 6" stroke="#BFFE43" stroke-width="2.5" fill="none"/></svg></span> by using LaFinteca</h1>
-        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: var(--gray-text); max-width: 720px; line-height: 1.65; margin-top: 24px;">The main technological stack of LaFinteca and some industries' primary solutions are often identical. Yet, owners of businesses in those industries would benefit more by using LaFinteca due to better and faster workflow.</p>
-      </div>
-    </div>
-  </section>
-
-  <section style="padding: 40px 40px 100px; background: var(--dark);">
-    <div class="action-cards" style="max-width: 1280px; margin: 0 auto;">
-      <div class="action-card">
-        <div>
-          <h3>iGaming &amp; sportsbooks</h3>
-          <p>Brazil's regulated gaming market is one of the fastest-growing in the world. Operators need approval rates that match the volume, instant payouts that keep players engaged, and compliance frameworks that hold up under regulatory scrutiny.</p>
-        </div>
-        <div class="action-card__visual">
-          <span class="green-tag" style="top: 30px; left: 30px;">⚡ Pix payouts</span>
-          <span class="purple-pill" style="top: 80px; right: 40px;">KYC ready</span>
-          <span class="white-pill" style="bottom: 30px; left: 60px;">Boleto deposits</span>
-        </div>
-      </div>
-      <div class="action-card">
-        <div>
-          <h3>E-commerce &amp; marketplaces</h3>
-          <p>Brazilian consumers expect Pix at checkout. Brazilian merchants need reconciliation that doesn't break under marketplace logic, refund flows, and split settlements.</p>
-        </div>
-        <div class="action-card__visual">
-          <span class="green-tag" style="top: 30px; left: 30px;">▤ Pix QR</span>
-          <span class="purple-pill" style="top: 80px; left: 50%;">Split payments</span>
-          <span class="white-pill" style="bottom: 30px; right: 40px;">Boleto fallback</span>
-        </div>
-      </div>
-      <div class="action-card">
-        <div>
-          <h3>Subscription &amp; digital services</h3>
-          <p>Recurring Pix changes the math for SaaS, streaming, and digital subscriptions in Brazil. Retry logic, billing automation, and treasury visibility built in.</p>
-        </div>
-        <div class="action-card__visual">
-          <span class="green-tag" style="top: 30px; left: 30px;">↻ Pix Automático</span>
-          <span class="purple-pill" style="top: 80px; right: 40px;">Retry logic</span>
-          <span class="white-pill" style="bottom: 30px; left: 60px;">Treasury sweeps</span>
-        </div>
-      </div>
-      <div class="action-card">
-        <div>
-          <h3>Cross-border &amp; remittance</h3>
-          <p>Global businesses entering Brazil rebuild infrastructure from scratch to meet local rules. We are the regulated counterparty that lets you skip the rebuild.</p>
-        </div>
-        <div class="action-card__visual">
-          <span class="green-tag" style="top: 30px; left: 30px;">⇄ Local collections</span>
-          <span class="purple-pill" style="top: 80px; right: 40px;">FX visibility</span>
-          <span class="white-pill" style="bottom: 30px; left: 60px;">Global payouts</span>
-        </div>
-      </div>
-    </div>
-    <div class="annotation">
-      <strong>Diff for Diego:</strong> Cut from 8 industries → 4. Removed Cybersport, Wallets, Games, VR/AR, Telehealth, IRL big data, Video streaming. Each remaining vertical tied to a real Brazilian payment rail and a real B2B buyer.
-    </div>
-  </section>
-
-  <section class="cta">
-    <div class="cta__inner">
-      <h2>Ready for an advanced<br>payment experience?</h2>
-      <button class="btn btn-dark"><span>Contact us ›</span></button>
     </div>
   </section>
 </div>
@@ -1802,8 +1713,13 @@
         <h4>Headquarters</h4>
         <p>R. Alvorada, 1289 — Vila Olímpia<br>São Paulo — SP, 04550-004, Brazil</p>
         <h4>Follow us</h4>
-        <div class="footer__socials" style="margin-top: 0;">
-          <a>F</a><a>I</a><a>L</a><a>X</a>
+        <div class="social" style="margin-top: 0;">
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"></circle></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
         </div>
       </div>
       <div class="form-card">
@@ -1849,55 +1765,69 @@
 
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
-  <div class="footer__top">
-    <div class="footer__brand">
-      <div class="footer__logo">
-        <img src="Main%20logo%20white%20(1).svg" alt="LaFinteca" class="footer__logo-img">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img class="logo" src="Main%20logo%20white%20(1).svg" alt="LaFinteca">
+        <p>Financeiro simples para empresas que crescem no Brasil.</p>
+        <div class="social">
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"></circle></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+        </div>
       </div>
-      <p>Regulated payment infrastructure for businesses in Brazil. Licensed by the Banco Central do Brasil.<br><br>R. Alvorada, 1289 — Vila Olímpia<br>São Paulo — SP, 04550-004, Brazil</p>
-    </div>
-    <div>
-      <h6>Company</h6>
-      <ul>
-        <li><a onclick="goTo('about')">About us</a></li>
-        <li><a onclick="goTo('blog')">Blog</a></li>
-        <li><a onclick="goTo('events')">Events</a></li>
-        <li><a onclick="goTo('careers')">Career</a></li>
-        <li><a onclick="goTo('contact')">Contacts</a></li>
-        <li><a onclick="goTo('industries')">Industries</a></li>
-      </ul>
-    </div>
-    <div>
-      <h6>Methods</h6>
-      <ul>
-        <li><a onclick="goTo('methods')">All methods</a></li>
-        <li><a>Pix</a></li>
-        <li><a>Pix Direto</a></li>
-        <li><a>Pix Automático</a></li>
-        <li><a>Boleto</a></li>
-        <li><a>TED</a></li>
-        <li><a>Open Finance</a></li>
-      </ul>
-    </div>
-    <div>
-      <h6>For Developers</h6>
-      <ul>
-        <li><a>API ↗</a></li>
-      </ul>
-      <h6 style="margin-top: 28px;">Contacts</h6>
-      <ul>
-        <li><a>✉ info@la-finteca.com</a></li>
-      </ul>
-      <div class="footer__socials">
-        <a>F</a><a>I</a><a>L</a><a>X</a>
+
+      <div class="footer-col">
+        <h4>LaFinteca</h4>
+        <ul>
+          <li><a onclick="goTo('about')">Sobre nós</a></li>
+          <li><a onclick="goTo('blog')">Blog</a></li>
+          <li><a onclick="goTo('careers')">Carreiras</a></li>
+          <li><a>FAQs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Produtos</h4>
+        <ul>
+          <li><a onclick="goTo('home')">Conta PJ</a></li>
+          <li><a>Conta PF</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Transparência</h4>
+        <ul>
+          <li><a>Política de privacidade</a></li>
+          <li><a>Política de segurança</a></li>
+          <li><a>Termos de Uso</a></li>
+          <li><a>PLD/CFTP</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-contact">
+        <h4>Fale Conosco</h4>
+        <div class="contact-block">
+          <div class="label">SAC</div>
+          <div class="lines">24h/7, todos os dias.
+(11) 5000-5000
+0800 500 0000</div>
+        </div>
+        <div class="contact-block">
+          <div class="label">Ouvidoria</div>
+          <div class="lines">24h/7, todos os dias.
+(11) 5000-5000
+0800 500 0000</div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="footer__bot">
-    <span>© LaFinteca 2026</span>
-    <div style="display: flex; gap: 28px;">
-      <a>AML/KYC Policy</a>
-      <a>Privacy Policy</a>
+
+    <div class="footer-bottom">
+      <div class="legal">LaFinteca Instituição de Pagamento LTDA — CNPJ 53.058.329/0001-70. Instituição de pagamento autorizada pelo Banco Central do Brasil, na modalidade de Emissora de Moeda Eletrônica.</div>
+      <div class="copy">© 2026 LaFinteca</div>
     </div>
   </div>
 </footer>
