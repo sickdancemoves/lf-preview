@@ -102,7 +102,7 @@
     cursor: pointer;
   }
   .header__logo-img { display: block; height: 22px; width: auto; }
-  .header__menu { display: flex; gap: 36px; align-items: center; flex: 1; min-width: 0; }
+  .header__menu { display: flex; gap: 36px; align-items: center; flex: 1; min-width: 0; padding: 0 36px 0 60px; }
   .header__menu-spacer { flex: 1; min-width: 24px; }
   .header__menu a {
     color: var(--white); text-decoration: none;
@@ -200,30 +200,6 @@
     transition: background 0.15s, color 0.15s;
   }
   .submenu a:hover { background: var(--dark-3); color: var(--green); }
-  .submenu--wide {
-    min-width: 380px;
-    max-width: 420px;
-    padding: 16px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    left: auto;
-    right: 0;
-  }
-  .submenu--wide .submenu__col { display: flex; flex-direction: column; }
-  .submenu--wide .submenu__label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--gray-text);
-    margin: 0 12px 8px;
-  }
-  .submenu--wide a {
-    padding: 8px 12px;
-    border-radius: 4px;
-  }
   .login-btn {
     background: transparent; color: var(--white);
     border: 1px solid var(--white);
@@ -2126,7 +2102,7 @@
     .faq-split__inner { gap: 48px; }
     .industries__grid--four { grid-template-columns: repeat(2, 1fr); }
     .compare-table th, .compare-table td { padding: 14px 16px; font-size: 12px; }
-    .submenu--wide { left: auto; right: 0; min-width: 380px; }
+    .header__menu { padding: 0 24px 0 36px; }
   }
 
   @media (max-width: 900px) {
@@ -2187,24 +2163,7 @@
       </div>
     </div>
     <span class="header__menu-spacer" aria-hidden="true"></span>
-    <div class="header__menu-item has-submenu">
-      <a><span data-lang="pt">Atendimento</span><span data-lang="en">Support</span> <span class="caret">▼</span></a>
-      <div class="submenu submenu--wide">
-        <div class="submenu__col">
-          <h6 class="submenu__label"><span data-lang="pt">Já sou cliente</span><span data-lang="en">I'm a customer</span></h6>
-          <a onclick="goTo('contact')"><span data-lang="pt">Atendimento por WhatsApp</span><span data-lang="en">WhatsApp support</span></a>
-          <a onclick="goTo('contact')"><span data-lang="pt">Atendimento por telefone</span><span data-lang="en">Phone support</span></a>
-          <a onclick="goTo('contact')"><span data-lang="pt">Atendimento em Libras</span><span data-lang="en">Libras (sign language)</span></a>
-          <a onclick="goTo('contact')"><span data-lang="pt">Central de ajuda</span><span data-lang="en">Help center</span></a>
-          <a onclick="goTo('contact')"><span data-lang="pt">Ouvidoria</span><span data-lang="en">Ombudsman</span></a>
-        </div>
-        <div class="submenu__col">
-          <h6 class="submenu__label"><span data-lang="pt">Ainda não sou cliente</span><span data-lang="en">Not a customer yet</span></h6>
-          <a onclick="goTo('contact')"><span data-lang="pt">Fale com nossa equipe</span><span data-lang="en">Talk to our team</span></a>
-          <a onclick="goTo('contact')"><span data-lang="pt">Adquira pelo WhatsApp</span><span data-lang="en">Sign up via WhatsApp</span></a>
-        </div>
-      </div>
-    </div>
+    <a data-page="contact" onclick="goTo('contact')"><span data-lang="pt">Atendimento</span><span data-lang="en">Support</span></a>
   </nav>
   <div class="header__actions">
     <div class="lang-switch" id="langSwitch">
