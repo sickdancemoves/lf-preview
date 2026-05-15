@@ -961,46 +961,52 @@
     white-space: nowrap;
   }
 
-  /* Laptop photo mockup — uses real MacBook Air photo, overlays the web banking dashboard */
+  /* Laptop photo mockup — sized wrapper holds aspect ratio; inner mock is fixed at 1200×800
+     and projectively mapped onto the screen, then scaled to fit the wrapper. */
   .laptop-photo {
     position: relative;
     width: 100%;
     max-width: 1200px;
     margin: 48px auto 0;
     aspect-ratio: 3 / 2;
+  }
+  .laptop-photo__stage {
+    position: absolute;
+    top: 0; left: 0;
+    width: 1200px;
+    height: 800px;
     background-image: url('assets/macbook-mockup.jpg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    transform-origin: 0 0;
   }
-  /* Screen quadrilateral — overlays the dark display area, tilted to match perspective */
-  .laptop-photo__screen {
-    position: absolute;
-    top: 22.5%;
-    left: 22.2%;
-    width: 64%;
-    height: 36%;
-    overflow: hidden;
-    border-radius: 4px;
-    transform-origin: 0% 50%;
-    transform: perspective(1800px) rotateY(10deg);
-    background: #0f1015;
-  }
-  /* Dashboard renders at a fixed reference size and scales to fit the screen overlay */
+  .laptop-photo__screen { position: absolute; inset: 0; }
+  /* Dashboard fills the 1200×800 stage and gets projected onto the screen quadrilateral.
+     Matrix derived from these four target corners (in 1200×800 stage space):
+       TL (196, 192)  TR (1036, 288)  BR (1032, 600)  BL (196, 652)
+     Source rect: (0,0) → (1200, 800). */
   .laptop-photo__dash {
     position: absolute;
     top: 0; left: 0;
-    width: 1100px;
+    width: 1200px;
+    height: 800px;
     margin: 0;
     border: none;
     border-radius: 0;
     box-shadow: none;
     background: #0f1015;
-    transform: scale(0.6);
-    transform-origin: top left;
+    transform-origin: 0 0;
+    transform: matrix3d(
+      1.111, 0.194, 0, 0.000396,
+      0.00172, 0.581, 0, 0.0000088,
+      0, 0, 1, 0,
+      196, 192, 0, 1
+    );
   }
-  .laptop-photo__dash .dash-mock__grid { min-height: 0; }
-  .laptop-photo__dash .dash-mock__main { padding: 16px; gap: 10px; }
-  .laptop-photo__dash .dash-mock__nav { padding: 14px 10px; }
+  /* Make the dashboard content fill the 800px height */
+  .laptop-photo__dash .dash-mock__grid { min-height: 0; height: calc(100% - 40px); }
+  .laptop-photo__dash .dash-mock__main { padding: 28px 32px; gap: 16px; }
+  .laptop-photo__dash .dash-mock__nav { padding: 24px 16px; }
 
   /* Dashboard mock (A nova home da sua equipe) */
   .dash-mock {
@@ -2356,8 +2362,6 @@
     .faq-split__inner { gap: 48px; }
     .industries__grid--four { grid-template-columns: repeat(2, 1fr); }
     .compare-table th, .compare-table td { padding: 14px 16px; font-size: 12px; }
-    .laptop-photo { max-width: 100%; }
-    .laptop-photo__dash { transform: scale(0.5); }
   }
 
   @media (max-width: 900px) {
@@ -2389,7 +2393,6 @@
     .dash-mock__url { display: none; }
     .footer-grid { grid-template-columns: 1fr 1fr !important; }
     .laptop-photo { margin-top: 32px; }
-    .laptop-photo__dash { transform: scale(0.4); }
   }
 
   @media (max-width: 560px) {
@@ -2519,6 +2522,7 @@
       <h2 class="home-block__title home-block__title--gradient">A nova home da sua equipe de pagamentos</h2>
       <p class="home-block__sub home-block__sub--center">Uma plataforma completa para gestão financeira, com controle, segurança e praticidade no dia a dia.</p>
       <div class="laptop-photo" role="img" aria-label="Pré-visualização do painel da Conta PJ LaFinteca em um MacBook">
+        <div class="laptop-photo__stage">
         <div class="laptop-photo__screen">
           <div class="dash-mock laptop-photo__dash">
             <div class="dash-mock__chrome">
@@ -2570,6 +2574,7 @@
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>
@@ -3624,6 +3629,20 @@ function goTo(page) {
 document.querySelectorAll('.chrome-tab').forEach(t => {
   t.addEventListener('click', () => goTo(t.dataset.page));
 });
+
+// Scale the MacBook photo stage (fixed 1200×800 with matrix3d) to fit its responsive wrapper
+(function () {
+  const wraps = document.querySelectorAll('.laptop-photo');
+  if (!wraps.length) return;
+  function sync(wrap) {
+    const stage = wrap.querySelector('.laptop-photo__stage');
+    if (!stage) return;
+    const scale = wrap.offsetWidth / 1200;
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  const ro = new ResizeObserver(entries => entries.forEach(e => sync(e.target)));
+  wraps.forEach(w => { sync(w); ro.observe(w); });
+})();
 
 // Header dropdown menus — JS-driven open/close (hover + click + ESC + click-outside)
 (function () {
