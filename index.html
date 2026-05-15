@@ -156,6 +156,13 @@
     transition: all 0.15s;
   }
   .login-btn:hover { background: var(--white); color: var(--dark); }
+  .header__actions { display: flex; gap: 10px; align-items: center; }
+  .login-btn--primary {
+    background: var(--green);
+    color: var(--dark);
+    border-color: var(--green);
+  }
+  .login-btn--primary:hover { background: var(--white); color: var(--dark); border-color: var(--white); }
 
   /* ==== PAGES ==== */
   .page { display: none; }
@@ -174,14 +181,48 @@
     min-height: 460px;
   }
   .hero__left { position: relative; padding-top: 40px; }
+  .hero__eyebrow {
+    display: inline-block;
+    background: rgba(191, 254, 67, 0.12);
+    color: var(--green);
+    border: 1px solid var(--green);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0 0 24px;
+  }
   .hero h1 {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 400;
     font-size: 60px; line-height: 1.1;
     letter-spacing: -2px;
     text-transform: uppercase;
-    margin: 0 0 56px;
+    margin: 0 0 24px;
     color: var(--white);
+  }
+  .hero__sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--gray-text);
+    max-width: 520px;
+    margin: 0 0 36px;
+  }
+  .hero__placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
   .hero h1 .underline {
     position: relative; white-space: nowrap; display: inline-block;
@@ -1093,8 +1134,9 @@
     <img src="Main%20logo%20white%20(1).svg" alt="LaFinteca" class="header__logo-img">
   </a>
   <nav class="header__menu">
+    <a data-page="home" onclick="goTo('home')" class="active">Conta PJ</a>
     <div class="header__menu-item has-submenu">
-      <a class="active">Company <span class="caret">▼</span></a>
+      <a>About Us <span class="caret">▼</span></a>
       <div class="submenu">
         <a data-page="about" onclick="goTo('about')">About us</a>
         <a data-page="events" onclick="goTo('events')">Events</a>
@@ -1103,11 +1145,11 @@
         <a data-page="contact" onclick="goTo('contact')">Contact us</a>
       </div>
     </div>
-    <a data-page="methods" onclick="goTo('methods')">Methods</a>
-    <a data-page="industries" onclick="goTo('industries')">Industries</a>
-    <a>For Developers ↗</a>
   </nav>
-  <button class="login-btn">Log in</button>
+  <div class="header__actions">
+    <button class="login-btn">Log in</button>
+    <button class="login-btn login-btn--primary">Open Conta PJ</button>
+  </div>
 </header>
 
 <!-- ============ HOMEPAGE ============ -->
@@ -1117,51 +1159,16 @@
   <section class="hero">
     <div class="hero__inner">
       <div class="hero__left">
-        <h1>
-          Lafinteca &gt;<br>
-          Payment Gateway<br>
-          In <span class="underline">Brazil
-            <svg viewBox="0 0 536 18" fill="none" preserveAspectRatio="none">
-              <path d="M1 9C100 -3 250 15 380 8C460 3 510 12 535 6" stroke="#BFFE43" stroke-width="2.5" fill="none"/>
-            </svg>
-          </span>
-        </h1>
+        <span class="hero__eyebrow">Conta PJ · LaFinteca</span>
+        <h1>Quem simplifica,<br>multiplica.</h1>
+        <p class="hero__sub">Gerencie o financeiro da sua empresa, faça transferências seguras, e mantenha o controle total sobre despesas e lucro com a Conta PJ da LaFinteca.</p>
         <div class="hero__buttons">
-          <button class="btn btn-primary"><span>Contact Us</span></button>
-          <button class="btn btn-ghost"><span>Explore</span> <span style="transform: rotate(90deg); display: inline-block;">›</span></button>
+          <button class="btn btn-primary"><span>Open Conta PJ</span></button>
+          <button class="btn btn-ghost"><span>Learn More</span> <span style="transform: rotate(90deg); display: inline-block;">›</span></button>
         </div>
       </div>
       <div class="hero__right">
-        <!-- Donut + amount -->
-        <div class="float float-amount f-amount">
-          <span class="label">Transactions</span>
-          <span class="amount">$5,782.00</span>
-        </div>
-        <div class="float float-percent f-percent">93%</div>
-        <!-- Hand emoji icon -->
-        <div class="float float-hand f-hand">👆</div>
-        <!-- Pix tag -->
-        <div class="float float-pill f-pix-tag">Pix</div>
-
-        <!-- Row 1 -->
-        <div class="float float-pill f-transfers">Transfers</div>
-        <div class="float float-flag f-mexico" title="MX"></div>
-        <div class="float float-pill f-security">⚇ Security</div>
-        <div class="float float-flag f-peru" title="PE"></div>
-
-        <!-- Row 2 -->
-        <div class="float float-icon-circle f-bank">🏛</div>
-        <div class="float float-flag f-argentina" title="AR"></div>
-        <div class="float float-pill f-integration">Integration</div>
-        <div class="float float-flag f-brazil" title="BR" style="border-color: var(--green); width: 44px; height: 44px;"></div>
-        <div class="float float-pill f-analytics">Analytics</div>
-
-        <!-- Row 3 -->
-        <div class="float float-flag f-colombia" title="CO"></div>
-        <div class="float float-pill f-tech">Technologies</div>
-        <div class="float float-pill f-business">Business</div>
-        <div class="float float-icon-circle f-coin">$</div>
-        <div class="float float-flag f-chile" title="CL"></div>
+        <div class="hero__placeholder">Image placeholder</div>
       </div>
     </div>
   </section>
