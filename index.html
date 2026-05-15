@@ -101,7 +101,7 @@
     align-items: center;
     cursor: pointer;
   }
-  .header__logo-img { display: block; height: 28px; width: auto; }
+  .header__logo-img { display: block; height: 22px; width: auto; }
   .header__menu { display: flex; gap: 36px; align-items: center; }
   .header__menu a {
     color: var(--white); text-decoration: none;
@@ -173,6 +173,8 @@
     padding-bottom: 18px;
     margin-bottom: -18px;
   }
+  /* Push the wide-submenu item (Atendimento) toward the right edge of the nav */
+  .header__menu-item.has-submenu:has(.submenu--wide) { margin-left: auto; }
   .header__menu-item.is-open .submenu { display: block; }
   .header__menu-item.is-open > a .caret { transform: rotate(180deg); }
   .submenu {
@@ -205,7 +207,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
-    left: -200px;
+    left: auto;
+    right: 0;
   }
   .submenu--wide .submenu__col { display: flex; flex-direction: column; }
   .submenu--wide .submenu__label {
@@ -3260,6 +3263,7 @@
         <h4>LaFinteca</h4>
         <ul>
           <li><a onclick="goTo('about')">Sobre nós</a></li>
+          <li><a onclick="goTo('events')">Eventos</a></li>
           <li><a onclick="goTo('blog')">Blog</a></li>
           <li><a onclick="goTo('careers')">Carreiras</a></li>
           <li><a onclick="goTo('faqs')">FAQs</a></li>
