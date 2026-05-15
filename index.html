@@ -362,6 +362,12 @@
     border: 1px solid var(--white);
   }
   .btn-primary:hover { background: var(--green); border-color: var(--green); }
+  /* Green CTA — used for "Abrir Conta PJ" / "Open Conta PJ" entry points */
+  .btn-green {
+    background: var(--green); color: var(--dark);
+    border: 1px solid var(--green);
+  }
+  .btn-green:hover { background: var(--white); border-color: var(--white); color: var(--dark); }
   .btn-ghost {
     background: transparent; color: var(--white);
     border: 1px solid var(--white);
@@ -630,7 +636,7 @@
     background: var(--dark);
   }
   .home-block--alt { background: #1f1f23; }
-  /* Section with a full-width placeholder background image */
+  /* Section with a full-width placeholder background (grid pattern, matches site) */
   .home-block--bg { position: relative; overflow: hidden; isolation: isolate; }
   .home-block--bg > * { position: relative; z-index: 2; }
   .home-block--bg::before {
@@ -638,43 +644,22 @@
     position: absolute;
     inset: 0;
     z-index: 0;
-    background-size: cover;
-    background-position: center;
-    opacity: 0.7;
+    background-color: var(--dark-2);
+    background-image:
+      linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
   .home-block--bg::after {
-    content: '';
+    content: 'Image placeholder';
     position: absolute;
-    inset: 0;
+    right: 28px; bottom: 18px;
     z-index: 1;
-    background: linear-gradient(180deg, rgba(15,15,20,0.78) 0%, rgba(15,15,20,0.88) 100%);
-  }
-  .home-block--bg-industry::before {
-    background-image:
-      radial-gradient(60% 50% at 30% 40%, rgba(195,171,255,0.35), transparent 70%),
-      radial-gradient(40% 50% at 80% 70%, rgba(191,254,67,0.25), transparent 70%),
-      linear-gradient(135deg, #2a1f4d 0%, #1a0f33 60%, #14101e 100%);
-  }
-  .home-block--bg-security::before {
-    background-image:
-      radial-gradient(50% 60% at 70% 30%, rgba(191,254,67,0.25), transparent 70%),
-      radial-gradient(40% 50% at 20% 80%, rgba(195,171,255,0.22), transparent 70%),
-      linear-gradient(135deg, #1a2540 0%, #0f1828 60%, #0c1018 100%);
-  }
-  .home-block--bg-reviews::before {
-    background-image:
-      radial-gradient(50% 60% at 60% 50%, rgba(195,171,255,0.22), transparent 70%),
-      linear-gradient(135deg, #1f1f23 0%, #161618 100%);
-  }
-  .home-block--bg .home-block__bg-label {
-    position: absolute;
-    right: 24px; bottom: 16px;
-    z-index: 3;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 10px;
-    letter-spacing: 1.6px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.28);
     pointer-events: none;
   }
   .home-block__inner {
@@ -877,10 +862,28 @@
     max-width: 1080px;
     margin: 40px auto 0;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
     padding-top: 40px;
     border-top: 1px solid var(--gray-line);
+  }
+  .contact-hero__title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    font-size: clamp(34px, 5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -1.4px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin: 0 0 18px;
+  }
+  .contact-hero__sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--gray-text);
+    max-width: 640px;
+    margin: 0 auto;
   }
   .support-extras__col {
     display: flex;
@@ -913,18 +916,19 @@
     .support-extras { grid-template-columns: 1fr; gap: 28px; }
   }
 
-  /* Bacen authorization badge (footer) — compact, sits next to social */
+  /* Bacen authorization badge (footer) — compact pill that sits in the social row */
   .bacen-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-left: 16px;
-    padding: 6px 12px 6px 8px;
+    padding: 6px 14px 6px 8px;
     background: linear-gradient(135deg, rgba(191,254,67,0.08) 0%, rgba(195,171,255,0.05) 100%);
     border: 1px solid rgba(191,254,67,0.25);
     border-radius: 999px;
     height: 40px;
+    box-sizing: border-box;
   }
+  .social-btn + .bacen-badge { margin-left: 8px; }
   .bacen-badge__icon {
     width: 24px; height: 24px;
     flex-shrink: 0;
@@ -957,17 +961,58 @@
     white-space: nowrap;
   }
 
+  /* Laptop frame (wraps the dashboard mockup as a MacBook) */
+  .laptop-frame {
+    max-width: 1080px;
+    margin: 48px auto 0;
+  }
+  .laptop-frame__bezel {
+    position: relative;
+    background: #1a1c22;
+    border-radius: 18px;
+    padding: 18px 18px 22px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45), inset 0 0 0 1px rgba(255,255,255,0.05);
+  }
+  .laptop-frame__camera {
+    position: absolute;
+    top: 7px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #2a2c33;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+  }
+  .laptop-frame__base {
+    position: relative;
+    width: 100%;
+    height: 14px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, #2a2c33 0%, #1a1c22 100%);
+    border-radius: 0 0 14px 14px;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.35);
+  }
+  .laptop-frame__base::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 6px;
+    background: #0d0e12;
+    border-radius: 0 0 8px 8px;
+  }
+
   /* Dashboard mock (A nova home da sua equipe) */
   .dash-mock {
-    margin: 40px auto 0;
-    max-width: 1080px;
     background: #0f1015;
     border: 1px solid var(--gray-line);
-    border-radius: 14px;
+    border-radius: 8px;
     overflow: hidden;
     text-align: left;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.4);
   }
+  .laptop-frame__screen { margin: 0; max-width: none; box-shadow: none; }
   .dash-mock__chrome {
     display: flex;
     align-items: center;
@@ -1282,8 +1327,9 @@
   .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 48px;
+    gap: 16px;
+    margin: 48px auto 0;
+    max-width: 1040px;
     text-align: left;
   }
   /* On the Conta PJ Funcionalidades grid, lay icon + title side-by-side */
@@ -1359,16 +1405,16 @@
 
   .forwho-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    max-width: 960px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    max-width: 1040px;
     margin: 0 auto;
   }
   .forwho-card {
     background: var(--dark-2);
     border: 1px solid var(--gray-line);
     border-radius: 14px;
-    padding: 28px;
+    padding: 22px 20px;
     transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
   }
   .forwho-card:hover {
@@ -1408,14 +1454,15 @@
   .forwho-card h3 {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 15px;
     color: var(--white);
     margin: 0 0 8px;
+    line-height: 1.3;
   }
   .forwho-card p {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 13.5px;
-    line-height: 1.6;
+    font-size: 12.5px;
+    line-height: 1.55;
     color: var(--gray-text);
     margin: 0;
   }
@@ -1562,11 +1609,11 @@
   .reviews-carousel {
     margin-top: 8px;
     text-align: left;
-    max-width: 1040px;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
   }
-  .reviews__rating { max-width: 1040px; margin-left: auto; margin-right: auto; }
+  .reviews__rating { max-width: 900px; margin-left: auto; margin-right: auto; }
   .reviews-carousel__viewport {
     overflow: hidden;
     margin: 0 -8px;
@@ -1582,12 +1629,14 @@
     box-sizing: border-box;
   }
   .reviews-carousel__controls {
-    display: flex;
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
     align-items: center;
-    justify-content: center;
-    gap: 16px;
-    margin-top: 28px;
+    column-gap: 16px;
+    margin: 28px auto 0;
+    max-width: 320px;
   }
+  .reviews-carousel__controls .reviews-carousel__dots { justify-content: center; }
   .reviews-carousel__arrow {
     width: 40px; height: 40px;
     border-radius: 50%;
@@ -1895,7 +1944,7 @@
     margin: 0 0 28px;
     max-width: 240px;
   }
-  .social { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; row-gap: 12px; }
+  .social { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; row-gap: 14px; }
   .social-btn {
     width: 40px; height: 40px;
     border-radius: 999px;
@@ -2054,163 +2103,119 @@
     letter-spacing: 0.6px;
   }
 
-  /* ==== Events page ("Where to find us") ==== */
-  .events-page { padding: 60px 40px 100px; background: var(--white); color: var(--dark); }
-  .events-page__inner { max-width: 1100px; margin: 0 auto; }
-  .events-page__head {
+  /* ==== Events page ("Where to find us") — dark, integrated ==== */
+  .events-head {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     gap: 24px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--gray-line);
     margin-bottom: 8px;
   }
-  .events-page__eyebrow {
+  .events-head__title {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 1.6px;
+    font-weight: 400;
+    font-size: clamp(22px, 2.4vw, 28px);
+    letter-spacing: -0.6px;
     text-transform: uppercase;
-    color: var(--purple);
-    margin: 0 0 14px;
-  }
-  .events-page__title {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 700;
-    font-size: clamp(34px, 4vw, 48px);
-    letter-spacing: -1.5px;
-    line-height: 1.05;
-    color: var(--dark);
+    color: var(--white);
     margin: 0;
   }
-  .events-page__count {
+  .events-head__count {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 12px;
-    font-weight: 500;
     letter-spacing: 1.6px;
     text-transform: uppercase;
-    color: rgba(0,0,0,0.45);
+    color: var(--gray-text);
   }
-  .events-list { display: flex; flex-direction: column; }
-  .event-card {
+  .events-rows { display: flex; flex-direction: column; }
+  .event-row {
+    position: relative;
     display: grid;
     grid-template-columns: 180px 1fr;
     gap: 40px;
-    padding: 32px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding: 28px 0;
+    border-bottom: 1px solid var(--gray-line);
   }
-  .event-card:last-child { border-bottom: none; }
-  .event-card__meta {
+  .event-row:last-child { border-bottom: none; }
+  .event-row__meta {
     display: flex;
     flex-direction: column;
     gap: 6px;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 0.6px;
   }
-  .event-card__date {
-    color: var(--dark);
+  .event-row__date {
+    color: var(--white);
+    font-size: 13px;
     font-weight: 500;
   }
-  .event-card__city {
-    color: rgba(0,0,0,0.55);
+  .event-row__city {
+    color: var(--gray-text);
     text-transform: uppercase;
     letter-spacing: 1.4px;
     font-size: 11px;
   }
-  .event-card__copy { max-width: 720px; }
-  .event-card__title {
+  .event-row__body { max-width: 760px; }
+  .event-row__title {
     font-family: 'IBM Plex Mono', monospace;
-    font-weight: 700;
-    font-size: 22px;
-    letter-spacing: -0.5px;
-    color: var(--dark);
-    margin: 0 0 12px;
-    line-height: 1.2;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.4px;
+    color: var(--white);
+    margin: 0 0 10px;
+    line-height: 1.25;
   }
-  .event-card__copy p {
+  .event-row__body p {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 14px;
+    font-size: 13.5px;
     line-height: 1.65;
-    color: rgba(0,0,0,0.62);
-    margin: 0 0 18px;
+    color: var(--gray-text);
+    margin: 0 0 14px;
   }
-  .event-card__cta {
+  .event-row__cta {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 13px;
     font-weight: 600;
-    color: var(--purple);
-    text-decoration: underline;
-    text-underline-offset: 4px;
+    color: var(--green);
+    text-decoration: none;
+    border-bottom: 1px solid var(--green);
+    padding-bottom: 2px;
     cursor: pointer;
-    transition: color 0.15s;
+    transition: color 0.15s, border-color 0.15s;
   }
-  .event-card__cta:hover { color: var(--dark); }
-
-  /* Featured stop — full-width media card on top */
-  .event-card--featured {
-    display: block;
-    padding: 24px 0 32px;
-  }
-  .event-card--featured .event-card__media {
-    position: relative;
-    height: 280px;
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 24px;
-    background-color: #2b1f4d;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 20px 24px;
-  }
-  .event-card--madrid .event-card__media {
-    background-image:
-      linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%),
-      linear-gradient(135deg, #ff8a4c 0%, #f25d3b 35%, #c83a82 70%, #6d2bb8 100%);
-  }
-  .event-card--limassol .event-card__media {
-    background-image:
-      linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%),
-      linear-gradient(135deg, #6dd5ed 0%, #2196c5 45%, #1a4d7f 100%);
-  }
-  .event-card__tag {
-    align-self: flex-start;
-    display: inline-block;
+  .event-row__cta:hover { color: var(--white); border-color: var(--white); }
+  /* Featured: left accent + tag */
+  .event-row--featured { padding-left: 20px; }
+  .event-row--featured::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 28px; bottom: 28px;
+    width: 3px;
     background: var(--green);
-    color: var(--dark);
+    border-radius: 2px;
+  }
+  .event-row__tag {
+    position: absolute;
+    top: 28px;
+    right: 0;
+    display: inline-block;
+    background: rgba(191,254,67,0.12);
+    color: var(--green);
+    border: 1px solid var(--green);
     font-family: 'IBM Plex Mono', monospace;
     font-size: 10px;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 1.4px;
     text-transform: uppercase;
-    padding: 6px 12px;
-    border-radius: 4px;
-  }
-  .event-card__hero-title {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 700;
-    font-size: 28px;
-    letter-spacing: -0.6px;
-    color: #fff;
-    margin: 0;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
-  }
-  .event-card--featured .event-card__body {
-    display: grid;
-    grid-template-columns: 180px 1fr;
-    gap: 40px;
+    padding: 4px 10px;
+    border-radius: 999px;
   }
   @media (max-width: 900px) {
-    .events-page { padding: 48px 20px 64px; }
-    .event-card,
-    .event-card--featured .event-card__body { grid-template-columns: 1fr; gap: 12px; }
-    .event-card--featured .event-card__media { height: 220px; }
-    .event-card__hero-title { font-size: 22px; }
-    .events-page__head { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .event-row { grid-template-columns: 1fr; gap: 10px; padding: 24px 0; }
+    .event-row--featured { padding-left: 16px; }
+    .event-row__tag { position: static; align-self: flex-start; margin-bottom: 8px; }
+    .events-head { flex-direction: column; align-items: flex-start; gap: 8px; }
   }
 
   /* ==== Empty state ==== */
@@ -2331,9 +2336,12 @@
   .newsletter-form input::placeholder { color: rgba(0,0,0,0.5); }
 
   /* Intermediate (tablet-to-laptop) */
+  @media (max-width: 1280px) {
+    .forwho-grid { grid-template-columns: repeat(3, 1fr); }
+  }
   @media (max-width: 1100px) {
     .header { padding: 22px 32px; }
-    .header__menu { gap: 24px; }
+    .header__menu { gap: 24px; padding: 0 24px 0 36px; }
     .home-block { padding: 64px 32px; }
     .hero { padding: 48px 32px 64px; }
     .features-grid { grid-template-columns: repeat(2, 1fr); }
@@ -2341,13 +2349,13 @@
     .faq-split__inner { gap: 48px; }
     .industries__grid--four { grid-template-columns: repeat(2, 1fr); }
     .compare-table th, .compare-table td { padding: 14px 16px; font-size: 12px; }
-    .header__menu { padding: 0 24px 0 36px; }
+    .laptop-frame__bezel { padding: 14px 14px 20px; }
   }
 
   @media (max-width: 900px) {
-    .header { padding: 18px 20px; flex-wrap: wrap; gap: 12px; }
+    .header { padding: 16px 20px; gap: 12px; }
     .header__menu { display: none; }
-    .header__actions { gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .header__actions { gap: 8px; }
     .hero__inner, .industries__inner, .industries__layout { grid-template-columns: 1fr; gap: 32px; }
     .hero__right { display: none; }
     .industries__grid, .industries__grid--four { grid-template-columns: 1fr; }
@@ -2372,13 +2380,18 @@
     .compare-table { display: block; overflow-x: auto; }
     .dash-mock__url { display: none; }
     .footer-grid { grid-template-columns: 1fr 1fr !important; }
+    .laptop-frame { margin-top: 32px; }
+    .laptop-frame__bezel { padding: 10px 10px 14px; border-radius: 12px; }
+    .laptop-frame__camera { top: 4px; width: 4px; height: 4px; }
+    .laptop-frame__base { height: 10px; }
+    .laptop-frame__base::before { width: 80px; height: 4px; }
   }
 
   @media (max-width: 560px) {
     .header__menu-item.has-submenu { padding-bottom: 0; margin-bottom: 0; }
     .footer-grid { grid-template-columns: 1fr !important; }
     .reviews-carousel__controls { flex-wrap: wrap; }
-    .bacen-badge { margin-left: 0; }
+    .social-btn + .bacen-badge { margin-left: 0; }
   }
 </style>
 </head>
@@ -2432,7 +2445,7 @@
         <h1>Quem simplifica,<br>multiplica.</h1>
         <p class="hero__sub">Conta PJ digital regulada pelo Banco Central. Transferências via TED, agendamentos e visibilidade total sobre as despesas — em uma única plataforma.</p>
         <div class="hero__buttons">
-          <button class="btn btn-primary" onclick="goTo('contapj')"><span>Open Conta PJ</span></button>
+          <button class="btn btn-green" onclick="goTo('contapj')"><span>Open Conta PJ</span></button>
           <button class="btn btn-ghost" onclick="goTo('contapj')"><span>Learn More</span></button>
         </div>
       </div>
@@ -2501,13 +2514,16 @@
     <div class="home-block__inner home-block__inner--center">
       <h2 class="home-block__title home-block__title--gradient">A nova home da sua equipe de pagamentos</h2>
       <p class="home-block__sub home-block__sub--center">Uma plataforma completa para gestão financeira, com controle, segurança e praticidade no dia a dia.</p>
-      <div class="dash-mock" role="img" aria-label="Pré-visualização do painel da Conta PJ LaFinteca">
-        <div class="dash-mock__chrome">
-          <span class="dash-mock__dot"></span>
-          <span class="dash-mock__dot"></span>
-          <span class="dash-mock__dot"></span>
-          <span class="dash-mock__url">app.lafinteca.com/contas/conta-pj</span>
-        </div>
+      <div class="laptop-frame">
+        <div class="laptop-frame__bezel">
+          <div class="laptop-frame__camera" aria-hidden="true"></div>
+          <div class="dash-mock laptop-frame__screen" role="img" aria-label="Pré-visualização do painel da Conta PJ LaFinteca">
+            <div class="dash-mock__chrome">
+              <span class="dash-mock__dot"></span>
+              <span class="dash-mock__dot"></span>
+              <span class="dash-mock__dot"></span>
+              <span class="dash-mock__url">app.lafinteca.com/contas/conta-pj</span>
+            </div>
         <div class="dash-mock__grid">
           <aside class="dash-mock__nav">
             <div class="dash-mock__logo"><img src="Main%20logo%20white%20(1).svg" alt="LaFinteca"></div>
@@ -2550,6 +2566,9 @@
             </div>
           </div>
         </div>
+          </div>
+        </div>
+        <div class="laptop-frame__base" aria-hidden="true"></div>
       </div>
     </div>
   </section>
@@ -2659,7 +2678,7 @@
       <div class="cta-banner__copy">
         <h2 class="cta-banner__title">Abra a sua conta</h2>
         <p class="cta-banner__sub">Sem burocracia, sem taxas escondidas.<br>Financeiro simples para o seu negócio.</p>
-        <button class="btn btn-primary" onclick="goTo('contapj')"><span>Abrir Conta PJ</span></button>
+        <button class="btn btn-green" onclick="goTo('contapj')"><span>Abrir Conta PJ</span></button>
       </div>
       <div class="cta-banner__visual">Image placeholder</div>
     </div>
@@ -2681,7 +2700,7 @@
       <p class="home-block__sub home-block__sub--center">TED, boletos, extratos com filtros e agendamentos — tudo em um só lugar.</p>
       <form class="contapj-cnpj" onsubmit="event.preventDefault();">
         <input type="text" placeholder="Digite o CNPJ da sua empresa" autocomplete="off">
-        <button class="btn btn-primary" type="submit"><span>Abrir conta</span></button>
+        <button class="btn btn-green" type="submit"><span>Abrir conta</span></button>
       </form>
     </div>
   </section>
@@ -2862,7 +2881,6 @@
       <p class="home-block__sub home-block__sub--center">Conta PJ digital sobre infraestrutura regulada pelo Banco Central do Brasil, com tecnologia em ambiente seguro e práticas de acesso protegidas. Acesso por usuário e senha, com recuperação via SMS.</p>
       <p class="contapj-quote">"Simples por fora. Sólido por dentro."</p>
     </div>
-    <span class="home-block__bg-label">Image placeholder</span>
   </section>
 
   <!-- AVALIAÇÕES -->
@@ -2932,7 +2950,6 @@
         </div>
       </div>
     </div>
-    <span class="home-block__bg-label">Image placeholder</span>
   </section>
 
   <!-- FAQ Alguma dúvida? -->
@@ -2971,7 +2988,7 @@
       <div class="cta-banner__copy">
         <h2 class="cta-banner__title">Sua empresa merece uma conta que simplesmente funciona.</h2>
         <p class="cta-banner__sub">Abra sua Conta PJ LaFinteca e gerencie o dinheiro com clareza.</p>
-        <button class="btn btn-primary"><span>Abrir minha Conta PJ agora</span></button>
+        <button class="btn btn-green"><span>Abrir minha Conta PJ agora</span></button>
       </div>
       <div class="cta-banner__visual">Image placeholder</div>
     </div>
@@ -3066,98 +3083,98 @@
 
 <!-- ============ EVENTS PAGE ============ -->
 <div class="page" id="page-events">
-  <section class="events-page">
-    <div class="events-page__inner">
-      <header class="events-page__head">
+  <section class="hero" style="padding: 56px 40px 32px; min-height: auto;">
+    <div class="hero__inner" style="grid-template-columns: 1fr; gap: 0; min-height: auto;">
+      <div>
+        <p class="section-eyebrow">Home / Company / Events</p>
+        <h1 style="font-size: clamp(34px, 5vw, 56px); max-width: 1000px;">Where you'll <span class="underline">find us<svg viewBox="0 0 536 18" fill="none" preserveAspectRatio="none"><path d="M1 9C100 -3 250 15 380 8C460 3 510 12 535 6" stroke="#BFFE43" stroke-width="2.5" fill="none"/></svg></span></h1>
+        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: var(--gray-text); max-width: 720px; line-height: 1.65; margin-top: 24px;">Conferences, summits, and industry events where the LaFinteca team meets clients, partners, and the broader fintech community.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-block" style="padding-top: 32px;">
+    <div class="home-block__inner">
+      <header class="events-head">
         <div>
-          <p class="events-page__eyebrow">May – July 2026</p>
-          <h1 class="events-page__title">Where to find us</h1>
+          <span class="home-eyebrow">May – July 2026</span>
+          <h2 class="events-head__title">Upcoming stops</h2>
         </div>
-        <span class="events-page__count">6 stops</span>
+        <span class="events-head__count">6 stops</span>
       </header>
 
-      <div class="events-list">
-        <!-- Featured: AffPapa Madrid -->
-        <article class="event-card event-card--featured event-card--madrid">
-          <div class="event-card__media">
-            <span class="event-card__tag">Featured stop</span>
-            <h3 class="event-card__hero-title">AffPapa Conference Madrid</h3>
+      <div class="events-rows">
+        <article class="event-row event-row--featured">
+          <span class="event-row__tag">Featured stop</span>
+          <div class="event-row__meta">
+            <span class="event-row__date">May 18–20, 2026</span>
+            <span class="event-row__city">Madrid</span>
           </div>
-          <div class="event-card__body">
-            <div class="event-card__meta">
-              <span class="event-card__date">May 18–20, 2026</span>
-              <span class="event-card__city">Madrid</span>
-            </div>
-            <div class="event-card__copy">
-              <p>1,500+ affiliates, operators, and B2B providers in one venue. We'll be talking LATAM payment rails with the people building the iGaming ecosystem. Come say hi.</p>
-              <a class="event-card__cta" onclick="goTo('contact')">Book a Meeting →</a>
-            </div>
+          <div class="event-row__body">
+            <h3 class="event-row__title">AffPapa Conference Madrid</h3>
+            <p>1,500+ affiliates, operators, and B2B providers in one venue. We'll be talking LATAM payment rails with the people building the iGaming ecosystem. Come say hi.</p>
+            <a class="event-row__cta" onclick="goTo('contact')">Book a meeting →</a>
           </div>
         </article>
 
-        <article class="event-card">
-          <div class="event-card__meta">
-            <span class="event-card__date">May 27–28, 2026</span>
-            <span class="event-card__city">Valletta, Malta</span>
+        <article class="event-row">
+          <div class="event-row__meta">
+            <span class="event-row__date">May 27–28, 2026</span>
+            <span class="event-row__city">Valletta, Malta</span>
           </div>
-          <div class="event-card__copy">
-            <h3 class="event-card__title">NEXT.io Summit</h3>
+          <div class="event-row__body">
+            <h3 class="event-row__title">NEXT.io Summit</h3>
             <p>The operator-focused summit bringing 6,000+ delegates to Malta. If you're scaling into Latin American markets, we should sit down.</p>
-            <a class="event-card__cta" onclick="goTo('contact')">Book a Meeting →</a>
+            <a class="event-row__cta" onclick="goTo('contact')">Book a meeting →</a>
           </div>
         </article>
 
-        <article class="event-card">
-          <div class="event-card__meta">
-            <span class="event-card__date">May 28–29, 2026</span>
-            <span class="event-card__city">Limassol, Cyprus</span>
+        <article class="event-row">
+          <div class="event-row__meta">
+            <span class="event-row__date">May 28–29, 2026</span>
+            <span class="event-row__city">Limassol, Cyprus</span>
           </div>
-          <div class="event-card__copy">
-            <h3 class="event-card__title">Island Conference (i-Con)</h3>
+          <div class="event-row__body">
+            <h3 class="event-row__title">Island Conference (i-Con)</h3>
             <p>Affiliate marketing, iGaming, crypto, payments. Two days at City of Dreams Mediterranean with 2,000+ attendees from high-growth verticals.</p>
-            <a class="event-card__cta" onclick="goTo('contact')">Book a Meeting →</a>
+            <a class="event-row__cta" onclick="goTo('contact')">Book a meeting →</a>
           </div>
         </article>
 
-        <!-- Featured: iFX EXPO -->
-        <article class="event-card event-card--featured event-card--limassol">
-          <div class="event-card__media">
-            <span class="event-card__tag">Featured stop</span>
-            <h3 class="event-card__hero-title">iFX EXPO International</h3>
+        <article class="event-row event-row--featured">
+          <span class="event-row__tag">Featured stop</span>
+          <div class="event-row__meta">
+            <span class="event-row__date">June 16–18, 2026</span>
+            <span class="event-row__city">Limassol, Cyprus</span>
           </div>
-          <div class="event-card__body">
-            <div class="event-card__meta">
-              <span class="event-card__date">June 16–18, 2026</span>
-              <span class="event-card__city">Limassol, Cyprus</span>
-            </div>
-            <div class="event-card__copy">
-              <p>We'll be at the iFX meeting with brokers, fintechs, and payment providers. If you're working on LATAM payment flows or exploring new corridors, grab a slot.</p>
-              <a class="event-card__cta" onclick="goTo('contact')">Book a Meeting →</a>
-            </div>
+          <div class="event-row__body">
+            <h3 class="event-row__title">iFX EXPO International</h3>
+            <p>We'll be at the iFX meeting with brokers, fintechs, and payment providers. If you're working on LATAM payment flows or exploring new corridors, grab a slot.</p>
+            <a class="event-row__cta" onclick="goTo('contact')">Book a meeting →</a>
           </div>
         </article>
 
-        <article class="event-card">
-          <div class="event-card__meta">
-            <span class="event-card__date">June 30, 2026</span>
-            <span class="event-card__city">London</span>
+        <article class="event-row">
+          <div class="event-row__meta">
+            <span class="event-row__date">June 30, 2026</span>
+            <span class="event-row__city">London</span>
           </div>
-          <div class="event-card__copy">
-            <h3 class="event-card__title">iGaming Club London</h3>
+          <div class="event-row__body">
+            <h3 class="event-row__title">iGaming Club London</h3>
             <p>200 guests, one room, zero filler. We're going to talk about LATAM payment infrastructure with the operators and B2B providers shaping the gaming industry. Let's lock in a time before spots close.</p>
-            <a class="event-card__cta" onclick="goTo('contact')">Book a Meeting →</a>
+            <a class="event-row__cta" onclick="goTo('contact')">Book a meeting →</a>
           </div>
         </article>
 
-        <article class="event-card">
-          <div class="event-card__meta">
-            <span class="event-card__date">July 1–2, 2026</span>
-            <span class="event-card__city">Excel London</span>
+        <article class="event-row">
+          <div class="event-row__meta">
+            <span class="event-row__date">July 1–2, 2026</span>
+            <span class="event-row__city">Excel London</span>
           </div>
-          <div class="event-card__copy">
-            <h3 class="event-card__title">iGB L!VE</h3>
+          <div class="event-row__body">
+            <h3 class="event-row__title">iGB L!VE</h3>
             <p>The biggest iGaming B2B event of the summer. 15,000 expected. We'll be on the floor connecting with operators, affiliates, and suppliers. If you're in London for iGaming Week, let's meet.</p>
-            <a class="event-card__cta" onclick="goTo('contact')">Book a Meeting →</a>
+            <a class="event-row__cta" onclick="goTo('contact')">Book a meeting →</a>
           </div>
         </article>
       </div>
@@ -3404,11 +3421,16 @@
 
 <!-- ============ CONTACT PAGE ============ -->
 <div class="page" id="page-contact">
-  <section class="hero" style="padding: 40px 40px 40px; min-height: auto;">
+  <section class="hero" style="padding: 56px 40px 32px; min-height: auto;">
     <div class="hero__inner" style="grid-template-columns: 1fr; gap: 0; min-height: auto; text-align: center;">
-      <div style="max-width: 720px; margin: 0 auto;">
+      <div style="max-width: 880px; margin: 0 auto;">
         <span class="hero__eyebrow"><span data-lang="pt">Atendimento</span><span data-lang="en">Support</span></span>
-        <h1 style="font-size: 48px;"><span data-lang="pt">Suporte LaFinteca: como podemos ajudar?</span><span data-lang="en">LaFinteca support: how can we help?</span></h1>
+        <h1 class="contact-hero__title">
+          <span data-lang="pt">Como podemos <span class="underline">ajudar<svg viewBox="0 0 536 18" fill="none" preserveAspectRatio="none"><path d="M1 9C100 -3 250 15 380 8C460 3 510 12 535 6" stroke="#BFFE43" stroke-width="2.5" fill="none"/></svg></span>?</span>
+          <span data-lang="en">How can we <span class="underline">help<svg viewBox="0 0 536 18" fill="none" preserveAspectRatio="none"><path d="M1 9C100 -3 250 15 380 8C460 3 510 12 535 6" stroke="#BFFE43" stroke-width="2.5" fill="none"/></svg></span>?</span>
+        </h1>
+        <p class="contact-hero__sub" data-lang="pt">Estamos aqui sempre que você precisar. Escolha o canal mais conveniente abaixo.</p>
+        <p class="contact-hero__sub" data-lang="en">We're here whenever you need us. Pick the channel that works best for you.</p>
       </div>
     </div>
   </section>
@@ -3478,11 +3500,6 @@
         <h3 class="support-extras__title"><span data-lang="pt">Ouvidoria</span><span data-lang="en">Ombudsman</span></h3>
         <p class="support-extras__copy"><span data-lang="pt">Acionada quando o SAC não resolveu a sua demanda. Atende de segunda a sexta, das 9h às 18h.</span><span data-lang="en">Escalation channel when SAC doesn't resolve your case. Mon–Fri, 9am to 6pm.</span></p>
         <a class="support-card__phone" href="tel:+551150005001">(11) 5000-5001</a>
-      </div>
-      <div class="support-extras__col">
-        <h3 class="support-extras__title"><span data-lang="pt">Canal Confidencial</span><span data-lang="en">Confidential channel</span></h3>
-        <p class="support-extras__copy"><span data-lang="pt">Para relatar condutas que possam violar nosso Código de Conduta. Anônimo e independente.</span><span data-lang="en">Report conduct that may violate our Code of Ethics. Anonymous and independent.</span></p>
-        <a class="support-extras__link" onclick="event.preventDefault();"><span data-lang="pt">Acessar canal ↗</span><span data-lang="en">Open channel ↗</span></a>
       </div>
     </div>
   </section>
