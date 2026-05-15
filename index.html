@@ -961,72 +961,46 @@
     white-space: nowrap;
   }
 
-  /* Laptop frame (wraps the dashboard mockup as a MacBook Air — dark/space) */
-  .laptop-frame {
-    max-width: 1080px;
+  /* Laptop photo mockup — uses real MacBook Air photo, overlays the web banking dashboard */
+  .laptop-photo {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
     margin: 48px auto 0;
+    aspect-ratio: 3 / 2;
+    background-image: url('assets/macbook-mockup.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
   }
-  .laptop-frame__bezel {
-    position: relative;
-    background:
-      linear-gradient(180deg, #1d1e22 0%, #15161a 100%);
-    border-radius: 16px 16px 4px 4px;
-    padding: 28px 10px 12px;
-    box-shadow:
-      0 36px 80px rgba(0,0,0,0.5),
-      inset 0 0 0 1px rgba(255,255,255,0.05),
-      inset 0 1px 0 rgba(255,255,255,0.08);
-  }
-  /* Notch */
-  .laptop-frame__bezel::before {
-    content: '';
+  /* Screen quadrilateral — overlays the dark display area, tilted to match perspective */
+  .laptop-photo__screen {
     position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 168px;
-    height: 18px;
-    background: #0a0a0c;
-    border-radius: 0 0 12px 12px;
-    z-index: 2;
+    top: 22.5%;
+    left: 22.2%;
+    width: 64%;
+    height: 36%;
+    overflow: hidden;
+    border-radius: 4px;
+    transform-origin: 0% 50%;
+    transform: perspective(1800px) rotateY(10deg);
+    background: #0f1015;
   }
-  /* Camera inside notch */
-  .laptop-frame__camera {
+  /* Dashboard renders at a fixed reference size and scales to fit the screen overlay */
+  .laptop-photo__dash {
     position: absolute;
-    top: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #2c2c30 0%, #08080a 70%);
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
-    z-index: 3;
+    top: 0; left: 0;
+    width: 1100px;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: #0f1015;
+    transform: scale(0.6);
+    transform-origin: top left;
   }
-  /* Hinge / base */
-  .laptop-frame__base {
-    position: relative;
-    width: 102%;
-    height: 16px;
-    margin: 0 -1%;
-    background: linear-gradient(180deg, #2a2c30 0%, #1a1c20 60%, #0e0f12 100%);
-    border-radius: 0 0 18px 18px / 0 0 100% 100%;
-    box-shadow: 0 18px 30px rgba(0,0,0,0.55);
-  }
-  /* Trackpad notch on the hinge */
-  .laptop-frame__base::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 130px;
-    height: 6px;
-    background: #08090b;
-    border-radius: 0 0 8px 8px;
-    box-shadow: inset 0 1px 0 rgba(0,0,0,0.6);
-  }
-  /* Inset screen container */
-  .laptop-frame__screen { margin: 0; max-width: none; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04); border-radius: 4px; }
+  .laptop-photo__dash .dash-mock__grid { min-height: 0; }
+  .laptop-photo__dash .dash-mock__main { padding: 16px; gap: 10px; }
+  .laptop-photo__dash .dash-mock__nav { padding: 14px 10px; }
 
   /* Dashboard mock (A nova home da sua equipe) */
   .dash-mock {
@@ -1036,7 +1010,6 @@
     overflow: hidden;
     text-align: left;
   }
-  .laptop-frame__screen { margin: 0; max-width: none; box-shadow: none; }
   .dash-mock__chrome {
     display: flex;
     align-items: center;
@@ -2383,8 +2356,8 @@
     .faq-split__inner { gap: 48px; }
     .industries__grid--four { grid-template-columns: repeat(2, 1fr); }
     .compare-table th, .compare-table td { padding: 14px 16px; font-size: 12px; }
-    .laptop-frame__bezel { padding: 22px 8px 10px; }
-    .laptop-frame__bezel::before { width: 140px; height: 14px; }
+    .laptop-photo { max-width: 100%; }
+    .laptop-photo__dash { transform: scale(0.5); }
   }
 
   @media (max-width: 900px) {
@@ -2415,12 +2388,8 @@
     .compare-table { display: block; overflow-x: auto; }
     .dash-mock__url { display: none; }
     .footer-grid { grid-template-columns: 1fr 1fr !important; }
-    .laptop-frame { margin-top: 32px; }
-    .laptop-frame__bezel { padding: 20px 8px 10px; border-radius: 12px 12px 4px 4px; }
-    .laptop-frame__bezel::before { width: 110px; height: 12px; }
-    .laptop-frame__camera { top: 4px; width: 4px; height: 4px; }
-    .laptop-frame__base { height: 12px; }
-    .laptop-frame__base::before { width: 90px; height: 4px; }
+    .laptop-photo { margin-top: 32px; }
+    .laptop-photo__dash { transform: scale(0.4); }
   }
 
   @media (max-width: 560px) {
@@ -2549,61 +2518,59 @@
     <div class="home-block__inner home-block__inner--center">
       <h2 class="home-block__title home-block__title--gradient">A nova home da sua equipe de pagamentos</h2>
       <p class="home-block__sub home-block__sub--center">Uma plataforma completa para gestão financeira, com controle, segurança e praticidade no dia a dia.</p>
-      <div class="laptop-frame">
-        <div class="laptop-frame__bezel">
-          <div class="laptop-frame__camera" aria-hidden="true"></div>
-          <div class="dash-mock laptop-frame__screen" role="img" aria-label="Pré-visualização do painel da Conta PJ LaFinteca">
+      <div class="laptop-photo" role="img" aria-label="Pré-visualização do painel da Conta PJ LaFinteca em um MacBook">
+        <div class="laptop-photo__screen">
+          <div class="dash-mock laptop-photo__dash">
             <div class="dash-mock__chrome">
               <span class="dash-mock__dot"></span>
               <span class="dash-mock__dot"></span>
               <span class="dash-mock__dot"></span>
               <span class="dash-mock__url">app.lafinteca.com/contas/conta-pj</span>
             </div>
-        <div class="dash-mock__grid">
-          <aside class="dash-mock__nav">
-            <div class="dash-mock__logo"><img src="Main%20logo%20white%20(1).svg" alt="LaFinteca"></div>
-            <a class="dash-mock__nav-item is-active">Home</a>
-            <a class="dash-mock__nav-item">TED</a>
-            <a class="dash-mock__nav-item">Boletos</a>
-            <a class="dash-mock__nav-item">Extrato</a>
-            <a class="dash-mock__nav-item">Agendamentos</a>
-            <a class="dash-mock__nav-item">Comprovantes</a>
-          </aside>
-          <div class="dash-mock__main">
-            <div class="dash-mock__card dash-mock__card--hero">
-              <div>
-                <div class="dash-mock__label">Saldo disponível</div>
-                <div class="dash-mock__balance"><span class="dash-mock__currency">R$</span> 142.350<span class="dash-mock__cents">,80</span></div>
-              </div>
-              <span class="dash-mock__chip">Conta PJ</span>
-            </div>
-            <div class="dash-mock__card">
-              <div class="dash-mock__card-head">
-                <span class="dash-mock__label">Últimos lançamentos</span>
-                <span class="dash-mock__filter">7 dias ▾</span>
-              </div>
-              <div class="dash-mock__rows">
-                <div class="dash-mock__row"><span class="dash-mock__row-name">TED — Fornecedor MG</span><span class="dash-mock__row-amt neg">− R$ 8.420,00</span></div>
-                <div class="dash-mock__row"><span class="dash-mock__row-name">Boleto pago — Energia</span><span class="dash-mock__row-amt neg">− R$ 1.280,55</span></div>
-                <div class="dash-mock__row"><span class="dash-mock__row-name">TED recebido — Cliente SP</span><span class="dash-mock__row-amt pos">+ R$ 32.000,00</span></div>
-                <div class="dash-mock__row"><span class="dash-mock__row-name">Agendamento executado</span><span class="dash-mock__row-amt neg">− R$ 4.150,00</span></div>
-              </div>
-            </div>
-            <div class="dash-mock__split">
-              <div class="dash-mock__card">
-                <div class="dash-mock__label">Entradas (mês)</div>
-                <div class="dash-mock__stat dash-mock__stat--pos">+ R$ 312.480,00</div>
-              </div>
-              <div class="dash-mock__card">
-                <div class="dash-mock__label">Saídas (mês)</div>
-                <div class="dash-mock__stat dash-mock__stat--neg">− R$ 198.720,55</div>
+            <div class="dash-mock__grid">
+              <aside class="dash-mock__nav">
+                <div class="dash-mock__logo"><img src="Main%20logo%20white%20(1).svg" alt="LaFinteca"></div>
+                <a class="dash-mock__nav-item is-active">Home</a>
+                <a class="dash-mock__nav-item">TED</a>
+                <a class="dash-mock__nav-item">Boletos</a>
+                <a class="dash-mock__nav-item">Extrato</a>
+                <a class="dash-mock__nav-item">Agendamentos</a>
+                <a class="dash-mock__nav-item">Comprovantes</a>
+              </aside>
+              <div class="dash-mock__main">
+                <div class="dash-mock__card dash-mock__card--hero">
+                  <div>
+                    <div class="dash-mock__label">Saldo disponível</div>
+                    <div class="dash-mock__balance"><span class="dash-mock__currency">R$</span> 142.350<span class="dash-mock__cents">,80</span></div>
+                  </div>
+                  <span class="dash-mock__chip">Conta PJ</span>
+                </div>
+                <div class="dash-mock__card">
+                  <div class="dash-mock__card-head">
+                    <span class="dash-mock__label">Últimos lançamentos</span>
+                    <span class="dash-mock__filter">7 dias ▾</span>
+                  </div>
+                  <div class="dash-mock__rows">
+                    <div class="dash-mock__row"><span class="dash-mock__row-name">TED — Fornecedor MG</span><span class="dash-mock__row-amt neg">− R$ 8.420,00</span></div>
+                    <div class="dash-mock__row"><span class="dash-mock__row-name">Boleto pago — Energia</span><span class="dash-mock__row-amt neg">− R$ 1.280,55</span></div>
+                    <div class="dash-mock__row"><span class="dash-mock__row-name">TED recebido — Cliente SP</span><span class="dash-mock__row-amt pos">+ R$ 32.000,00</span></div>
+                    <div class="dash-mock__row"><span class="dash-mock__row-name">Agendamento executado</span><span class="dash-mock__row-amt neg">− R$ 4.150,00</span></div>
+                  </div>
+                </div>
+                <div class="dash-mock__split">
+                  <div class="dash-mock__card">
+                    <div class="dash-mock__label">Entradas (mês)</div>
+                    <div class="dash-mock__stat dash-mock__stat--pos">+ R$ 312.480,00</div>
+                  </div>
+                  <div class="dash-mock__card">
+                    <div class="dash-mock__label">Saídas (mês)</div>
+                    <div class="dash-mock__stat dash-mock__stat--neg">− R$ 198.720,55</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-          </div>
-        </div>
-        <div class="laptop-frame__base" aria-hidden="true"></div>
       </div>
     </div>
   </section>
