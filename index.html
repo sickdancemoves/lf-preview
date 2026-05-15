@@ -166,24 +166,24 @@
     outline-offset: 1px;
   }
   .header__menu a .caret { font-size: 10px; transition: transform 0.2s; }
-  .header__menu-item { position: relative; display: inline-flex; align-items: center; }
-  .header__menu-item:hover .submenu { display: block; }
-  .header__menu-item:hover > a .caret { transform: rotate(180deg); }
+  .header__menu-item {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding-bottom: 18px;
+    margin-bottom: -18px;
+  }
+  .header__menu-item.is-open .submenu { display: block; }
+  .header__menu-item.is-open > a .caret { transform: rotate(180deg); }
   .submenu {
     display: none;
     position: absolute;
     top: 100%; left: -16px;
-    margin-top: 18px;
     background: var(--dark-2);
     border: 1px solid var(--gray-line);
     min-width: 200px;
     padding: 8px 0;
     z-index: 50;
-  }
-  .submenu::before {
-    content: '';
-    position: absolute;
-    top: -18px; left: 0; right: 0; height: 18px;
   }
   .submenu a {
     display: block;
@@ -333,8 +333,9 @@
   .hero h1 {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 400;
-    font-size: 56px; line-height: 1.05;
-    letter-spacing: -1.8px;
+    font-size: clamp(32px, 4.6vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -1.4px;
     text-transform: uppercase;
     margin: 0 0 24px;
     color: var(--white);
@@ -672,9 +673,9 @@
   .home-block__title {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 400;
-    font-size: 40px;
+    font-size: clamp(24px, 3.8vw, 40px);
     line-height: 1.1;
-    letter-spacing: -1.2px;
+    letter-spacing: -1px;
     text-transform: uppercase;
     color: var(--white);
     margin: 0 0 24px;
@@ -886,35 +887,53 @@
     .support-extras { grid-template-columns: 1fr; gap: 28px; }
   }
 
-  /* Bacen authorization strip */
-  .bacen-strip {
-    background: var(--dark);
-    padding: 22px 40px;
-    border-top: 1px solid var(--gray-line);
-    border-bottom: 1px solid var(--gray-line);
-  }
-  .bacen-strip__inner {
-    max-width: 1440px;
-    margin: 0 auto;
-    display: flex;
+  /* Bacen authorization badge (footer) */
+  .bacen-badge {
+    display: inline-flex;
     align-items: center;
-    gap: 14px;
-    justify-content: center;
-    flex-wrap: wrap;
+    gap: 12px;
+    margin: 4px 0 24px;
+    padding: 12px 14px 12px 12px;
+    background: linear-gradient(135deg, rgba(191,254,67,0.08) 0%, rgba(195,171,255,0.05) 100%);
+    border: 1px solid rgba(191,254,67,0.25);
+    border-radius: 10px;
+    max-width: 280px;
   }
-  .bacen-strip__icon { color: var(--green); flex-shrink: 0; }
-  .bacen-strip__text {
+  .bacen-badge__icon {
+    width: 36px; height: 36px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: rgba(191,254,67,0.12);
+    border: 1px solid rgba(191,254,67,0.3);
+    color: var(--green);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .bacen-badge__body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    line-height: 1.4;
-    color: var(--gray-text);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
+    line-height: 1.3;
+    min-width: 0;
   }
-  .bacen-strip__text strong { color: var(--white); font-weight: 500; }
-  .bacen-strip__meta { opacity: 0.7; font-size: 12px; }
+  .bacen-badge__label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--green);
+  }
+  .bacen-badge__org {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--white);
+    letter-spacing: -0.2px;
+  }
+  .bacen-badge__meta {
+    font-size: 10px;
+    color: var(--gray-text);
+    margin-top: 2px;
+  }
 
   /* Dashboard mock (A nova home da sua equipe) */
   .dash-mock {
@@ -1142,8 +1161,59 @@
   .intro-cta { margin-top: 48px; }
 
   /* ==== Conta PJ page ==== */
+  .contapj-hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--dark);
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    padding: 100px 40px;
+  }
+  .contapj-hero__bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(60% 60% at 70% 40%, rgba(195,171,255,0.22) 0%, rgba(26,6,55,0) 65%),
+      radial-gradient(45% 60% at 20% 90%, rgba(191,254,67,0.18) 0%, rgba(26,6,55,0) 70%),
+      linear-gradient(135deg, var(--dark) 0%, #1f1023 55%, var(--dark) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .contapj-hero__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(80% 70% at 50% 50%, #000 30%, transparent 90%);
+    -webkit-mask-image: radial-gradient(80% 70% at 50% 50%, #000 30%, transparent 90%);
+    pointer-events: none;
+  }
+  .contapj-hero__bg-label {
+    position: relative;
+    z-index: 1;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.18);
+    align-self: flex-start;
+    margin-top: 24px;
+  }
+  .contapj-hero__inner {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
   .home-block__title--hero {
-    font-size: 48px;
+    font-size: clamp(28px, 5vw, 48px);
     letter-spacing: -1.5px;
     max-width: 900px;
     margin-left: auto;
@@ -1249,6 +1319,23 @@
     border: 1px solid var(--gray-line);
     border-radius: 14px;
     padding: 28px;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  }
+  .forwho-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(191,254,67,0.4);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+  .forwho-card__icon {
+    width: 52px; height: 52px;
+    background: rgba(191,254,67,0.1);
+    color: var(--green);
+    border: 1px solid rgba(191,254,67,0.25);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
   }
   .forwho-card__tag {
     display: inline-block;
@@ -1554,9 +1641,9 @@
   .cta-banner__title {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 400;
-    font-size: 44px;
+    font-size: clamp(26px, 4vw, 44px);
     line-height: 1.05;
-    letter-spacing: -1.4px;
+    letter-spacing: -1.2px;
     text-transform: uppercase;
     color: var(--white);
     margin: 0 0 24px;
@@ -1606,8 +1693,9 @@
   .faqs-hero h1 {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 400;
-    font-size: 40px; line-height: 1.1;
-    letter-spacing: -1.2px;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.1;
+    letter-spacing: -1px;
     text-transform: uppercase;
     color: var(--white);
     margin: 0 0 16px;
@@ -2024,27 +2112,55 @@
   }
   .newsletter-form input::placeholder { color: rgba(0,0,0,0.5); }
 
+  /* Intermediate (tablet-to-laptop) */
+  @media (max-width: 1100px) {
+    .header { padding: 22px 32px; }
+    .header__menu { gap: 24px; }
+    .home-block { padding: 64px 32px; }
+    .hero { padding: 48px 32px 64px; }
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+    .forwho-grid { grid-template-columns: repeat(2, 1fr); }
+    .faq-split__inner { gap: 48px; }
+    .industries__grid--four { grid-template-columns: repeat(2, 1fr); }
+    .compare-table th, .compare-table td { padding: 14px 16px; font-size: 12px; }
+    .submenu--wide { left: auto; right: 0; min-width: 380px; }
+  }
+
   @media (max-width: 900px) {
+    .header { padding: 18px 20px; flex-wrap: wrap; gap: 12px; }
     .header__menu { display: none; }
-    .hero__inner, .industries__inner, .industries__layout { grid-template-columns: 1fr; gap: 40px; }
+    .header__actions { gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    .hero__inner, .industries__inner, .industries__layout { grid-template-columns: 1fr; gap: 32px; }
     .hero__right { display: none; }
-    .industries__grid { grid-template-columns: 1fr; }
+    .industries__grid, .industries__grid--four { grid-template-columns: 1fr; }
     .action-card { grid-template-columns: 1fr; }
-    .hero h1, .platform__card h2, .action-section h2, .industries h2, .faq h2, .cta h2 { font-size: 28px; }
-    .hero, section, .platform { padding: 60px 24px; }
-    .contact-layout, .newsletter { grid-template-columns: 1fr; gap: 32px; padding: 32px; }
+    .features-grid { grid-template-columns: 1fr; }
+    .forwho-grid { grid-template-columns: 1fr; }
+    .hero, section, .platform { padding: 48px 20px; }
+    .contact-layout, .newsletter { grid-template-columns: 1fr; gap: 32px; padding: 32px 20px; }
     .list-row--blog, .list-row--event, .list-row--job { grid-template-columns: 1fr; gap: 8px; }
     .list-row__arrow { display: none; }
-    .faqs-hero h1 { font-size: 28px; }
     .faqs-search input { height: 48px; padding-left: 46px; }
-    .home-block { padding: 60px 24px; }
-    .home-block__title { font-size: 28px; }
+    .home-block { padding: 56px 20px; }
     .home-split { grid-template-columns: 1fr; gap: 32px; }
     .reviews__grid { grid-template-columns: 1fr; }
     .reviews__rating { flex-wrap: wrap; gap: 16px; padding: 16px 20px; }
     .faq-split__inner { grid-template-columns: 1fr; gap: 32px; }
-    .cta-banner__inner { grid-template-columns: 1fr; padding: 60px 24px; gap: 32px; }
-    .cta-banner__title { font-size: 36px; }
+    .cta-banner__inner { grid-template-columns: 1fr; padding: 56px 20px; gap: 32px; }
+    .contapj-hero { padding: 64px 20px; min-height: 420px; }
+    .contapj-cnpj { flex-direction: column; gap: 10px; background: transparent; padding: 0; }
+    .contapj-cnpj input { border-radius: 999px; padding: 0 22px; }
+    .contapj-cnpj .btn { border-radius: 999px; width: 100%; }
+    .compare-table { display: block; overflow-x: auto; }
+    .dash-mock__url { display: none; }
+    .footer-grid { grid-template-columns: 1fr 1fr !important; }
+    .bacen-badge { max-width: 100%; }
+  }
+
+  @media (max-width: 560px) {
+    .header__menu-item.has-submenu { padding-bottom: 0; margin-bottom: 0; }
+    .footer-grid { grid-template-columns: 1fr !important; }
+    .reviews-carousel__controls { flex-wrap: wrap; }
   }
 </style>
 </head>
@@ -2120,17 +2236,6 @@
       </div>
       <div class="hero__right">
         <div class="hero__placeholder">Image placeholder</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BACEN AUTHORIZATION STRIP -->
-  <section class="bacen-strip">
-    <div class="bacen-strip__inner">
-      <svg class="bacen-strip__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/><path d="m9 12 2 2 4-4"/></svg>
-      <div class="bacen-strip__text">
-        <strong><span data-lang="pt">Instituição de Pagamento autorizada pelo Banco Central do Brasil.</span><span data-lang="en">Payment institution authorized by the Central Bank of Brazil.</span></strong>
-        <span class="bacen-strip__meta"><span data-lang="pt">CNPJ 53.058.329/0001-70 · Emissora de Moeda Eletrônica</span><span data-lang="en">CNPJ 53.058.329/0001-70 · E-money issuer</span></span>
       </div>
     </div>
   </section>
@@ -2364,8 +2469,11 @@
 <div class="page" id="page-contapj">
 
   <!-- HERO -->
-  <section class="home-block contapj-hero">
-    <div class="home-block__inner home-block__inner--center">
+  <section class="contapj-hero">
+    <div class="contapj-hero__bg" aria-hidden="true">
+      <span class="contapj-hero__bg-label">Image placeholder</span>
+    </div>
+    <div class="contapj-hero__inner">
       <span class="home-eyebrow">Conta PJ</span>
       <h1 class="home-block__title home-block__title--hero">A conta PJ feita para simplificar a rotina financeira da sua empresa.</h1>
       <p class="home-block__sub home-block__sub--center">TED, boletos, extratos com filtros e agendamentos — tudo em um só lugar.</p>
@@ -2448,21 +2556,33 @@
       </div>
       <div class="forwho-grid">
         <article class="forwho-card">
+          <div class="forwho-card__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8l8-5 8 5v13"/><path d="M4 21h16"/><path d="M9 21v-6h6v6"/><path d="M9 11h.01M15 11h.01M9 14h.01M15 14h.01"/></svg>
+          </div>
           <span class="forwho-card__tag">PMEs</span>
           <h3>Operação confiável</h3>
           <p>Pagar fornecedores e acompanhar o fluxo sem processos lentos.</p>
         </article>
         <article class="forwho-card">
+          <div class="forwho-card__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/><path d="M3 4h2.2l1.6 11.2a2 2 0 0 0 2 1.8h9.2a2 2 0 0 0 2-1.6L21.5 7H6"/></svg>
+          </div>
           <span class="forwho-card__tag">E-commerce</span>
           <h3>Visibilidade em tempo real</h3>
           <p>Lojas com alto volume diário precisam ver dinheiro entrando e saindo agora.</p>
         </article>
         <article class="forwho-card">
+          <div class="forwho-card__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/><polyline points="16 8 19 5 16 2"/><polyline points="8 16 5 19 8 22"/></svg>
+          </div>
           <span class="forwho-card__tag">Import / Export</span>
           <h3>Controle e histórico</h3>
           <p>Operações recorrentes com extrato exportável para auditoria e câmbio.</p>
         </article>
         <article class="forwho-card">
+          <div class="forwho-card__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="6" cy="18" r="2.4"/><circle cx="18" cy="18" r="2.4"/><circle cx="12" cy="12" r="2.4"/><line x1="8" y1="7.5" x2="10.2" y2="10.5"/><line x1="16" y1="7.5" x2="13.8" y2="10.5"/><line x1="8" y1="16.5" x2="10.2" y2="13.5"/><line x1="16" y1="16.5" x2="13.8" y2="13.5"/></svg>
+          </div>
           <span class="forwho-card__tag">Fintechs &amp; Serviços</span>
           <h3>Conta operacional confiável</h3>
           <p>Fintechs e empresas de serviços que precisam mover dinheiro com clareza e histórico exportável.</p>
@@ -3116,6 +3236,16 @@
           <img class="logo" src="Main%20logo%20white%20(1).svg" alt="LaFinteca">
         </a>
         <p>Financeiro simples para empresas que crescem no Brasil.</p>
+        <div class="bacen-badge" aria-label="Autorizada pelo Banco Central do Brasil">
+          <span class="bacen-badge__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/><path d="m9 12 2 2 4-4"/></svg>
+          </span>
+          <div class="bacen-badge__body">
+            <span class="bacen-badge__label"><span data-lang="pt">Autorizada pelo</span><span data-lang="en">Authorized by</span></span>
+            <strong class="bacen-badge__org">Banco Central do Brasil</strong>
+            <span class="bacen-badge__meta"><span data-lang="pt">Instituição de Pagamento · Emissora de Moeda Eletrônica</span><span data-lang="en">Payment institution · E-money issuer</span></span>
+          </div>
+        </div>
         <div class="social">
           <a class="social-btn" onclick="event.preventDefault();" aria-label="Instagram">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"></circle></svg>
@@ -3195,10 +3325,50 @@ function goTo(page) {
   };
   const chromeUrl = document.getElementById('chromeUrl');
   if (chromeUrl) chromeUrl.textContent = urls[page];
+  window.scrollTo(0, 0);
 }
 document.querySelectorAll('.chrome-tab').forEach(t => {
   t.addEventListener('click', () => goTo(t.dataset.page));
 });
+
+// Header dropdown menus — JS-driven open/close (hover + click + ESC + click-outside)
+(function () {
+  const items = document.querySelectorAll('.header__menu-item.has-submenu');
+  if (items.length === 0) return;
+  const CLOSE_DELAY = 220;
+
+  function closeAll(except) {
+    items.forEach(i => { if (i !== except) i.classList.remove('is-open'); });
+  }
+
+  items.forEach(item => {
+    const trigger = item.querySelector(':scope > a');
+    let timer = null;
+    function open() { clearTimeout(timer); closeAll(item); item.classList.add('is-open'); }
+    function close() { clearTimeout(timer); item.classList.remove('is-open'); }
+    function closeSoon() { clearTimeout(timer); timer = setTimeout(close, CLOSE_DELAY); }
+
+    item.addEventListener('mouseenter', open);
+    item.addEventListener('mouseleave', closeSoon);
+    trigger.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (item.classList.contains('is-open')) close();
+      else open();
+    });
+    // Close after picking a submenu item
+    item.querySelectorAll('.submenu a').forEach(a => {
+      a.addEventListener('click', () => setTimeout(close, 0));
+    });
+  });
+
+  document.addEventListener('click', e => {
+    if (![...items].some(i => i.contains(e.target))) closeAll(null);
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeAll(null);
+  });
+})();
 
 // Language switcher
 (function () {
