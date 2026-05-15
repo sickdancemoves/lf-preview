@@ -627,7 +627,7 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #2D5BFF 0%, #6B7CFF 45%, #4ED6F0 100%);
+    background: linear-gradient(90deg, var(--green) 0%, var(--purple) 60%, var(--purple-2) 100%);
   }
   .intro-card__icon {
     width: 48px; height: 48px;
@@ -1658,7 +1658,6 @@
         <input type="text" placeholder="Digite o CNPJ da sua empresa" autocomplete="off">
         <button class="btn btn-primary" type="submit"><span>Abrir conta</span></button>
       </form>
-      <a class="contapj-anchor" href="#contapj-features">Conhecer as funcionalidades ›</a>
     </div>
   </section>
 
@@ -1715,55 +1714,8 @@
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="home-block">
-    <div class="home-block__inner">
-      <div class="home-block__inner--center" style="margin-bottom: 48px;">
-        <span class="home-eyebrow">Como funciona</span>
-        <h2 class="home-block__title">Simples de entender. Simples de usar.</h2>
-      </div>
-      <ol class="steps-list">
-        <li class="steps-list__item">
-          <span class="steps-list__num">01</span>
-          <div class="steps-list__body">
-            <h3>Acesse sua Conta PJ</h3>
-            <p>Entre com usuário e senha. Sem filas, sem papelada.</p>
-          </div>
-        </li>
-        <li class="steps-list__item">
-          <span class="steps-list__num">02</span>
-          <div class="steps-list__body">
-            <h3>Consulte saldo e movimentações</h3>
-            <p>Tela inicial com últimos lançamentos e atalhos para os principais serviços.</p>
-          </div>
-        </li>
-        <li class="steps-list__item">
-          <span class="steps-list__num">03</span>
-          <div class="steps-list__body">
-            <h3>Pague, receba e transfira</h3>
-            <p>TED e boletos com confirmação imediata.</p>
-          </div>
-        </li>
-        <li class="steps-list__item">
-          <span class="steps-list__num">04</span>
-          <div class="steps-list__body">
-            <h3>Agende operações</h3>
-            <p>A conta executa no momento certo, sem precisar lembrar.</p>
-          </div>
-        </li>
-        <li class="steps-list__item">
-          <span class="steps-list__num">05</span>
-          <div class="steps-list__body">
-            <h3>Exporte e compartilhe</h3>
-            <p>Extratos exportáveis. Comprovantes em PNG, prontos para auditoria.</p>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
   <!-- PRODUCT TOUR -->
-  <section class="home-block home-block--alt">
+  <section class="home-block">
     <div class="home-block__inner home-block__inner--center">
       <span class="home-eyebrow">Tour pelo produto</span>
       <h2 class="home-block__title">Veja como a Conta PJ funciona na prática.</h2>
@@ -1840,34 +1792,58 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section class="home-block home-block--alt">
+  <!-- AVALIAÇÕES -->
+  <section class="home-block reviews">
     <div class="home-block__inner home-block__inner--center">
-      <span class="home-eyebrow">Depoimentos</span>
-      <h2 class="home-block__title">O que dizem quem já usa.</h2>
-      <div class="reviews__grid reviews__grid--two">
+      <span class="home-eyebrow">Avaliações</span>
+      <h2 class="home-block__title">Quem já simplificou com LaFinteca</h2>
+      <p class="home-block__sub home-block__sub--center">Avaliações reais de clientes no Reclame Aqui.</p>
+
+      <div class="reviews__rating" aria-label="Reclame Aqui rating (placeholder)">
+        <img class="reviews__rating-logo-img" src="assets/reclame-aqui-logo.png" alt="Reclame Aqui">
+        <span class="reviews__rating-divider"></span>
+        <div class="reviews__rating-score">
+          <span class="reviews__rating-num">8.2</span>
+          <span class="reviews__rating-label">de 10 · Ótimo</span>
+        </div>
+        <span class="reviews__rating-divider"></span>
+        <span class="reviews__rating-stars">★★★★★</span>
+        <span class="reviews__rating-placeholder">placeholder</span>
+      </div>
+
+      <div class="reviews__grid">
         <article class="review-card">
           <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__quote">"Citação de 2 a 3 linhas sobre a experiência."</p>
-          <div class="review-card__name">Nome Sobrenome <span class="review-card__placeholder">(placeholder)</span></div>
-          <div class="review-card__date">Cargo, Empresa</div>
+          <p class="review-card__quote">"Atendimento rápido e conta fácil de abrir. Plataforma intuitiva, tudo muito simples de usar. Recomendo para qualquer empresa."</p>
+          <div class="review-card__name">Carlos M. <span class="review-card__placeholder">(placeholder)</span></div>
+          <div class="review-card__date">Março de 2026</div>
         </article>
         <article class="review-card">
           <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__quote">"Espaço para depoimentos reais."</p>
-          <div class="review-card__name">Nome Sobrenome <span class="review-card__placeholder">(placeholder)</span></div>
-          <div class="review-card__date">Cargo, Empresa</div>
+          <p class="review-card__quote">"Transferências rápidas, suporte resolveu minha dúvida em minutos. Finalmente uma conta PJ sem burocracia. Muito satisfeito."</p>
+          <div class="review-card__name">Ana P. <span class="review-card__placeholder">(placeholder)</span></div>
+          <div class="review-card__date">Fevereiro de 2026</div>
+        </article>
+        <article class="review-card">
+          <div class="review-card__stars">★★★★<span class="review-card__stars--dim">★</span></div>
+          <p class="review-card__quote">"Ótima experiência. A gestão de acessos para a equipe fez muita diferença no dia a dia da nossa empresa. Recomendo!"</p>
+          <div class="review-card__name">Rodrigo S. <span class="review-card__placeholder">(placeholder)</span></div>
+          <div class="review-card__date">Janeiro de 2026</div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="home-block">
-    <div class="home-block__inner home-block__inner--center">
-      <span class="home-eyebrow">Perguntas frequentes</span>
-      <h2 class="home-block__title">Perguntas frequentes</h2>
-      <div class="faq__list" style="max-width: 800px; margin: 32px auto 0; text-align: left;">
+  <!-- FAQ Alguma dúvida? -->
+  <section class="home-block home-block--alt faq-split">
+    <div class="home-block__inner faq-split__inner">
+      <div class="faq-split__intro">
+        <span class="home-eyebrow">Perguntas frequentes</span>
+        <h2 class="home-block__title">Alguma dúvida?</h2>
+        <p class="home-block__sub">Entenda melhor como a Conta PJ funciona e o que ela pode fazer pelo seu negócio.</p>
+        <button class="btn btn-primary" onclick="goTo('faqs')"><span>Ver todas as perguntas ›</span></button>
+      </div>
+      <div class="faq-split__list">
         <div class="faq-item open" onclick="this.classList.toggle('open')">
           <div class="faq-item__head">O que é a Conta PJ LaFinteca? <span class="faq-item__plus">▼</span></div>
           <div class="faq-item__content">É uma conta de pagamento empresarial em reais (BRL), com acesso via web banking, TED, pagamento de boletos, extratos com filtros e agendamentos. Funciona sobre infraestrutura regulada pelo Banco Central do Brasil.</div>
@@ -1883,10 +1859,6 @@
         <div class="faq-item" onclick="this.classList.toggle('open')">
           <div class="faq-item__head">Posso usar Pix? <span class="faq-item__plus">▼</span></div>
           <div class="faq-item__content">Não no lançamento do MVP. A participação direta no Pix está no roadmap. Hoje, a Conta PJ opera com TED e pagamento de boletos.</div>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('open')">
-          <div class="faq-item__head">A conta tem taxas? <span class="faq-item__plus">▼</span></div>
-          <div class="faq-item__content">A Conta PJ LaFinteca é gratuita. Tarifas específicas, quando aplicáveis, serão sempre comunicadas com transparência antes de qualquer operação.</div>
         </div>
       </div>
     </div>
