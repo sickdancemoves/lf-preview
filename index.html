@@ -111,7 +111,7 @@
     cursor: pointer; transition: color 0.15s;
     display: inline-flex; align-items: center; gap: 6px;
   }
-  .header__menu a:hover, .header__menu a.active { color: var(--purple); }
+  .header__menu a:hover, .header__menu a.active { color: var(--green); }
   .header__menu a .caret { font-size: 10px; transition: transform 0.2s; }
   .header__menu-item { position: relative; display: inline-flex; align-items: center; }
   .header__menu-item:hover .submenu { display: block; }
@@ -145,7 +145,7 @@
     cursor: pointer;
     transition: background 0.15s, color 0.15s;
   }
-  .submenu a:hover { background: var(--dark-3); color: var(--purple); }
+  .submenu a:hover { background: var(--dark-3); color: var(--green); }
   .login-btn {
     background: transparent; color: var(--white);
     border: 1px solid var(--white);
@@ -171,7 +171,7 @@
 
   /* ==== HERO ==== */
   .hero {
-    padding: 60px 40px 100px;
+    padding: 60px 40px 80px;
     background: var(--dark);
     position: relative;
   }
@@ -512,10 +512,10 @@
 
   /* ==== Homepage v2 sections ==== */
   .home-block {
-    padding: 100px 40px;
+    padding: 80px 40px;
     background: var(--dark);
   }
-  .home-block--alt { background: var(--dark-2); }
+  .home-block--alt { background: #1f1f23; }
   .home-block__inner {
     max-width: 1440px;
     margin: 0 auto;
@@ -627,7 +627,7 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--green) 0%, var(--purple) 60%, var(--purple-2) 100%);
+    background: var(--purple);
   }
   .intro-card__icon {
     width: 48px; height: 48px;
@@ -698,7 +698,7 @@
     cursor: pointer;
     margin-top: 8px;
   }
-  .contapj-anchor:hover { color: var(--white); border-color: var(--white); }
+  .contapj-anchor:hover { color: var(--green); border-color: var(--green); }
 
   .features-grid {
     display: grid;
@@ -1292,7 +1292,7 @@
     text-align: right;
     transition: color 0.15s, transform 0.15s;
   }
-  .list-row:hover .list-row__arrow { color: var(--purple); transform: translateX(4px); }
+  .list-row:hover .list-row__arrow { color: var(--green); transform: translateX(4px); }
   .list-row--blog { grid-template-columns: 140px 1fr 80px 40px; }
   .list-row--event { grid-template-columns: 180px 1fr 200px 40px; }
   .list-row--job { grid-template-columns: 1fr 180px 140px 40px; }
@@ -1366,7 +1366,7 @@
     text-decoration: none;
     display: block;
   }
-  .contact-info a:hover { color: var(--purple); }
+  .contact-info a:hover { color: var(--green); }
   .form-card select {
     width: 100%;
     padding: 14px 16px;
@@ -1487,7 +1487,7 @@
         <p class="hero__sub">Gerencie o financeiro da sua empresa, faça transferências seguras, e mantenha o controle total sobre despesas e lucro com a Conta PJ da LaFinteca.</p>
         <div class="hero__buttons">
           <button class="btn btn-primary" onclick="goTo('contapj')"><span>Open Conta PJ</span></button>
-          <button class="btn btn-ghost" onclick="goTo('contapj')"><span>Learn More</span> <span style="transform: rotate(90deg); display: inline-block;">›</span></button>
+          <button class="btn btn-ghost" onclick="goTo('contapj')"><span>Learn More</span></button>
         </div>
       </div>
       <div class="hero__right">
@@ -2273,10 +2273,10 @@
         <p>R. Alvorada, 1289 — Vila Olímpia<br>São Paulo — SP, 04550-004, Brazil</p>
         <h4>Follow us</h4>
         <div class="social" style="margin-top: 0;">
-          <a href="#" class="social-btn" aria-label="Instagram">
+          <a class="social-btn" onclick="event.preventDefault();" aria-label="Instagram">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"></circle></svg>
           </a>
-          <a href="#" class="social-btn" aria-label="LinkedIn">
+          <a class="social-btn" onclick="event.preventDefault();" aria-label="LinkedIn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
           </a>
         </div>
@@ -2332,10 +2332,10 @@
         </a>
         <p>Financeiro simples para empresas que crescem no Brasil.</p>
         <div class="social">
-          <a href="#" class="social-btn" aria-label="Instagram">
+          <a class="social-btn" onclick="event.preventDefault();" aria-label="Instagram">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"></circle></svg>
           </a>
-          <a href="#" class="social-btn" aria-label="LinkedIn">
+          <a class="social-btn" onclick="event.preventDefault();" aria-label="LinkedIn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
           </a>
         </div>
@@ -2361,10 +2361,10 @@
       <div class="footer-col">
         <h4>Transparência</h4>
         <ul>
-          <li><a href="#" target="_blank" rel="noopener">Política de privacidade</a></li>
-          <li><a href="#" target="_blank" rel="noopener">Política de segurança</a></li>
-          <li><a href="#" target="_blank" rel="noopener">Termos de Uso</a></li>
-          <li><a href="#" target="_blank" rel="noopener">PLD/CFTP</a></li>
+          <li><a onclick="event.preventDefault();">Política de privacidade</a></li>
+          <li><a onclick="event.preventDefault();">Política de segurança</a></li>
+          <li><a onclick="event.preventDefault();">Termos de Uso</a></li>
+          <li><a onclick="event.preventDefault();">PLD/CFTP</a></li>
         </ul>
       </div>
 
@@ -2410,7 +2410,6 @@ function goTo(page) {
   };
   const chromeUrl = document.getElementById('chromeUrl');
   if (chromeUrl) chromeUrl.textContent = urls[page];
-  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 document.querySelectorAll('.chrome-tab').forEach(t => {
   t.addEventListener('click', () => goTo(t.dataset.page));
