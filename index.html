@@ -102,7 +102,8 @@
     cursor: pointer;
   }
   .header__logo-img { display: block; height: 22px; width: auto; }
-  .header__menu { display: flex; gap: 36px; align-items: center; flex: 1; }
+  .header__menu { display: flex; gap: 36px; align-items: center; flex: 1; min-width: 0; }
+  .header__menu-spacer { flex: 1; min-width: 24px; }
   .header__menu a {
     color: var(--white); text-decoration: none;
     font-family: 'IBM Plex Mono', monospace;
@@ -173,8 +174,6 @@
     padding-bottom: 18px;
     margin-bottom: -18px;
   }
-  /* Push the wide-submenu item (Atendimento) toward the right edge of the nav */
-  .header__menu-item.has-submenu:has(.submenu--wide) { margin-left: auto; }
   .header__menu-item.is-open .submenu { display: block; }
   .header__menu-item.is-open > a .caret { transform: rotate(180deg); }
   .submenu {
@@ -202,11 +201,12 @@
   }
   .submenu a:hover { background: var(--dark-3); color: var(--green); }
   .submenu--wide {
-    min-width: 460px;
+    min-width: 380px;
+    max-width: 420px;
     padding: 16px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    gap: 20px;
     left: auto;
     right: 0;
   }
@@ -2186,6 +2186,7 @@
         <a data-page="contact" onclick="goTo('contact')"><span data-lang="pt">Contato</span><span data-lang="en">Contact us</span></a>
       </div>
     </div>
+    <span class="header__menu-spacer" aria-hidden="true"></span>
     <div class="header__menu-item has-submenu">
       <a><span data-lang="pt">Atendimento</span><span data-lang="en">Support</span> <span class="caret">▼</span></a>
       <div class="submenu submenu--wide">
@@ -3339,7 +3340,7 @@ document.querySelectorAll('.chrome-tab').forEach(t => {
 (function () {
   const items = document.querySelectorAll('.header__menu-item.has-submenu');
   if (items.length === 0) return;
-  const CLOSE_DELAY = 220;
+  const CLOSE_DELAY = 120;
 
   function closeAll(except) {
     items.forEach(i => { if (i !== except) i.classList.remove('is-open'); });
