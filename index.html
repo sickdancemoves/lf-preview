@@ -101,7 +101,7 @@
     align-items: center;
     cursor: pointer;
   }
-  .header__logo-img { display: block; height: 22px; width: auto; }
+  .header__logo-img { display: block; height: 28px; width: auto; }
   .header__menu { display: flex; gap: 36px; align-items: center; }
   .header__menu a {
     color: var(--white); text-decoration: none;
@@ -112,6 +112,59 @@
     display: inline-flex; align-items: center; gap: 6px;
   }
   .header__menu a:hover, .header__menu a.active { color: var(--green); }
+  .header__menu a.active {
+    position: relative;
+  }
+  .header__menu a.active::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    bottom: -8px;
+    height: 2px;
+    background: var(--green);
+    border-radius: 2px;
+    transform-origin: center;
+    animation: navActiveIn 0.3s ease-out;
+  }
+  @keyframes navActiveIn {
+    from { transform: scaleX(0); opacity: 0; }
+    to { transform: scaleX(1); opacity: 1; }
+  }
+  /* Parent dropdown trigger lights up when a child is active */
+  .header__menu-item.has-submenu:has(.submenu a.active) > a { color: var(--green); position: relative; }
+  .header__menu-item.has-submenu:has(.submenu a.active) > a::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 24px;
+    bottom: -8px;
+    height: 2px;
+    background: var(--green);
+    border-radius: 2px;
+  }
+
+  /* Focus states (keyboard accessibility) */
+  :where(a, button, input, select, textarea):focus { outline: none; }
+  :where(a, button, input, select, textarea):focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  .btn:focus-visible,
+  .login-btn:focus-visible,
+  .lang-switch__toggle:focus-visible,
+  .lang-switch__option:focus-visible,
+  .faqs-topic:focus-visible,
+  .reviews-carousel__arrow:focus-visible,
+  .social-btn:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 3px;
+  }
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 1px;
+  }
   .header__menu a .caret { font-size: 10px; transition: transform 0.2s; }
   .header__menu-item { position: relative; display: inline-flex; align-items: center; }
   .header__menu-item:hover .submenu { display: block; }
@@ -146,6 +199,28 @@
     transition: background 0.15s, color 0.15s;
   }
   .submenu a:hover { background: var(--dark-3); color: var(--green); }
+  .submenu--wide {
+    min-width: 460px;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    left: -200px;
+  }
+  .submenu--wide .submenu__col { display: flex; flex-direction: column; }
+  .submenu--wide .submenu__label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray-text);
+    margin: 0 12px 8px;
+  }
+  .submenu--wide a {
+    padding: 8px 12px;
+    border-radius: 4px;
+  }
   .login-btn {
     background: transparent; color: var(--white);
     border: 1px solid var(--white);
@@ -649,6 +724,359 @@
     height: auto;
     border-radius: 8px;
   }
+
+  /* Contact / Suporte page */
+  .support-grid {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .support-card {
+    background: var(--dark-2);
+    border: 1px solid var(--gray-line);
+    border-radius: 16px;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .support-card--featured {
+    background: linear-gradient(160deg, var(--dark-2) 0%, #1f1f23 100%);
+    border-color: rgba(191, 254, 67, 0.25);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+  .support-card__tag {
+    display: inline-block;
+    align-self: flex-start;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray-text);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--gray-line);
+    border-radius: 999px;
+    padding: 6px 14px;
+  }
+  .support-card__tag--featured {
+    color: var(--green);
+    background: rgba(191, 254, 67, 0.1);
+    border-color: var(--green);
+  }
+  .support-card__hours {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--gray-text);
+    margin: 0;
+  }
+  .support-card__phone {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    transition: color 0.15s;
+  }
+  .support-card__phone:hover { color: var(--green); }
+  .support-card__meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--gray-text);
+    margin: -12px 0 0;
+  }
+  .support-card__phones {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .support-card__phone-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .support-card__phone-label {
+    flex-shrink: 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--green);
+    width: 50px;
+    padding-top: 8px;
+  }
+  .support-card__phone-row > div { display: flex; flex-direction: column; gap: 2px; }
+  .support-card__phone-area {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--gray-text);
+  }
+  .support-card__whatsapp,
+  .support-card__libras,
+  .support-card__email {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    color: var(--white);
+    text-decoration: none;
+    cursor: pointer;
+    padding: 12px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--gray-line);
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+    align-self: flex-start;
+  }
+  .support-card__whatsapp:hover,
+  .support-card__libras:hover,
+  .support-card__email:hover {
+    border-color: var(--green);
+    color: var(--green);
+  }
+  .support-card__libras {
+    border-color: var(--purple);
+    color: var(--purple);
+  }
+  .support-card__libras:hover { color: var(--green); border-color: var(--green); }
+  .support-card__email { font-size: 14px; }
+
+  .support-extras {
+    max-width: 1080px;
+    margin: 40px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding-top: 40px;
+    border-top: 1px solid var(--gray-line);
+  }
+  .support-extras__col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .support-extras__title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--white);
+    margin: 0;
+  }
+  .support-extras__copy {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--gray-text);
+    margin: 0;
+  }
+  .support-extras__link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--green);
+    cursor: pointer;
+  }
+  .support-extras__link:hover { color: var(--white); }
+  @media (max-width: 900px) {
+    .support-grid { grid-template-columns: 1fr; }
+    .support-extras { grid-template-columns: 1fr; gap: 28px; }
+  }
+
+  /* Bacen authorization strip */
+  .bacen-strip {
+    background: var(--dark);
+    padding: 22px 40px;
+    border-top: 1px solid var(--gray-line);
+    border-bottom: 1px solid var(--gray-line);
+  }
+  .bacen-strip__inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .bacen-strip__icon { color: var(--green); flex-shrink: 0; }
+  .bacen-strip__text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--gray-text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .bacen-strip__text strong { color: var(--white); font-weight: 500; }
+  .bacen-strip__meta { opacity: 0.7; font-size: 12px; }
+
+  /* Dashboard mock (A nova home da sua equipe) */
+  .dash-mock {
+    margin: 40px auto 0;
+    max-width: 1080px;
+    background: #0f1015;
+    border: 1px solid var(--gray-line);
+    border-radius: 14px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+  }
+  .dash-mock__chrome {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--gray-line);
+    background: #16181f;
+  }
+  .dash-mock__dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #444;
+  }
+  .dash-mock__dot:nth-child(2) { background: var(--green); }
+  .dash-mock__dot:nth-child(3) { background: var(--purple); }
+  .dash-mock__url {
+    margin-left: 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--gray-text);
+    letter-spacing: 0.5px;
+  }
+  .dash-mock__grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    min-height: 380px;
+  }
+  .dash-mock__nav {
+    background: #15161c;
+    padding: 20px 14px;
+    border-right: 1px solid var(--gray-line);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .dash-mock__logo {
+    padding: 4px 8px 16px;
+  }
+  .dash-mock__logo img { height: 18px; width: auto; display: block; }
+  .dash-mock__nav-item {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    color: var(--gray-text);
+    padding: 9px 12px;
+    border-radius: 6px;
+    cursor: default;
+  }
+  .dash-mock__nav-item.is-active {
+    background: rgba(191, 254, 67, 0.12);
+    color: var(--green);
+    border: 1px solid rgba(191, 254, 67, 0.3);
+  }
+  .dash-mock__main {
+    padding: 24px;
+    display: grid;
+    gap: 14px;
+    align-content: start;
+  }
+  .dash-mock__card {
+    background: var(--dark-2);
+    border: 1px solid var(--gray-line);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .dash-mock__card--hero {
+    background: linear-gradient(135deg, var(--purple) 0%, var(--purple-2) 100%);
+    color: var(--dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+  }
+  .dash-mock__card--hero .dash-mock__label { color: rgba(0,0,0,0.65); }
+  .dash-mock__label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray-text);
+  }
+  .dash-mock__balance {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-top: 6px;
+    letter-spacing: -0.5px;
+  }
+  .dash-mock__currency { font-size: 14px; opacity: 0.6; margin-right: 6px; }
+  .dash-mock__cents { font-size: 18px; opacity: 0.8; }
+  .dash-mock__chip {
+    background: var(--green);
+    color: var(--dark);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .dash-mock__card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .dash-mock__filter {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--gray-text);
+    letter-spacing: 0.5px;
+  }
+  .dash-mock__rows { display: flex; flex-direction: column; }
+  .dash-mock__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--gray-line);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+  }
+  .dash-mock__row:last-child { border-bottom: none; }
+  .dash-mock__row-name { color: var(--white); }
+  .dash-mock__row-amt { font-weight: 600; }
+  .dash-mock__row-amt.pos { color: var(--green); }
+  .dash-mock__row-amt.neg { color: var(--gray-text); }
+  .dash-mock__split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .dash-mock__stat {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 6px;
+    letter-spacing: -0.3px;
+  }
+  .dash-mock__stat--pos { color: var(--green); }
+  .dash-mock__stat--neg { color: var(--purple); }
+  @media (max-width: 900px) {
+    .dash-mock__grid { grid-template-columns: 1fr; }
+    .dash-mock__nav { flex-direction: row; flex-wrap: wrap; border-right: none; border-bottom: 1px solid var(--gray-line); }
+    .dash-mock__logo { width: 100%; }
+    .dash-mock__split { grid-template-columns: 1fr; }
+  }
   .video-placeholder {
     flex-direction: column;
     gap: 16px;
@@ -850,29 +1278,70 @@
     margin: 0;
   }
 
+  .compare-frame {
+    max-width: 1000px;
+    margin: 40px auto 0;
+    background: var(--dark);
+    border: 1px solid var(--gray-line);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    overflow: hidden;
+  }
   .compare-table {
     width: 100%;
-    max-width: 960px;
-    margin: 32px auto 0;
     border-collapse: collapse;
     font-family: 'IBM Plex Mono', monospace;
     text-align: left;
   }
   .compare-table th, .compare-table td {
-    padding: 16px 20px;
+    padding: 18px 22px;
     border-bottom: 1px solid var(--gray-line);
     font-size: 13px;
     color: var(--gray-text);
+    vertical-align: middle;
   }
-  .compare-table th {
+  .compare-table thead th {
     font-weight: 600;
     color: var(--white);
-    font-size: 16px;
-    text-transform: none;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.02);
   }
-  .compare-table__hero { color: var(--green); }
-  .compare-table__yes { color: var(--white); }
-  .compare-table tbody tr:hover { background: rgba(255,255,255,0.02); }
+  .compare-table thead th.compare-table__hero {
+    color: var(--green);
+    background: rgba(191, 254, 67, 0.06);
+  }
+  .compare-table__row-label {
+    font-weight: 500;
+    color: var(--white);
+    width: 30%;
+  }
+  .compare-table tbody td.compare-table__hero {
+    color: var(--white);
+    background: rgba(191, 254, 67, 0.04);
+  }
+  .compare-cell {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .compare-icon {
+    flex-shrink: 0;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .compare-icon--yes { background: var(--green); color: var(--dark); }
+  .compare-icon--no { background: rgba(195, 171, 255, 0.15); color: var(--purple); }
+  .compare-icon--partial { background: rgba(255, 255, 255, 0.08); color: var(--gray-text); }
+  .compare-table tbody tr:last-child td { border-bottom: none; }
+  .compare-table tbody tr:hover { background: rgba(195, 171, 255, 0.04); }
+  .compare-table tbody tr:hover td.compare-table__hero { background: rgba(191, 254, 67, 0.08); }
 
   .reviews__grid--two { grid-template-columns: repeat(2, 1fr); max-width: 960px; margin-left: auto; margin-right: auto; }
 
@@ -945,6 +1414,77 @@
     gap: 16px;
     margin-top: 8px;
     text-align: left;
+  }
+
+  /* Reviews carousel */
+  .reviews-carousel {
+    margin-top: 8px;
+    text-align: left;
+  }
+  .reviews-carousel__viewport {
+    overflow: hidden;
+    margin: 0 -8px;
+  }
+  .reviews-carousel__track {
+    display: flex;
+    gap: 16px;
+    padding: 0 8px;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .reviews-carousel .review-card {
+    flex: 0 0 calc((100% - 32px) / 3);
+    box-sizing: border-box;
+  }
+  .reviews-carousel__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .reviews-carousel__arrow {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--gray-line);
+    color: var(--white);
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .reviews-carousel__arrow:hover {
+    background: var(--green);
+    border-color: var(--green);
+    color: var(--dark);
+  }
+  .reviews-carousel__arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+  .reviews-carousel__dots {
+    display: flex;
+    gap: 8px;
+  }
+  .reviews-carousel__dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gray-line);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .reviews-carousel__dot.is-active {
+    background: var(--green);
+    transform: scale(1.3);
+  }
+  @media (max-width: 900px) {
+    .reviews-carousel .review-card { flex: 0 0 100%; }
+  }
+  @media (max-width: 1200px) and (min-width: 901px) {
+    .reviews-carousel .review-card { flex: 0 0 calc((100% - 16px) / 2); }
   }
   .review-card {
     background: var(--dark-2);
@@ -1527,6 +2067,24 @@
         <a data-page="contact" onclick="goTo('contact')"><span data-lang="pt">Contato</span><span data-lang="en">Contact us</span></a>
       </div>
     </div>
+    <div class="header__menu-item has-submenu">
+      <a><span data-lang="pt">Atendimento</span><span data-lang="en">Support</span> <span class="caret">▼</span></a>
+      <div class="submenu submenu--wide">
+        <div class="submenu__col">
+          <h6 class="submenu__label"><span data-lang="pt">Já sou cliente</span><span data-lang="en">I'm a customer</span></h6>
+          <a onclick="goTo('contact')"><span data-lang="pt">Atendimento por WhatsApp</span><span data-lang="en">WhatsApp support</span></a>
+          <a onclick="goTo('contact')"><span data-lang="pt">Atendimento por telefone</span><span data-lang="en">Phone support</span></a>
+          <a onclick="goTo('contact')"><span data-lang="pt">Atendimento em Libras</span><span data-lang="en">Libras (sign language)</span></a>
+          <a onclick="goTo('contact')"><span data-lang="pt">Central de ajuda</span><span data-lang="en">Help center</span></a>
+          <a onclick="goTo('contact')"><span data-lang="pt">Ouvidoria</span><span data-lang="en">Ombudsman</span></a>
+        </div>
+        <div class="submenu__col">
+          <h6 class="submenu__label"><span data-lang="pt">Ainda não sou cliente</span><span data-lang="en">Not a customer yet</span></h6>
+          <a onclick="goTo('contact')"><span data-lang="pt">Fale com nossa equipe</span><span data-lang="en">Talk to our team</span></a>
+          <a onclick="goTo('contact')"><span data-lang="pt">Adquira pelo WhatsApp</span><span data-lang="en">Sign up via WhatsApp</span></a>
+        </div>
+      </div>
+    </div>
   </nav>
   <div class="header__actions">
     <div class="lang-switch" id="langSwitch">
@@ -1554,7 +2112,7 @@
       <div class="hero__left">
         <span class="hero__eyebrow">Conta PJ</span>
         <h1>Quem simplifica,<br>multiplica.</h1>
-        <p class="hero__sub">Gerencie o financeiro da sua empresa, faça transferências seguras, e mantenha o controle total sobre despesas e lucro com a Conta PJ da LaFinteca.</p>
+        <p class="hero__sub">Conta PJ digital regulada pelo Banco Central. Transferências via TED, agendamentos e visibilidade total sobre as despesas — em uma única plataforma.</p>
         <div class="hero__buttons">
           <button class="btn btn-primary" onclick="goTo('contapj')"><span>Open Conta PJ</span></button>
           <button class="btn btn-ghost" onclick="goTo('contapj')"><span>Learn More</span></button>
@@ -1562,6 +2120,17 @@
       </div>
       <div class="hero__right">
         <div class="hero__placeholder">Image placeholder</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACEN AUTHORIZATION STRIP -->
+  <section class="bacen-strip">
+    <div class="bacen-strip__inner">
+      <svg class="bacen-strip__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/><path d="m9 12 2 2 4-4"/></svg>
+      <div class="bacen-strip__text">
+        <strong><span data-lang="pt">Instituição de Pagamento autorizada pelo Banco Central do Brasil.</span><span data-lang="en">Payment institution authorized by the Central Bank of Brazil.</span></strong>
+        <span class="bacen-strip__meta"><span data-lang="pt">CNPJ 53.058.329/0001-70 · Emissora de Moeda Eletrônica</span><span data-lang="en">CNPJ 53.058.329/0001-70 · E-money issuer</span></span>
       </div>
     </div>
   </section>
@@ -1574,21 +2143,21 @@
       <div class="intro-cards">
         <article class="intro-card">
           <div class="intro-card__icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2"></rect><line x1="2.5" y1="10" x2="21.5" y2="10"></line><line x1="6" y1="14.5" x2="9" y2="14.5"></line></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg>
           </div>
           <h3 class="intro-card__title">Abra em minutos</h3>
           <p class="intro-card__body">Envie seu CNPJ, confirme seus dados e sua conta está ativa. Sem filas, sem papelada, sem espera.</p>
         </article>
         <article class="intro-card">
           <div class="intro-card__icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2"></rect><line x1="2.5" y1="10" x2="21.5" y2="10"></line><line x1="6" y1="14.5" x2="9" y2="14.5"></line></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h13l-3-3"/><path d="M20 17H7l3 3"/></svg>
           </div>
           <h3 class="intro-card__title">Pague e receba na hora</h3>
-          <p class="intro-card__body">Pix, TED, boleto e muito mais — tudo integrado, com confirmação em tempo real.</p>
+          <p class="intro-card__body">TED, boleto e muito mais — tudo integrado, com confirmação em tempo real.</p>
         </article>
         <article class="intro-card">
           <div class="intro-card__icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2"></rect><line x1="2.5" y1="10" x2="21.5" y2="10"></line><line x1="6" y1="14.5" x2="9" y2="14.5"></line></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="20" x2="4" y2="10"/><line x1="10" y1="20" x2="10" y2="6"/><line x1="16" y1="20" x2="16" y2="13"/><line x1="22" y1="20" x2="22" y2="4"/></svg>
           </div>
           <h3 class="intro-card__title">Controle total, sem complexidade</h3>
           <p class="intro-card__body">Acompanhe saldo, extrato e movimentações em um painel pensado para quem cuida do financeiro a sério.</p>
@@ -1625,7 +2194,56 @@
     <div class="home-block__inner home-block__inner--center">
       <h2 class="home-block__title home-block__title--gradient">A nova home da sua equipe de pagamentos</h2>
       <p class="home-block__sub home-block__sub--center">Uma plataforma completa para gestão financeira, com controle, segurança e praticidade no dia a dia.</p>
-      <img class="home-block__image" src="assets/nova-home-equipe.png" alt="LaFinteca payments dashboard">
+      <div class="dash-mock" role="img" aria-label="Pré-visualização do painel da Conta PJ LaFinteca">
+        <div class="dash-mock__chrome">
+          <span class="dash-mock__dot"></span>
+          <span class="dash-mock__dot"></span>
+          <span class="dash-mock__dot"></span>
+          <span class="dash-mock__url">app.lafinteca.com/contas/conta-pj</span>
+        </div>
+        <div class="dash-mock__grid">
+          <aside class="dash-mock__nav">
+            <div class="dash-mock__logo"><img src="Main%20logo%20white%20(1).svg" alt="LaFinteca"></div>
+            <a class="dash-mock__nav-item is-active">Home</a>
+            <a class="dash-mock__nav-item">TED</a>
+            <a class="dash-mock__nav-item">Boletos</a>
+            <a class="dash-mock__nav-item">Extrato</a>
+            <a class="dash-mock__nav-item">Agendamentos</a>
+            <a class="dash-mock__nav-item">Comprovantes</a>
+          </aside>
+          <div class="dash-mock__main">
+            <div class="dash-mock__card dash-mock__card--hero">
+              <div>
+                <div class="dash-mock__label">Saldo disponível</div>
+                <div class="dash-mock__balance"><span class="dash-mock__currency">R$</span> 142.350<span class="dash-mock__cents">,80</span></div>
+              </div>
+              <span class="dash-mock__chip">Conta PJ</span>
+            </div>
+            <div class="dash-mock__card">
+              <div class="dash-mock__card-head">
+                <span class="dash-mock__label">Últimos lançamentos</span>
+                <span class="dash-mock__filter">7 dias ▾</span>
+              </div>
+              <div class="dash-mock__rows">
+                <div class="dash-mock__row"><span class="dash-mock__row-name">TED — Fornecedor MG</span><span class="dash-mock__row-amt neg">− R$ 8.420,00</span></div>
+                <div class="dash-mock__row"><span class="dash-mock__row-name">Boleto pago — Energia</span><span class="dash-mock__row-amt neg">− R$ 1.280,55</span></div>
+                <div class="dash-mock__row"><span class="dash-mock__row-name">TED recebido — Cliente SP</span><span class="dash-mock__row-amt pos">+ R$ 32.000,00</span></div>
+                <div class="dash-mock__row"><span class="dash-mock__row-name">Agendamento executado</span><span class="dash-mock__row-amt neg">− R$ 4.150,00</span></div>
+              </div>
+            </div>
+            <div class="dash-mock__split">
+              <div class="dash-mock__card">
+                <div class="dash-mock__label">Entradas (mês)</div>
+                <div class="dash-mock__stat dash-mock__stat--pos">+ R$ 312.480,00</div>
+              </div>
+              <div class="dash-mock__card">
+                <div class="dash-mock__label">Saídas (mês)</div>
+                <div class="dash-mock__stat dash-mock__stat--neg">− R$ 198.720,55</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1648,25 +2266,52 @@
         <span class="reviews__rating-placeholder">placeholder</span>
       </div>
 
-      <div class="reviews__grid">
-        <article class="review-card">
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__quote">"Atendimento rápido e conta fácil de abrir. Plataforma intuitiva, tudo muito simples de usar. Recomendo para qualquer empresa."</p>
-          <div class="review-card__name">Carlos M. <span class="review-card__placeholder">(placeholder)</span></div>
-          <div class="review-card__date">Março de 2026</div>
-        </article>
-        <article class="review-card">
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__quote">"Transferências rápidas, suporte resolveu minha dúvida em minutos. Finalmente uma conta PJ sem burocracia. Muito satisfeito."</p>
-          <div class="review-card__name">Ana P. <span class="review-card__placeholder">(placeholder)</span></div>
-          <div class="review-card__date">Fevereiro de 2026</div>
-        </article>
-        <article class="review-card">
-          <div class="review-card__stars">★★★★<span class="review-card__stars--dim">★</span></div>
-          <p class="review-card__quote">"Ótima experiência. A gestão de acessos para a equipe fez muita diferença no dia a dia da nossa empresa. Recomendo!"</p>
-          <div class="review-card__name">Rodrigo S. <span class="review-card__placeholder">(placeholder)</span></div>
-          <div class="review-card__date">Janeiro de 2026</div>
-        </article>
+      <div class="reviews-carousel js-reviews-carousel">
+        <div class="reviews-carousel__viewport">
+          <div class="reviews-carousel__track">
+            <article class="review-card">
+              <div class="review-card__stars">★★★★★</div>
+              <p class="review-card__quote">"Atendimento rápido e conta fácil de abrir. Plataforma intuitiva, tudo muito simples de usar. Recomendo para qualquer empresa."</p>
+              <div class="review-card__name">Carlos M. <span class="review-card__placeholder">(placeholder)</span></div>
+              <div class="review-card__date">Março de 2026</div>
+            </article>
+            <article class="review-card">
+              <div class="review-card__stars">★★★★★</div>
+              <p class="review-card__quote">"Transferências rápidas, suporte resolveu minha dúvida em minutos. Finalmente uma conta PJ sem burocracia. Muito satisfeito."</p>
+              <div class="review-card__name">Ana P. <span class="review-card__placeholder">(placeholder)</span></div>
+              <div class="review-card__date">Fevereiro de 2026</div>
+            </article>
+            <article class="review-card">
+              <div class="review-card__stars">★★★★<span class="review-card__stars--dim">★</span></div>
+              <p class="review-card__quote">"Ótima experiência. A gestão de acessos para a equipe fez muita diferença no dia a dia da nossa empresa. Recomendo!"</p>
+              <div class="review-card__name">Rodrigo S. <span class="review-card__placeholder">(placeholder)</span></div>
+              <div class="review-card__date">Janeiro de 2026</div>
+            </article>
+            <article class="review-card">
+              <div class="review-card__stars">★★★★★</div>
+              <p class="review-card__quote">"Os agendamentos de TED economizaram horas da nossa equipe financeira. Visibilidade total sobre cada operação."</p>
+              <div class="review-card__name">Patricia L. <span class="review-card__placeholder">(placeholder)</span></div>
+              <div class="review-card__date">Dezembro de 2025</div>
+            </article>
+            <article class="review-card">
+              <div class="review-card__stars">★★★★★</div>
+              <p class="review-card__quote">"Extrato com filtros e comprovantes em PNG. Nossa contabilidade nunca foi tão simples de fechar."</p>
+              <div class="review-card__name">João R. <span class="review-card__placeholder">(placeholder)</span></div>
+              <div class="review-card__date">Novembro de 2025</div>
+            </article>
+            <article class="review-card">
+              <div class="review-card__stars">★★★★<span class="review-card__stars--dim">★</span></div>
+              <p class="review-card__quote">"Onboarding 100% digital, com poucos cliques. Saiu da papelada e ganhamos uma conta PJ que faz sentido."</p>
+              <div class="review-card__name">Marina S. <span class="review-card__placeholder">(placeholder)</span></div>
+              <div class="review-card__date">Outubro de 2025</div>
+            </article>
+          </div>
+        </div>
+        <div class="reviews-carousel__controls">
+          <button class="reviews-carousel__arrow" type="button" data-dir="-1" aria-label="Anterior">‹</button>
+          <div class="reviews-carousel__dots"></div>
+          <button class="reviews-carousel__arrow" type="button" data-dir="1" aria-label="Próxima">›</button>
+        </div>
       </div>
     </div>
   </section>
@@ -1818,9 +2463,9 @@
           <p>Operações recorrentes com extrato exportável para auditoria e câmbio.</p>
         </article>
         <article class="forwho-card">
-          <span class="forwho-card__tag">Serviços</span>
-          <h3>Cobranças organizadas</h3>
-          <p>Profissionais que recebem via TED, com comprovantes para cada operação.</p>
+          <span class="forwho-card__tag">Fintechs &amp; Serviços</span>
+          <h3>Conta operacional confiável</h3>
+          <p>Fintechs e empresas de serviços que precisam mover dinheiro com clareza e histórico exportável.</p>
         </article>
       </div>
     </div>
@@ -1832,23 +2477,50 @@
       <span class="home-eyebrow">Comparação</span>
       <h2 class="home-block__title">Clareza onde antes havia complicação.</h2>
       <p class="home-block__sub home-block__sub--center">Não é sobre comparar. É sobre entender o que muda.</p>
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th class="compare-table__hero">LaFinteca</th>
-            <th>Banco tradicional</th>
-            <th>Planilha</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Acesso à conta</td><td class="compare-table__yes">Web banking instantâneo</td><td>Limitações de horário</td><td>—</td></tr>
-          <tr><td>TED</td><td class="compare-table__yes">Direto, sem fricção</td><td>Fluxos complexos</td><td>Manual</td></tr>
-          <tr><td>Extrato com filtros</td><td class="compare-table__yes">Sim</td><td>Pouco flexível</td><td>Disciplina manual</td></tr>
-          <tr><td>Agendamentos</td><td class="compare-table__yes">Sim</td><td>Burocracia</td><td>Manual</td></tr>
-          <tr><td>Comprovantes</td><td class="compare-table__yes">Exportáveis em PNG</td><td>Variável</td><td>Inexistente</td></tr>
-        </tbody>
-      </table>
+      <div class="compare-frame">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="compare-table__hero">LaFinteca</th>
+              <th>Banco tradicional</th>
+              <th>Planilha</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="compare-table__row-label">Acesso à conta</td>
+              <td class="compare-table__hero"><span class="compare-cell"><span class="compare-icon compare-icon--yes" aria-label="Sim">✓</span>Web banking 24/7</span></td>
+              <td><span class="compare-cell"><span class="compare-icon compare-icon--partial" aria-label="Parcial">~</span>Limitado</span></td>
+              <td><span class="compare-cell"><span class="compare-icon compare-icon--no" aria-label="Não">✗</span>—</span></td>
+            </tr>
+            <tr>
+              <td class="compare-table__row-label">TED</td>
+              <td class="compare-table__hero"><span class="compare-cell"><span class="compare-icon compare-icon--yes" aria-label="Sim">✓</span>Direto</span></td>
+              <td><span class="compare-cell"><span class="compare-icon compare-icon--partial" aria-label="Parcial">~</span>Complexo</span></td>
+              <td><span class="compare-cell"><span class="compare-icon compare-icon--no" aria-label="Não">✗</span>Manual</span></td>
+            </tr>
+            <tr>
+              <td class="compare-table__row-label">Extrato com filtros</td>
+              <td class="compare-table__hero"><span class="compare-cell"><span class="compare-icon compare-icon--yes" aria-label="Sim">✓</span>Nativo</span></td>
+              <td><span class="compare-cell"><span class="compare-icon compare-icon--partial" aria-label="Parcial">~</span>Limitado</span></td>
+              <td><span class="compare-cell"><span class="compare-icon compare-icon--no" aria-label="Não">✗</span>Manual</span></td>
+            </tr>
+            <tr>
+              <td class="compare-table__row-label">Agendamentos</td>
+              <td class="compare-table__hero"><span class="compare-cell"><span class="compare-icon compare-icon--yes" aria-label="Sim">✓</span>Sim</span></td>
+              <td><span class="compare-cell"><span class="compare-icon compare-icon--no" aria-label="Não">✗</span>Burocracia</span></td>
+              <td><span class="compare-cell"><span class="compare-icon compare-icon--no" aria-label="Não">✗</span>Manual</span></td>
+            </tr>
+            <tr>
+              <td class="compare-table__row-label">Comprovantes</td>
+              <td class="compare-table__hero"><span class="compare-cell"><span class="compare-icon compare-icon--yes" aria-label="Sim">✓</span>PNG exportável</span></td>
+              <td><span class="compare-cell"><span class="compare-icon compare-icon--partial" aria-label="Parcial">~</span>Variável</span></td>
+              <td><span class="compare-cell"><span class="compare-icon compare-icon--no" aria-label="Não">✗</span>Inexistente</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
@@ -1881,25 +2553,52 @@
         <span class="reviews__rating-placeholder">placeholder</span>
       </div>
 
-      <div class="reviews__grid">
-        <article class="review-card">
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__quote">"Atendimento rápido e conta fácil de abrir. Plataforma intuitiva, tudo muito simples de usar. Recomendo para qualquer empresa."</p>
-          <div class="review-card__name">Carlos M. <span class="review-card__placeholder">(placeholder)</span></div>
-          <div class="review-card__date">Março de 2026</div>
-        </article>
-        <article class="review-card">
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__quote">"Transferências rápidas, suporte resolveu minha dúvida em minutos. Finalmente uma conta PJ sem burocracia. Muito satisfeito."</p>
-          <div class="review-card__name">Ana P. <span class="review-card__placeholder">(placeholder)</span></div>
-          <div class="review-card__date">Fevereiro de 2026</div>
-        </article>
-        <article class="review-card">
-          <div class="review-card__stars">★★★★<span class="review-card__stars--dim">★</span></div>
-          <p class="review-card__quote">"Ótima experiência. A gestão de acessos para a equipe fez muita diferença no dia a dia da nossa empresa. Recomendo!"</p>
-          <div class="review-card__name">Rodrigo S. <span class="review-card__placeholder">(placeholder)</span></div>
-          <div class="review-card__date">Janeiro de 2026</div>
-        </article>
+      <div class="reviews-carousel js-reviews-carousel">
+        <div class="reviews-carousel__viewport">
+          <div class="reviews-carousel__track">
+            <article class="review-card">
+              <div class="review-card__stars">★★★★★</div>
+              <p class="review-card__quote">"Atendimento rápido e conta fácil de abrir. Plataforma intuitiva, tudo muito simples de usar. Recomendo para qualquer empresa."</p>
+              <div class="review-card__name">Carlos M. <span class="review-card__placeholder">(placeholder)</span></div>
+              <div class="review-card__date">Março de 2026</div>
+            </article>
+            <article class="review-card">
+              <div class="review-card__stars">★★★★★</div>
+              <p class="review-card__quote">"Transferências rápidas, suporte resolveu minha dúvida em minutos. Finalmente uma conta PJ sem burocracia. Muito satisfeito."</p>
+              <div class="review-card__name">Ana P. <span class="review-card__placeholder">(placeholder)</span></div>
+              <div class="review-card__date">Fevereiro de 2026</div>
+            </article>
+            <article class="review-card">
+              <div class="review-card__stars">★★★★<span class="review-card__stars--dim">★</span></div>
+              <p class="review-card__quote">"Ótima experiência. A gestão de acessos para a equipe fez muita diferença no dia a dia da nossa empresa. Recomendo!"</p>
+              <div class="review-card__name">Rodrigo S. <span class="review-card__placeholder">(placeholder)</span></div>
+              <div class="review-card__date">Janeiro de 2026</div>
+            </article>
+            <article class="review-card">
+              <div class="review-card__stars">★★★★★</div>
+              <p class="review-card__quote">"Os agendamentos de TED economizaram horas da nossa equipe financeira. Visibilidade total sobre cada operação."</p>
+              <div class="review-card__name">Patricia L. <span class="review-card__placeholder">(placeholder)</span></div>
+              <div class="review-card__date">Dezembro de 2025</div>
+            </article>
+            <article class="review-card">
+              <div class="review-card__stars">★★★★★</div>
+              <p class="review-card__quote">"Extrato com filtros e comprovantes em PNG. Nossa contabilidade nunca foi tão simples de fechar."</p>
+              <div class="review-card__name">João R. <span class="review-card__placeholder">(placeholder)</span></div>
+              <div class="review-card__date">Novembro de 2025</div>
+            </article>
+            <article class="review-card">
+              <div class="review-card__stars">★★★★<span class="review-card__stars--dim">★</span></div>
+              <p class="review-card__quote">"Onboarding 100% digital, com poucos cliques. Saiu da papelada e ganhamos uma conta PJ que faz sentido."</p>
+              <div class="review-card__name">Marina S. <span class="review-card__placeholder">(placeholder)</span></div>
+              <div class="review-card__date">Outubro de 2025</div>
+            </article>
+          </div>
+        </div>
+        <div class="reviews-carousel__controls">
+          <button class="reviews-carousel__arrow" type="button" data-dir="-1" aria-label="Anterior">‹</button>
+          <div class="reviews-carousel__dots"></div>
+          <button class="reviews-carousel__arrow" type="button" data-dir="1" aria-label="Próxima">›</button>
+        </div>
       </div>
     </div>
   </section>
@@ -2324,24 +3023,61 @@
 
 <!-- ============ CONTACT PAGE ============ -->
 <div class="page" id="page-contact">
-  <section class="hero" style="padding: 40px 40px 60px; min-height: auto;">
-    <div class="hero__inner" style="grid-template-columns: 1fr; gap: 0; min-height: auto;">
-      <div>
-        <p class="section-eyebrow">Home / Company / Contact us</p>
-        <h1 style="font-size: 48px; max-width: 1000px;">Let's <span class="underline">talk<svg viewBox="0 0 536 18" fill="none" preserveAspectRatio="none"><path d="M1 9C100 -3 250 15 380 8C460 3 510 12 535 6" stroke="#BFFE43" stroke-width="2.5" fill="none"/></svg></span></h1>
-        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: var(--gray-text); max-width: 720px; line-height: 1.65; margin-top: 24px;">Our team of specialists is ready for any inquiries — sales, partnerships, press, or general questions.</p>
+  <section class="hero" style="padding: 40px 40px 40px; min-height: auto;">
+    <div class="hero__inner" style="grid-template-columns: 1fr; gap: 0; min-height: auto; text-align: center;">
+      <div style="max-width: 720px; margin: 0 auto;">
+        <span class="hero__eyebrow"><span data-lang="pt">Atendimento</span><span data-lang="en">Support</span></span>
+        <h1 style="font-size: 48px;"><span data-lang="pt">Suporte LaFinteca: como podemos ajudar?</span><span data-lang="en">LaFinteca support: how can we help?</span></h1>
       </div>
     </div>
   </section>
 
-  <section style="padding: 20px 40px 80px;">
-    <div class="contact-layout">
-      <div class="contact-info">
-        <h4>Email</h4>
-        <a href="mailto:info@la-finteca.com">info@la-finteca.com</a>
-        <h4>Headquarters</h4>
-        <p>R. Alvorada, 1289 — Vila Olímpia<br>São Paulo — SP, 04550-004, Brazil</p>
-        <h4>Follow us</h4>
+  <section style="padding: 0 40px 80px;">
+    <div class="support-grid">
+      <div class="support-card">
+        <span class="support-card__tag"><span data-lang="pt">Ainda não sou cliente</span><span data-lang="en">Not a customer yet</span></span>
+        <p class="support-card__hours"><span data-lang="pt">Segunda a sexta, das 8h às 20h.<br>Sábados e domingos, das 9h às 18h.</span><span data-lang="en">Mon–Fri, 8am to 8pm.<br>Sat–Sun, 9am to 6pm.</span></p>
+        <a class="support-card__phone" href="tel:+551130040000">3004 0000</a>
+        <p class="support-card__meta"><span data-lang="pt">Todo o Brasil</span><span data-lang="en">All of Brazil</span></p>
+        <a class="support-card__whatsapp" onclick="event.preventDefault();">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.157 5.335 5.492 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.34 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+          <span><span data-lang="pt">Atendimento via WhatsApp</span><span data-lang="en">Chat on WhatsApp</span></span>
+        </a>
+      </div>
+
+      <div class="support-card support-card--featured">
+        <span class="support-card__tag support-card__tag--featured"><span data-lang="pt">Já sou cliente</span><span data-lang="en">I'm a customer</span></span>
+        <p class="support-card__hours"><span data-lang="pt">24h por dia, 7 dias por semana.</span><span data-lang="en">24h a day, 7 days a week.</span></p>
+        <div class="support-card__phones">
+          <div class="support-card__phone-row">
+            <span class="support-card__phone-label">SAC</span>
+            <div>
+              <a class="support-card__phone" href="tel:+551150005000">(11) 5000-5000</a>
+              <span class="support-card__phone-area"><span data-lang="pt">São Paulo e região</span><span data-lang="en">São Paulo area</span></span>
+            </div>
+          </div>
+          <div class="support-card__phone-row">
+            <span class="support-card__phone-label">0800</span>
+            <div>
+              <a class="support-card__phone" href="tel:08005000000">0800 500 0000</a>
+              <span class="support-card__phone-area"><span data-lang="pt">Demais localidades</span><span data-lang="en">Other regions</span></span>
+            </div>
+          </div>
+        </div>
+        <a class="support-card__whatsapp" onclick="event.preventDefault();">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.157 5.335 5.492 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.34 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+          <span><span data-lang="pt">Atendimento via WhatsApp</span><span data-lang="en">Chat on WhatsApp</span></span>
+        </a>
+        <a class="support-card__libras" onclick="event.preventDefault();">
+          <span data-lang="pt">Atendimento em Libras ↗</span><span data-lang="en">Libras (sign language) ↗</span>
+        </a>
+        <a class="support-card__email" href="mailto:info@la-finteca.com">info@la-finteca.com</a>
+      </div>
+    </div>
+
+    <div class="support-extras">
+      <div class="support-extras__col">
+        <h3 class="support-extras__title"><span data-lang="pt">Redes sociais</span><span data-lang="en">Social media</span></h3>
         <div class="social" style="margin-top: 0;">
           <a class="social-btn" onclick="event.preventDefault();" aria-label="Instagram">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"></circle></svg>
@@ -2349,44 +3085,23 @@
           <a class="social-btn" onclick="event.preventDefault();" aria-label="LinkedIn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
           </a>
+          <a class="social-btn" onclick="event.preventDefault();" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a class="social-btn" onclick="event.preventDefault();" aria-label="YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+          </a>
         </div>
       </div>
-      <div class="form-card">
-        <h3 style="text-align: center;">Send us a message</h3>
-        <p>Fill out the form and we'll respond promptly.</p>
-        <input type="text" placeholder="Your name">
-        <input type="email" placeholder="Email">
-        <input type="tel" placeholder="Phone">
-        <select>
-          <option value="">I am a... (select one)</option>
-          <option>Customer</option>
-          <option>Partner</option>
-          <option>Other</option>
-        </select>
-        <textarea placeholder="Message"></textarea>
-        <button class="btn"><span>Send message</span></button>
+      <div class="support-extras__col">
+        <h3 class="support-extras__title"><span data-lang="pt">Ouvidoria</span><span data-lang="en">Ombudsman</span></h3>
+        <p class="support-extras__copy"><span data-lang="pt">Acionada quando o SAC não resolveu a sua demanda. Atende de segunda a sexta, das 9h às 18h.</span><span data-lang="en">Escalation channel when SAC doesn't resolve your case. Mon–Fri, 9am to 6pm.</span></p>
+        <a class="support-card__phone" href="tel:+551150005001">(11) 5000-5001</a>
       </div>
-    </div>
-  </section>
-
-  <section class="faq">
-    <h2>FAQ</h2>
-    <div class="faq__list">
-      <div class="faq-item open" onclick="this.classList.toggle('open')">
-        <div class="faq-item__head">What is LaFinteca? <span class="faq-item__plus">▼</span></div>
-        <div class="faq-item__content">LaFinteca is a regulated payment institution authorized by the Central Bank of Brazil. We integrate the popular Brazilian payment methods into a single platform for businesses operating at scale.</div>
-      </div>
-      <div class="faq-item" onclick="this.classList.toggle('open')">
-        <div class="faq-item__head">What products does LaFinteca offer? <span class="faq-item__plus">▼</span></div>
-        <div class="faq-item__content">A complete, ready-to-use solution covering every Brazilian rail: Pix (Direto, Automático, QR), Boleto, TED, and Open Finance. Alternative payment methods are increasingly the norm in Brazil — more efficient, user-friendly, and cost-effective than legacy options.</div>
-      </div>
-      <div class="faq-item" onclick="this.classList.toggle('open')">
-        <div class="faq-item__head">How to contact us? <span class="faq-item__plus">▼</span></div>
-        <div class="faq-item__content">Fill out the form above, email info@la-finteca.com, or reach out on social media. Our team responds within one business day.</div>
-      </div>
-      <div class="faq-item" onclick="this.classList.toggle('open')">
-        <div class="faq-item__head">What are the benefits of using LaFinteca? <span class="faq-item__plus">▼</span></div>
-        <div class="faq-item__content">Simplified financial operations, enhanced security, and full regulatory clarity in the Brazilian market. We comply with all relevant financial regulations, which strengthens trust and reliability for our clients.</div>
+      <div class="support-extras__col">
+        <h3 class="support-extras__title"><span data-lang="pt">Canal Confidencial</span><span data-lang="en">Confidential channel</span></h3>
+        <p class="support-extras__copy"><span data-lang="pt">Para relatar condutas que possam violar nosso Código de Conduta. Anônimo e independente.</span><span data-lang="en">Report conduct that may violate our Code of Ethics. Anonymous and independent.</span></p>
+        <a class="support-extras__link" onclick="event.preventDefault();"><span data-lang="pt">Acessar canal ↗</span><span data-lang="en">Open channel ↗</span></a>
       </div>
     </div>
   </section>
@@ -2552,6 +3267,72 @@ document.querySelectorAll('.chrome-tab').forEach(t => {
     btn.classList.add('is-active');
     activeTopic = btn.dataset.topic || 'all';
     applyFilter();
+  });
+})();
+
+// Reviews carousel — auto-rotating with arrows + dots
+(function () {
+  document.querySelectorAll('.js-reviews-carousel').forEach(root => {
+    const viewport = root.querySelector('.reviews-carousel__viewport');
+    const track = root.querySelector('.reviews-carousel__track');
+    const cards = Array.from(track.children);
+    const dotsHost = root.querySelector('.reviews-carousel__dots');
+    const arrows = root.querySelectorAll('.reviews-carousel__arrow');
+    if (!viewport || !track || cards.length === 0) return;
+
+    let current = 0;
+    let timer = null;
+    const INTERVAL = 5000;
+
+    function pageCount() {
+      const cardWidth = cards[0].getBoundingClientRect().width;
+      const visible = Math.max(1, Math.round(viewport.getBoundingClientRect().width / cardWidth));
+      return Math.max(1, cards.length - visible + 1);
+    }
+
+    function renderDots() {
+      const count = pageCount();
+      dotsHost.innerHTML = '';
+      for (let i = 0; i < count; i++) {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'reviews-carousel__dot' + (i === current ? ' is-active' : '');
+        dot.setAttribute('aria-label', 'Página ' + (i + 1));
+        dot.addEventListener('click', () => goTo(i));
+        dotsHost.appendChild(dot);
+      }
+    }
+
+    function goTo(index) {
+      const count = pageCount();
+      current = ((index % count) + count) % count;
+      const cardWidth = cards[0].getBoundingClientRect().width;
+      const gap = 16;
+      track.style.transform = `translateX(-${current * (cardWidth + gap)}px)`;
+      dotsHost.querySelectorAll('.reviews-carousel__dot').forEach((d, i) => {
+        d.classList.toggle('is-active', i === current);
+      });
+    }
+
+    function start() { stop(); timer = setInterval(() => goTo(current + 1), INTERVAL); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+    arrows.forEach(btn => btn.addEventListener('click', () => {
+      goTo(current + Number(btn.dataset.dir));
+      start();
+    }));
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+
+    let rt;
+    window.addEventListener('resize', () => {
+      clearTimeout(rt);
+      rt = setTimeout(() => { renderDots(); goTo(0); }, 150);
+    });
+
+    renderDots();
+    goTo(0);
+    start();
   });
 })();
 </script>
