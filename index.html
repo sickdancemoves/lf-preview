@@ -630,6 +630,53 @@
     background: var(--dark);
   }
   .home-block--alt { background: #1f1f23; }
+  /* Section with a full-width placeholder background image */
+  .home-block--bg { position: relative; overflow: hidden; isolation: isolate; }
+  .home-block--bg > * { position: relative; z-index: 2; }
+  .home-block--bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.7;
+  }
+  .home-block--bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(15,15,20,0.78) 0%, rgba(15,15,20,0.88) 100%);
+  }
+  .home-block--bg-industry::before {
+    background-image:
+      radial-gradient(60% 50% at 30% 40%, rgba(195,171,255,0.35), transparent 70%),
+      radial-gradient(40% 50% at 80% 70%, rgba(191,254,67,0.25), transparent 70%),
+      linear-gradient(135deg, #2a1f4d 0%, #1a0f33 60%, #14101e 100%);
+  }
+  .home-block--bg-security::before {
+    background-image:
+      radial-gradient(50% 60% at 70% 30%, rgba(191,254,67,0.25), transparent 70%),
+      radial-gradient(40% 50% at 20% 80%, rgba(195,171,255,0.22), transparent 70%),
+      linear-gradient(135deg, #1a2540 0%, #0f1828 60%, #0c1018 100%);
+  }
+  .home-block--bg-reviews::before {
+    background-image:
+      radial-gradient(50% 60% at 60% 50%, rgba(195,171,255,0.22), transparent 70%),
+      linear-gradient(135deg, #1f1f23 0%, #161618 100%);
+  }
+  .home-block--bg .home-block__bg-label {
+    position: absolute;
+    right: 24px; bottom: 16px;
+    z-index: 3;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    pointer-events: none;
+  }
   .home-block__inner {
     max-width: 1440px;
     margin: 0 auto;
@@ -866,23 +913,23 @@
     .support-extras { grid-template-columns: 1fr; gap: 28px; }
   }
 
-  /* Bacen authorization badge (footer) */
+  /* Bacen authorization badge (footer) — compact, sits next to social */
   .bacen-badge {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
-    margin: 4px 0 24px;
-    padding: 12px 14px 12px 12px;
+    gap: 8px;
+    margin-left: 16px;
+    padding: 6px 12px 6px 8px;
     background: linear-gradient(135deg, rgba(191,254,67,0.08) 0%, rgba(195,171,255,0.05) 100%);
     border: 1px solid rgba(191,254,67,0.25);
-    border-radius: 10px;
-    max-width: 280px;
+    border-radius: 999px;
+    height: 40px;
   }
   .bacen-badge__icon {
-    width: 36px; height: 36px;
+    width: 24px; height: 24px;
     flex-shrink: 0;
-    border-radius: 8px;
-    background: rgba(191,254,67,0.12);
+    border-radius: 50%;
+    background: rgba(191,254,67,0.14);
     border: 1px solid rgba(191,254,67,0.3);
     color: var(--green);
     display: flex; align-items: center; justify-content: center;
@@ -890,28 +937,24 @@
   .bacen-badge__body {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 1px;
     font-family: 'IBM Plex Mono', monospace;
-    line-height: 1.3;
+    line-height: 1.15;
     min-width: 0;
   }
   .bacen-badge__label {
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 500;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.2px;
     text-transform: uppercase;
     color: var(--green);
   }
   .bacen-badge__org {
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 500;
     color: var(--white);
-    letter-spacing: -0.2px;
-  }
-  .bacen-badge__meta {
-    font-size: 10px;
-    color: var(--gray-text);
-    margin-top: 2px;
+    letter-spacing: -0.1px;
+    white-space: nowrap;
   }
 
   /* Dashboard mock (A nova home da sua equipe) */
@@ -1243,6 +1286,34 @@
     margin-top: 48px;
     text-align: left;
   }
+  /* On the Conta PJ Funcionalidades grid, lay icon + title side-by-side */
+  #contapj-features .intro-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 14px;
+    padding: 24px 24px 22px;
+  }
+  #contapj-features .intro-card__icon {
+    grid-column: 1;
+    grid-row: 1;
+    width: 38px; height: 38px;
+    margin-bottom: 0;
+    border-radius: 10px;
+  }
+  #contapj-features .intro-card__icon svg { width: 18px; height: 18px; }
+  #contapj-features .intro-card__title {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    margin: 0;
+    font-size: 16px;
+  }
+  #contapj-features .intro-card__body {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin-top: 14px;
+  }
 
   .steps-list {
     list-style: none;
@@ -1305,29 +1376,34 @@
     border-color: rgba(191,254,67,0.4);
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   }
-  .forwho-card__icon {
-    width: 52px; height: 52px;
-    background: rgba(191,254,67,0.1);
-    color: var(--green);
-    border: 1px solid rgba(191,254,67,0.25);
-    border-radius: 12px;
-    display: flex;
+  /* Unified pill: icon + tag in one bubble */
+  .forwho-card__head {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  .forwho-card__tag {
-    display: inline-block;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--green);
+    gap: 8px;
     background: rgba(191,254,67,0.12);
     border: 1px solid var(--green);
     border-radius: 999px;
-    padding: 4px 12px;
+    padding: 3px 14px 3px 4px;
+    margin-bottom: 16px;
+  }
+  .forwho-card__icon {
+    width: 22px; height: 22px;
+    background: rgba(191,254,67,0.22);
+    color: var(--green);
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .forwho-card__tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--green);
     letter-spacing: 1.2px;
     text-transform: uppercase;
-    margin-bottom: 16px;
+    line-height: 1;
   }
   .forwho-card h3 {
     font-family: 'IBM Plex Mono', monospace;
@@ -1486,7 +1562,11 @@
   .reviews-carousel {
     margin-top: 8px;
     text-align: left;
+    max-width: 1040px;
+    margin-left: auto;
+    margin-right: auto;
   }
+  .reviews__rating { max-width: 1040px; margin-left: auto; margin-right: auto; }
   .reviews-carousel__viewport {
     overflow: hidden;
     margin: 0 -8px;
@@ -1556,13 +1636,13 @@
     background: var(--dark-2);
     border: 1px solid var(--gray-line);
     border-radius: 12px;
-    padding: 28px;
+    padding: 22px;
   }
   .review-card__stars {
     color: var(--green);
-    font-size: 16px;
+    font-size: 15px;
     letter-spacing: 2px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
   .review-card__stars--dim { color: var(--gray-line); }
   .review-card__quote {
@@ -1815,7 +1895,7 @@
     margin: 0 0 28px;
     max-width: 240px;
   }
-  .social { display: flex; gap: 8px; }
+  .social { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; row-gap: 12px; }
   .social-btn {
     width: 40px; height: 40px;
     border-radius: 999px;
@@ -1972,6 +2052,165 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.6px;
+  }
+
+  /* ==== Events page ("Where to find us") ==== */
+  .events-page { padding: 60px 40px 100px; background: var(--white); color: var(--dark); }
+  .events-page__inner { max-width: 1100px; margin: 0 auto; }
+  .events-page__head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    margin-bottom: 8px;
+  }
+  .events-page__eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin: 0 0 14px;
+  }
+  .events-page__title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(34px, 4vw, 48px);
+    letter-spacing: -1.5px;
+    line-height: 1.05;
+    color: var(--dark);
+    margin: 0;
+  }
+  .events-page__count {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.45);
+  }
+  .events-list { display: flex; flex-direction: column; }
+  .event-card {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 40px;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .event-card:last-child { border-bottom: none; }
+  .event-card__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.6px;
+  }
+  .event-card__date {
+    color: var(--dark);
+    font-weight: 500;
+  }
+  .event-card__city {
+    color: rgba(0,0,0,0.55);
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    font-size: 11px;
+  }
+  .event-card__copy { max-width: 720px; }
+  .event-card__title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+    color: var(--dark);
+    margin: 0 0 12px;
+    line-height: 1.2;
+  }
+  .event-card__copy p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(0,0,0,0.62);
+    margin: 0 0 18px;
+  }
+  .event-card__cta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--purple);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+  .event-card__cta:hover { color: var(--dark); }
+
+  /* Featured stop — full-width media card on top */
+  .event-card--featured {
+    display: block;
+    padding: 24px 0 32px;
+  }
+  .event-card--featured .event-card__media {
+    position: relative;
+    height: 280px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    background-color: #2b1f4d;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 24px;
+  }
+  .event-card--madrid .event-card__media {
+    background-image:
+      linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%),
+      linear-gradient(135deg, #ff8a4c 0%, #f25d3b 35%, #c83a82 70%, #6d2bb8 100%);
+  }
+  .event-card--limassol .event-card__media {
+    background-image:
+      linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%),
+      linear-gradient(135deg, #6dd5ed 0%, #2196c5 45%, #1a4d7f 100%);
+  }
+  .event-card__tag {
+    align-self: flex-start;
+    display: inline-block;
+    background: var(--green);
+    color: var(--dark);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 4px;
+  }
+  .event-card__hero-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: -0.6px;
+    color: #fff;
+    margin: 0;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+  .event-card--featured .event-card__body {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 40px;
+  }
+  @media (max-width: 900px) {
+    .events-page { padding: 48px 20px 64px; }
+    .event-card,
+    .event-card--featured .event-card__body { grid-template-columns: 1fr; gap: 12px; }
+    .event-card--featured .event-card__media { height: 220px; }
+    .event-card__hero-title { font-size: 22px; }
+    .events-page__head { flex-direction: column; align-items: flex-start; gap: 8px; }
   }
 
   /* ==== Empty state ==== */
@@ -2133,13 +2372,13 @@
     .compare-table { display: block; overflow-x: auto; }
     .dash-mock__url { display: none; }
     .footer-grid { grid-template-columns: 1fr 1fr !important; }
-    .bacen-badge { max-width: 100%; }
   }
 
   @media (max-width: 560px) {
     .header__menu-item.has-submenu { padding-bottom: 0; margin-bottom: 0; }
     .footer-grid { grid-template-columns: 1fr !important; }
     .reviews-carousel__controls { flex-wrap: wrap; }
+    .bacen-badge { margin-left: 0; }
   }
 </style>
 </head>
@@ -2511,7 +2750,7 @@
   </section>
 
   <!-- FOR WHO -->
-  <section class="home-block">
+  <section class="home-block home-block--bg home-block--bg-industry">
     <div class="home-block__inner">
       <div class="home-block__inner--center" style="margin-bottom: 48px;">
         <span class="home-eyebrow">Para quem</span>
@@ -2519,34 +2758,42 @@
       </div>
       <div class="forwho-grid">
         <article class="forwho-card">
-          <div class="forwho-card__icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8l8-5 8 5v13"/><path d="M4 21h16"/><path d="M9 21v-6h6v6"/><path d="M9 11h.01M15 11h.01M9 14h.01M15 14h.01"/></svg>
+          <div class="forwho-card__head">
+            <span class="forwho-card__icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8l8-5 8 5v13"/><path d="M4 21h16"/><path d="M9 21v-6h6v6"/></svg>
+            </span>
+            <span class="forwho-card__tag">PMEs</span>
           </div>
-          <span class="forwho-card__tag">PMEs</span>
           <h3>Operação confiável</h3>
           <p>Pagar fornecedores e acompanhar o fluxo sem processos lentos.</p>
         </article>
         <article class="forwho-card">
-          <div class="forwho-card__icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/><path d="M3 4h2.2l1.6 11.2a2 2 0 0 0 2 1.8h9.2a2 2 0 0 0 2-1.6L21.5 7H6"/></svg>
+          <div class="forwho-card__head">
+            <span class="forwho-card__icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/><path d="M3 4h2.2l1.6 11.2a2 2 0 0 0 2 1.8h9.2a2 2 0 0 0 2-1.6L21.5 7H6"/></svg>
+            </span>
+            <span class="forwho-card__tag">E-commerce</span>
           </div>
-          <span class="forwho-card__tag">E-commerce</span>
           <h3>Visibilidade em tempo real</h3>
           <p>Lojas com alto volume diário precisam ver dinheiro entrando e saindo agora.</p>
         </article>
         <article class="forwho-card">
-          <div class="forwho-card__icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/><polyline points="16 8 19 5 16 2"/><polyline points="8 16 5 19 8 22"/></svg>
+          <div class="forwho-card__head">
+            <span class="forwho-card__icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+            </span>
+            <span class="forwho-card__tag">Import / Export</span>
           </div>
-          <span class="forwho-card__tag">Import / Export</span>
           <h3>Controle e histórico</h3>
           <p>Operações recorrentes com extrato exportável para auditoria e câmbio.</p>
         </article>
         <article class="forwho-card">
-          <div class="forwho-card__icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="6" cy="18" r="2.4"/><circle cx="18" cy="18" r="2.4"/><circle cx="12" cy="12" r="2.4"/><line x1="8" y1="7.5" x2="10.2" y2="10.5"/><line x1="16" y1="7.5" x2="13.8" y2="10.5"/><line x1="8" y1="16.5" x2="10.2" y2="13.5"/><line x1="16" y1="16.5" x2="13.8" y2="13.5"/></svg>
+          <div class="forwho-card__head">
+            <span class="forwho-card__icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="6" cy="18" r="2.4"/><circle cx="18" cy="18" r="2.4"/><circle cx="12" cy="12" r="2.4"/><line x1="8" y1="7.5" x2="10.2" y2="10.5"/><line x1="16" y1="7.5" x2="13.8" y2="10.5"/><line x1="8" y1="16.5" x2="10.2" y2="13.5"/><line x1="16" y1="16.5" x2="13.8" y2="13.5"/></svg>
+            </span>
+            <span class="forwho-card__tag">Fintechs &amp; Serviços</span>
           </div>
-          <span class="forwho-card__tag">Fintechs &amp; Serviços</span>
           <h3>Conta operacional confiável</h3>
           <p>Fintechs e empresas de serviços que precisam mover dinheiro com clareza e histórico exportável.</p>
         </article>
@@ -2608,17 +2855,18 @@
   </section>
 
   <!-- SECURITY -->
-  <section class="home-block">
+  <section class="home-block home-block--bg home-block--bg-security">
     <div class="home-block__inner home-block__inner--center">
       <span class="home-eyebrow">Segurança</span>
       <h2 class="home-block__title">Construída para ser confiável.</h2>
       <p class="home-block__sub home-block__sub--center">Conta PJ digital sobre infraestrutura regulada pelo Banco Central do Brasil, com tecnologia em ambiente seguro e práticas de acesso protegidas. Acesso por usuário e senha, com recuperação via SMS.</p>
       <p class="contapj-quote">"Simples por fora. Sólido por dentro."</p>
     </div>
+    <span class="home-block__bg-label">Image placeholder</span>
   </section>
 
   <!-- AVALIAÇÕES -->
-  <section class="home-block reviews">
+  <section class="home-block reviews home-block--bg home-block--bg-reviews">
     <div class="home-block__inner home-block__inner--center">
       <span class="home-eyebrow">Avaliações</span>
       <h2 class="home-block__title">Quem já simplificou com LaFinteca</h2>
@@ -2684,6 +2932,7 @@
         </div>
       </div>
     </div>
+    <span class="home-block__bg-label">Image placeholder</span>
   </section>
 
   <!-- FAQ Alguma dúvida? -->
@@ -2817,51 +3066,100 @@
 
 <!-- ============ EVENTS PAGE ============ -->
 <div class="page" id="page-events">
-  <section class="hero" style="padding: 40px 40px 60px; min-height: auto;">
-    <div class="hero__inner" style="grid-template-columns: 1fr; gap: 0; min-height: auto;">
-      <div>
-        <p class="section-eyebrow">Home / Company / Events</p>
-        <h1 style="font-size: 48px; max-width: 1000px;">Where you'll <span class="underline">find us<svg viewBox="0 0 536 18" fill="none" preserveAspectRatio="none"><path d="M1 9C100 -3 250 15 380 8C460 3 510 12 535 6" stroke="#BFFE43" stroke-width="2.5" fill="none"/></svg></span></h1>
-        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: var(--gray-text); max-width: 720px; line-height: 1.65; margin-top: 24px;">Conferences, summits, and industry events where the LaFinteca team meets clients, partners, and the broader fintech community.</p>
-      </div>
-    </div>
-  </section>
+  <section class="events-page">
+    <div class="events-page__inner">
+      <header class="events-page__head">
+        <div>
+          <p class="events-page__eyebrow">May – July 2026</p>
+          <h1 class="events-page__title">Where to find us</h1>
+        </div>
+        <span class="events-page__count">6 stops</span>
+      </header>
 
-  <section style="padding: 0 40px 60px;">
-    <div style="max-width: 1440px; margin: 0 auto;">
-      <h2 class="section-title">Upcoming events</h2>
-      <div class="empty-state">No upcoming events scheduled. Check back soon.</div>
-    </div>
-  </section>
+      <div class="events-list">
+        <!-- Featured: AffPapa Madrid -->
+        <article class="event-card event-card--featured event-card--madrid">
+          <div class="event-card__media">
+            <span class="event-card__tag">Featured stop</span>
+            <h3 class="event-card__hero-title">AffPapa Conference Madrid</h3>
+          </div>
+          <div class="event-card__body">
+            <div class="event-card__meta">
+              <span class="event-card__date">May 18–20, 2026</span>
+              <span class="event-card__city">Madrid</span>
+            </div>
+            <div class="event-card__copy">
+              <p>1,500+ affiliates, operators, and B2B providers in one venue. We'll be talking LATAM payment rails with the people building the iGaming ecosystem. Come say hi.</p>
+              <a class="event-card__cta" onclick="goTo('contact')">Book a Meeting →</a>
+            </div>
+          </div>
+        </article>
 
-  <section style="padding: 0 40px 100px;">
-    <div style="max-width: 1440px; margin: 0 auto;">
-      <h2 class="section-title">Completed events</h2>
-      <div class="list-rows">
-        <div class="list-row list-row--event">
-          <span class="list-row__meta">3–6 Nov, 2025</span>
-          <h3 class="list-row__title">SiGMA Europe Summit</h3>
-          <span class="list-row__meta">Rome, Italy</span>
-          <span class="list-row__arrow">→</span>
-        </div>
-        <div class="list-row list-row--event">
-          <span class="list-row__meta">15–16 Oct, 2025</span>
-          <h3 class="list-row__title">Bizbarcelona</h3>
-          <span class="list-row__meta">Barcelona, Spain</span>
-          <span class="list-row__arrow">→</span>
-        </div>
-        <div class="list-row list-row--event">
-          <span class="list-row__meta">16 Oct, 2025</span>
-          <h3 class="list-row__title">eCommerce Innovation Summit</h3>
-          <span class="list-row__meta">Santiago, Chile</span>
-          <span class="list-row__arrow">→</span>
-        </div>
-        <div class="list-row list-row--event">
-          <span class="list-row__meta">24–25 Sep, 2025</span>
-          <h3 class="list-row__title">Mercado Livre Experience</h3>
-          <span class="list-row__meta">São Paulo, Brazil</span>
-          <span class="list-row__arrow">→</span>
-        </div>
+        <article class="event-card">
+          <div class="event-card__meta">
+            <span class="event-card__date">May 27–28, 2026</span>
+            <span class="event-card__city">Valletta, Malta</span>
+          </div>
+          <div class="event-card__copy">
+            <h3 class="event-card__title">NEXT.io Summit</h3>
+            <p>The operator-focused summit bringing 6,000+ delegates to Malta. If you're scaling into Latin American markets, we should sit down.</p>
+            <a class="event-card__cta" onclick="goTo('contact')">Book a Meeting →</a>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="event-card__meta">
+            <span class="event-card__date">May 28–29, 2026</span>
+            <span class="event-card__city">Limassol, Cyprus</span>
+          </div>
+          <div class="event-card__copy">
+            <h3 class="event-card__title">Island Conference (i-Con)</h3>
+            <p>Affiliate marketing, iGaming, crypto, payments. Two days at City of Dreams Mediterranean with 2,000+ attendees from high-growth verticals.</p>
+            <a class="event-card__cta" onclick="goTo('contact')">Book a Meeting →</a>
+          </div>
+        </article>
+
+        <!-- Featured: iFX EXPO -->
+        <article class="event-card event-card--featured event-card--limassol">
+          <div class="event-card__media">
+            <span class="event-card__tag">Featured stop</span>
+            <h3 class="event-card__hero-title">iFX EXPO International</h3>
+          </div>
+          <div class="event-card__body">
+            <div class="event-card__meta">
+              <span class="event-card__date">June 16–18, 2026</span>
+              <span class="event-card__city">Limassol, Cyprus</span>
+            </div>
+            <div class="event-card__copy">
+              <p>We'll be at the iFX meeting with brokers, fintechs, and payment providers. If you're working on LATAM payment flows or exploring new corridors, grab a slot.</p>
+              <a class="event-card__cta" onclick="goTo('contact')">Book a Meeting →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="event-card__meta">
+            <span class="event-card__date">June 30, 2026</span>
+            <span class="event-card__city">London</span>
+          </div>
+          <div class="event-card__copy">
+            <h3 class="event-card__title">iGaming Club London</h3>
+            <p>200 guests, one room, zero filler. We're going to talk about LATAM payment infrastructure with the operators and B2B providers shaping the gaming industry. Let's lock in a time before spots close.</p>
+            <a class="event-card__cta" onclick="goTo('contact')">Book a Meeting →</a>
+          </div>
+        </article>
+
+        <article class="event-card">
+          <div class="event-card__meta">
+            <span class="event-card__date">July 1–2, 2026</span>
+            <span class="event-card__city">Excel London</span>
+          </div>
+          <div class="event-card__copy">
+            <h3 class="event-card__title">iGB L!VE</h3>
+            <p>The biggest iGaming B2B event of the summer. 15,000 expected. We'll be on the floor connecting with operators, affiliates, and suppliers. If you're in London for iGaming Week, let's meet.</p>
+            <a class="event-card__cta" onclick="goTo('contact')">Book a Meeting →</a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -3199,16 +3497,6 @@
           <img class="logo" src="Main%20logo%20white%20(1).svg" alt="LaFinteca">
         </a>
         <p>Financeiro simples para empresas que crescem no Brasil.</p>
-        <div class="bacen-badge" aria-label="Autorizada pelo Banco Central do Brasil">
-          <span class="bacen-badge__icon" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/><path d="m9 12 2 2 4-4"/></svg>
-          </span>
-          <div class="bacen-badge__body">
-            <span class="bacen-badge__label"><span data-lang="pt">Autorizada pelo</span><span data-lang="en">Authorized by</span></span>
-            <strong class="bacen-badge__org">Banco Central do Brasil</strong>
-            <span class="bacen-badge__meta"><span data-lang="pt">Instituição de Pagamento · Emissora de Moeda Eletrônica</span><span data-lang="en">Payment institution · E-money issuer</span></span>
-          </div>
-        </div>
         <div class="social">
           <a class="social-btn" onclick="event.preventDefault();" aria-label="Instagram">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"></circle></svg>
@@ -3216,6 +3504,15 @@
           <a class="social-btn" onclick="event.preventDefault();" aria-label="LinkedIn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
           </a>
+          <div class="bacen-badge" aria-label="Autorizada pelo Banco Central do Brasil">
+            <span class="bacen-badge__icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <div class="bacen-badge__body">
+              <span class="bacen-badge__label"><span data-lang="pt">Autorizada pelo</span><span data-lang="en">Authorized by</span></span>
+              <strong class="bacen-badge__org">Banco Central do Brasil</strong>
+            </div>
+          </div>
         </div>
       </div>
 
