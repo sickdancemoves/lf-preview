@@ -266,105 +266,7 @@
     background-size: 56px 56px;
     border: 1px solid rgba(255,255,255,0.1);
   }
-  .float {
-    position: absolute;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px; font-weight: 500;
-    text-transform: uppercase; letter-spacing: 0.5px;
-    animation: float 6s ease-in-out infinite;
-  }
-  .float-pill {
-    background: var(--green); color: var(--dark);
-    padding: 8px 14px;
-    border-radius: 0;
-  }
-  .float-flag {
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid var(--white);
-    background: linear-gradient(180deg, #009C3B 0% 33%, #FEDF00 33% 66%, #002776 66% 100%);
-  }
-  .float-icon-circle {
-    width: 48px; height: 48px;
-    border-radius: 50%;
-    background: var(--white);
-    color: var(--dark);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-  }
-  .float-amount {
-    background: var(--purple); color: var(--dark);
-    padding: 16px 22px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 500;
-  }
-  .float-amount .label {
-    display: block; font-size: 10px; opacity: 0.7;
-    text-transform: uppercase; letter-spacing: 1px;
-    margin-bottom: 4px;
-  }
-  .float-amount .amount {
-    font-size: 22px;
-    color: var(--dark);
-    letter-spacing: -0.5px;
-  }
-  .float-percent {
-    background: var(--purple); color: var(--dark);
-    width: 80px; height: 80px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px; font-weight: 500;
-    border: 4px solid var(--green);
-  }
-  .float-hand {
-    background: var(--purple); color: var(--dark);
-    width: 80px; height: 80px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 38px;
-  }
-
-  /* Float positions (matched to screenshot) */
-  .f-amount { top: 12px; left: 30px; }
-  .f-percent { top: 110px; left: 50px; }
-  .f-hand { top: 30px; right: 50px; transform: rotate(15deg); }
-  .f-pix-tag { top: 110px; right: 30px; transform: rotate(-12deg); background: var(--green); }
-  .f-transfers { top: 220px; left: 30px; }
-  .f-mexico { top: 222px; left: 165px; background: linear-gradient(180deg, #006847 33%, #fff 33% 66%, #ce1126 66%); }
-  .f-security { top: 222px; left: 220px; }
-  .f-peru { top: 222px; right: 30px; background: linear-gradient(90deg, #d91023 33%, #fff 33% 66%, #d91023 66%); }
-  .f-bank { top: 290px; left: 30px; }
-  .f-argentina { top: 290px; left: 75px; background: linear-gradient(180deg, #74acdf 33%, #fff 33% 66%, #74acdf 66%); }
-  .f-integration { top: 290px; left: 130px; }
-  .f-brazil { top: 290px; right: 110px; background: linear-gradient(135deg, #009C3B 0% 50%, #FEDF00 50% 100%); }
-  .f-analytics { top: 290px; right: 30px; }
-  .f-colombia { top: 360px; left: 30px; background: linear-gradient(180deg, #fcd116 50%, #003893 50% 75%, #ce1126 75%); }
-  .f-tech { top: 360px; left: 75px; }
-  .f-business { top: 360px; left: 200px; background: var(--green); color: var(--dark); }
-  .f-coin { top: 360px; right: 110px; }
-  .f-chile { top: 360px; right: 30px; background: linear-gradient(180deg, #fff 50%, #d52b1e 50%); }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-  }
-  .f-hand { animation: float-rotate 6s ease-in-out infinite; }
-  @keyframes float-rotate {
-    0%, 100% { transform: translateY(0) rotate(15deg); }
-    50% { transform: translateY(-8px) rotate(15deg); }
-  }
-  .f-pix-tag { animation: float-rotate-2 6s ease-in-out infinite 0.5s; }
-  @keyframes float-rotate-2 {
-    0%, 100% { transform: translateY(0) rotate(-12deg); }
-    50% { transform: translateY(-8px) rotate(-12deg); }
-  }
-
-  /* ==== ONE PLATFORM section (purple block) ==== */
-  .platform {
-    padding: 60px 40px 100px;
-    background: var(--dark);
-  }
+  /* ==== ONE PLATFORM (still used by About page) ==== */
   .platform__inner {
     max-width: 1280px; margin: 0 auto;
   }
@@ -390,29 +292,7 @@
     margin: 0 0 32px;
   }
 
-  /* Method tiles grid (the green tiles below the purple block) */
-  .methods-tiles {
-    margin-top: 24px;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 12px;
-    max-width: 1280px;
-    margin-left: auto; margin-right: auto;
-  }
-  .method-tile {
-    background: var(--green);
-    color: var(--dark);
-    padding: 24px;
-    aspect-ratio: 1.4 / 1;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 600; font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: -0.5px;
-    text-align: center;
-  }
-
-  /* ==== LAFINTECA IN ACTION (4 dark stacked cards) ==== */
+  /* ==== LAFINTECA IN ACTION (still used by About page) ==== */
   .action-section {
     padding: 100px 40px;
     background: var(--dark-2);
@@ -584,72 +464,6 @@
     justify-content: center;
   }
 
-  /* ==== WHY LAFINTECA (replaced — was a horrible slider) ==== */
-  .why {
-    padding: 120px 40px;
-    background: var(--dark);
-  }
-  .why h2 {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 400;
-    font-size: 40px;
-    text-transform: uppercase;
-    letter-spacing: -1.3px;
-    color: var(--white);
-    margin: 0 0 60px;
-    max-width: 1280px;
-    margin-left: auto; margin-right: auto;
-  }
-  .why__grid {
-    max-width: 1280px; margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-  .why-card {
-    background: var(--purple);
-    color: var(--dark);
-    padding: 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    align-items: center;
-    min-height: 220px;
-  }
-  .why-card h4 {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 400;
-    font-size: 24px;
-    text-transform: uppercase;
-    letter-spacing: -0.6px;
-    margin: 0 0 12px;
-    color: var(--dark);
-  }
-  .why-card p {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    line-height: 1.6;
-    margin: 0;
-    color: var(--dark);
-  }
-  .why-card__visual {
-    background: var(--dark);
-    height: 140px;
-    position: relative;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
-    background-size: 28px 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(255,255,255,0.4);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-
   /* ==== FAQ ==== */
   .faq {
     padding: 100px 40px;
@@ -693,6 +507,237 @@
   }
   .faq-item.open .faq-item__content { display: block; }
   .faq-item.is-hidden { display: none; }
+
+  /* ==== Homepage v2 sections ==== */
+  .home-block {
+    padding: 100px 40px;
+    background: var(--dark);
+  }
+  .home-block--alt { background: var(--dark-2); }
+  .home-block__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .home-block__inner--center { text-align: center; }
+  .home-eyebrow {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin: 0 0 20px;
+  }
+  .home-block__title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 1.1;
+    letter-spacing: -1.4px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin: 0 0 24px;
+  }
+  .home-block__title--gradient {
+    background: linear-gradient(90deg, var(--green), var(--purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .home-block__sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--gray-text);
+    max-width: 540px;
+    margin: 0 0 36px;
+  }
+  .home-block__sub--center { margin-left: auto; margin-right: auto; }
+  .home-block__placeholder {
+    background: var(--dark);
+    border: 1px solid var(--gray-line);
+    background-image:
+      linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+    color: rgba(255,255,255,0.4);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 32px auto 0;
+    max-width: 1080px;
+  }
+  .home-block--alt .home-block__placeholder { background-color: var(--dark-2); }
+  .home-block__placeholder--md { min-height: 360px; }
+  .home-block__placeholder--lg { min-height: 460px; }
+  .home-block__placeholder--xl { min-height: 560px; }
+  .home-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .home-split__copy { max-width: 480px; }
+  .home-split .home-block__placeholder { margin: 0; max-width: none; }
+
+  /* Reviews / Avaliações */
+  .reviews__rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    padding: 16px 28px;
+    background: var(--dark-2);
+    border: 1px solid var(--gray-line);
+    border-radius: 12px;
+    margin: 16px auto 56px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .reviews__rating-logo {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--purple);
+  }
+  .reviews__rating-divider {
+    width: 1px;
+    height: 32px;
+    background: var(--gray-line);
+  }
+  .reviews__rating-score { display: flex; flex-direction: column; line-height: 1.1; }
+  .reviews__rating-num {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .reviews__rating-label {
+    font-size: 11px;
+    color: var(--gray-text);
+    letter-spacing: 0.5px;
+  }
+  .reviews__rating-stars {
+    color: var(--green);
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+  .reviews__rating-placeholder {
+    font-size: 10px;
+    color: var(--gray-text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+  }
+  .reviews__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 8px;
+    text-align: left;
+  }
+  .review-card {
+    background: var(--dark-2);
+    border: 1px solid var(--gray-line);
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .review-card__stars {
+    color: var(--green);
+    font-size: 16px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+  .review-card__stars--dim { color: var(--gray-line); }
+  .review-card__quote {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--gray-text);
+    margin: 0 0 24px;
+    min-height: 84px;
+  }
+  .review-card__name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .review-card__placeholder {
+    font-weight: 400;
+    color: var(--gray-text);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-left: 4px;
+  }
+  .review-card__date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--gray-text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Split FAQ */
+  .faq-split__inner {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .faq-split__intro { max-width: 360px; }
+  .faq-split__intro .home-block__sub { margin-bottom: 24px; }
+
+  /* CTA banner */
+  .cta-banner { padding: 0; background: var(--dark); }
+  .cta-banner__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .cta-banner__title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1.05;
+    letter-spacing: -1.6px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin: 0 0 24px;
+  }
+  .cta-banner__sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--gray-text);
+    margin: 0 0 32px;
+  }
+  .cta-banner__visual {
+    min-height: 360px;
+    background: var(--dark-2);
+    border: 1px solid var(--gray-line);
+    background-image:
+      linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+    color: rgba(255,255,255,0.4);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   /* ==== FAQs page ==== */
   .faqs-page { padding: 80px 40px 120px; background: var(--dark); }
@@ -951,75 +996,6 @@
   }
   .annotation strong { color: var(--purple); }
 
-  /* ==== Methods page (Brazil-only) ==== */
-  .country-block {
-    max-width: 1280px; margin: 0 auto;
-    padding: 60px 0;
-  }
-  .country-block__head {
-    display: flex; align-items: center; gap: 24px;
-    margin-bottom: 40px;
-  }
-  .country-block__flag-circle {
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #009C3B 0% 50%, #FEDF00 50% 100%);
-    border: 2px solid var(--white);
-  }
-  .country-block__head h3 {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 400; font-size: 36px;
-    text-transform: uppercase; letter-spacing: -1px;
-    margin: 0; color: var(--white);
-  }
-  .badge-emi {
-    background: var(--green); color: var(--dark);
-    padding: 4px 12px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.5px;
-  }
-  .methods-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
-  }
-  .method-card {
-    background: var(--dark-2);
-    border: 1px solid var(--gray-line);
-    padding: 28px;
-    transition: all 0.2s;
-  }
-  .method-card:hover {
-    background: var(--purple);
-    border-color: var(--purple);
-  }
-  .method-card:hover .method-card__name,
-  .method-card:hover .method-card__desc { color: var(--dark); }
-  .method-card__type {
-    display: inline-block;
-    background: var(--green); color: var(--dark);
-    padding: 3px 10px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.6px;
-    margin-bottom: 16px;
-  }
-  .method-card__name {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 400; font-size: 24px;
-    text-transform: uppercase; letter-spacing: -0.5px;
-    margin: 0 0 12px;
-    color: var(--white);
-    transition: color 0.2s;
-  }
-  .method-card__desc {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: var(--gray-text);
-    line-height: 1.6;
-    margin: 0;
-    transition: color 0.2s;
-  }
-
   /* ==== Generic list rows (Blog, Events, Careers) ==== */
   .list-rows {
     max-width: 1280px; margin: 0 auto;
@@ -1198,16 +1174,23 @@
     .header__menu { display: none; }
     .hero__inner, .industries__inner, .industries__layout { grid-template-columns: 1fr; gap: 40px; }
     .hero__right { display: none; }
-    .methods-tiles { grid-template-columns: repeat(3, 1fr); }
-    .why__grid, .industries__grid, .methods-grid { grid-template-columns: 1fr; }
+    .industries__grid { grid-template-columns: 1fr; }
     .action-card { grid-template-columns: 1fr; }
-    .hero h1, .platform__card h2, .action-section h2, .industries h2, .why h2, .faq h2, .cta h2 { font-size: 28px; }
+    .hero h1, .platform__card h2, .action-section h2, .industries h2, .faq h2, .cta h2 { font-size: 28px; }
     .hero, section, .platform { padding: 60px 24px; }
     .contact-layout, .newsletter { grid-template-columns: 1fr; gap: 32px; padding: 32px; }
     .list-row--blog, .list-row--event, .list-row--job { grid-template-columns: 1fr; gap: 8px; }
     .list-row__arrow { display: none; }
     .faqs-hero h1 { font-size: 28px; }
     .faqs-search input { height: 48px; padding-left: 46px; }
+    .home-block { padding: 60px 24px; }
+    .home-block__title { font-size: 28px; }
+    .home-split { grid-template-columns: 1fr; gap: 32px; }
+    .reviews__grid { grid-template-columns: 1fr; }
+    .reviews__rating { flex-wrap: wrap; gap: 16px; padding: 16px 20px; }
+    .faq-split__inner { grid-template-columns: 1fr; gap: 32px; }
+    .cta-banner__inner { grid-template-columns: 1fr; padding: 60px 24px; gap: 32px; }
+    .cta-banner__title { font-size: 36px; }
   }
 </style>
 </head>
@@ -1258,172 +1241,124 @@
     </div>
   </section>
 
-  <!-- ONE PLATFORM (purple block) -->
-  <section class="platform">
-    <div class="platform__inner">
-      <div class="platform__card">
-        <h2>One platform — all Brazilian payment rails</h2>
-        <p>The LaFinteca team works with each client individually; we do not provide one-size-fits-all solutions, burden your system with unnecessary load, or impose additional work on your development team. We engage in negotiations and make the right proposal that will bring additional revenue to your business. You won't hear from your customers "how to pay?"</p>
-        <button class="btn btn-dark"><span>All payment methods ›</span></button>
-      </div>
-    </div>
-
-    <!-- Method tiles (green) — replaces the LATAM logo strip -->
-    <div class="methods-tiles">
-      <div class="method-tile">Pix</div>
-      <div class="method-tile">Boleto</div>
-      <div class="method-tile">TED</div>
-      <div class="method-tile">Open Finance</div>
-      <div class="method-tile">Pix Direto</div>
-      <div class="method-tile">Pix Automático</div>
+  <!-- INTRO: A conta PJ mais simples que existe -->
+  <section class="home-block">
+    <div class="home-block__inner home-block__inner--center">
+      <span class="home-eyebrow">LaFinteca</span>
+      <h2 class="home-block__title">A conta PJ mais simples que existe</h2>
+      <div class="home-block__placeholder home-block__placeholder--lg">Image placeholder</div>
     </div>
   </section>
 
-  <!-- LAFINTECA IN ACTION -->
-  <section class="action-section">
-    <h2>LaFinteca in action</h2>
-    <div class="action-cards">
-      <div class="action-card">
-        <div>
-          <h3>Licensed payment institution</h3>
-          <p>Authorized by the Central Bank of Brazil as an Electronic Money Institution. Regulated infrastructure for businesses operating at scale in the Brazilian market.</p>
-        </div>
-        <div class="action-card__visual">
-          <span class="green-tag" style="top: 30px; left: 30px;">EMI License</span>
-          <span class="purple-pill" style="top: 80px; right: 40px;">2025</span>
-          <span class="white-pill" style="bottom: 30px; left: 50px;">Banco Central</span>
-        </div>
-      </div>
-      <div class="action-card">
-        <div>
-          <h3>Real time payments</h3>
-          <p>Pix-native processing. Instant settlement, high approval rates, reconciliation built into the rails. Billions of transactions per month, native to your stack.</p>
-        </div>
-        <div class="action-card__visual">
-          <span class="green-tag" style="top: 30px; left: 30px;">Pix</span>
-          <span class="purple-pill" style="top: 80px; left: 60%;">Instant</span>
-          <span class="white-pill" style="bottom: 40px; right: 30px;">$5,782.00</span>
-        </div>
-      </div>
-      <div class="action-card">
-        <div>
-          <h3>Multi-rail coverage</h3>
-          <p>Pix, Boleto, TED, Open Finance — every Brazilian rail unified through a single regulated API. Less integration overhead, fewer intermediaries.</p>
-        </div>
-        <div class="action-card__visual">
-          <span class="green-tag" style="top: 30px; left: 40px;">Pix</span>
-          <span class="green-tag" style="top: 60px; left: 100px; transform: rotate(-5deg);">Boleto</span>
-          <span class="purple-pill" style="top: 100px; left: 200px;">TED</span>
-          <span class="white-pill" style="bottom: 40px; right: 40px;">Open Finance</span>
-        </div>
-      </div>
-      <div class="action-card">
-        <div>
-          <h3>Technology institution</h3>
-          <p>Payment software developer with user-friendly API documentation. Built for engineering teams that move fast and integrate once.</p>
-        </div>
-        <div class="action-card__visual">
-          <span class="green-tag" style="top: 30px; left: 30px;">/api/v3</span>
-          <span class="purple-pill" style="bottom: 40px; left: 40px;">200 OK</span>
-          <span class="white-pill" style="top: 80px; right: 40px;">{ json }</span>
-        </div>
-      </div>
+  <!-- SIMPLICIDADE -->
+  <section class="home-block home-block--alt">
+    <div class="home-block__inner home-block__inner--center">
+      <h2 class="home-block__title home-block__title--gradient">Simplicidade em forma de conta</h2>
+      <div class="home-block__placeholder home-block__placeholder--xl">Image placeholder</div>
     </div>
   </section>
 
-  <!-- INDUSTRIES + FORM -->
-  <section class="industries">
-    <div class="industries__inner">
-      <h2>Industries which get the most benefits by using LaFinteca</h2>
-      <p class="industries__lede">The main technological stack of LaFinteca and some industries' primary solutions are often identical. Yet, owners of businesses in those industries would benefit more by using LaFinteca due to better and faster workflow.</p>
+  <!-- PARA QUEM ESTÁ COMEÇANDO -->
+  <section class="home-block">
+    <div class="home-block__inner home-split">
+      <div class="home-split__copy">
+        <h2 class="home-block__title">Para quem está começando.<br>E para quem está só começando.</h2>
+        <p class="home-block__sub">Aqui não tem conta para pequeno e conta para grande. Tem uma conta que funciona — do primeiro Pix ao milionésimo.<br><br>Se você leva o seu negócio a sério, a LaFinteca leva junto.</p>
+      </div>
+      <div class="home-block__placeholder home-block__placeholder--md">Image placeholder</div>
     </div>
+  </section>
 
-    <div class="industries__layout industries__layout--full">
-      <div class="industries__grid industries__grid--four">
-        <div class="industry-card">
-          <div class="industry-card__icon">◆</div>
-          <p class="industry-card__name">Fintech<br>Institutions</p>
+  <!-- NOVA HOME DA EQUIPE DE PAGAMENTOS -->
+  <section class="home-block home-block--alt">
+    <div class="home-block__inner home-block__inner--center">
+      <h2 class="home-block__title home-block__title--gradient">A nova home da sua equipe de pagamentos</h2>
+      <p class="home-block__sub home-block__sub--center">Uma plataforma completa para gestão financeira, com controle, segurança e praticidade no dia a dia.</p>
+      <div class="home-block__placeholder home-block__placeholder--lg">Image placeholder</div>
+    </div>
+  </section>
+
+  <!-- AVALIAÇÕES -->
+  <section class="home-block reviews">
+    <div class="home-block__inner home-block__inner--center">
+      <span class="home-eyebrow">Avaliações</span>
+      <h2 class="home-block__title">Quem já simplificou com LaFinteca</h2>
+      <p class="home-block__sub home-block__sub--center">Avaliações reais de clientes no Reclame Aqui.</p>
+
+      <div class="reviews__rating" aria-label="Reclame Aqui rating (placeholder)">
+        <span class="reviews__rating-logo">Reclame Aqui</span>
+        <span class="reviews__rating-divider"></span>
+        <div class="reviews__rating-score">
+          <span class="reviews__rating-num">8.2</span>
+          <span class="reviews__rating-label">de 10 · Ótimo</span>
         </div>
-        <div class="industry-card">
-          <div class="industry-card__icon">▤</div>
-          <p class="industry-card__name">E-commerce<br>&amp; marketplaces</p>
-        </div>
-        <div class="industry-card">
-          <div class="industry-card__icon">⇄</div>
-          <p class="industry-card__name">Import<br>/ Export</p>
-        </div>
-        <div class="industry-card">
-          <div class="industry-card__icon">★</div>
-          <p class="industry-card__name">MEI</p>
-        </div>
+        <span class="reviews__rating-divider"></span>
+        <span class="reviews__rating-stars">★★★★★</span>
+        <span class="reviews__rating-placeholder">placeholder</span>
+      </div>
+
+      <div class="reviews__grid">
+        <article class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__quote">"Atendimento rápido e conta fácil de abrir. Plataforma intuitiva, tudo muito simples de usar. Recomendo para qualquer empresa."</p>
+          <div class="review-card__name">Carlos M. <span class="review-card__placeholder">(placeholder)</span></div>
+          <div class="review-card__date">Março de 2026</div>
+        </article>
+        <article class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__quote">"Transferências rápidas, suporte resolveu minha dúvida em minutos. Finalmente uma conta PJ sem burocracia. Muito satisfeito."</p>
+          <div class="review-card__name">Ana P. <span class="review-card__placeholder">(placeholder)</span></div>
+          <div class="review-card__date">Fevereiro de 2026</div>
+        </article>
+        <article class="review-card">
+          <div class="review-card__stars">★★★★<span class="review-card__stars--dim">★</span></div>
+          <p class="review-card__quote">"Ótima experiência. A gestão de acessos para a equipe fez muita diferença no dia a dia da nossa empresa. Recomendo!"</p>
+          <div class="review-card__name">Rodrigo S. <span class="review-card__placeholder">(placeholder)</span></div>
+          <div class="review-card__date">Janeiro de 2026</div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- WHY LAFINTECA -->
-  <section class="why">
-    <h2>Why LaFinteca?</h2>
-    <div class="why__grid">
-      <div class="why-card">
-        <div>
-          <h4>Neo Payments</h4>
-          <p>Sou LaFinteca. One regulated payment infrastructure for the Brazilian market.</p>
-        </div>
-        <div class="why-card__visual">Image placeholder</div>
+  <!-- FAQ Alguma dúvida? -->
+  <section class="home-block home-block--alt faq-split">
+    <div class="home-block__inner faq-split__inner">
+      <div class="faq-split__intro">
+        <span class="home-eyebrow">Perguntas frequentes</span>
+        <h2 class="home-block__title">Alguma dúvida?</h2>
+        <p class="home-block__sub">Entenda melhor como a LaFinteca funciona e o que a Conta PJ pode fazer pelo seu negócio.</p>
+        <button class="btn btn-primary" onclick="goTo('faqs')"><span>Ver todas as perguntas ›</span></button>
       </div>
-      <div class="why-card">
-        <div>
-          <h4>Cybersecurity protocol</h4>
-          <p>Advanced technology combined with an expert team ensures the security of your payments.</p>
+      <div class="faq-split__list">
+        <div class="faq-item open" onclick="this.classList.toggle('open')">
+          <div class="faq-item__head">What is LaFinteca? <span class="faq-item__plus">▼</span></div>
+          <div class="faq-item__content">LaFinteca is a regulated payment institution authorized by the Central Bank of Brazil. We provide infrastructure for businesses that depend on high-volume, real-time payment flows in the Brazilian market.</div>
         </div>
-        <div class="why-card__visual">Image placeholder</div>
-      </div>
-      <div class="why-card">
-        <div>
-          <h4>Pix-native</h4>
-          <p>Built on top of Brazil's instant payment system. Not retrofitted to fit it.</p>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-item__head">What products does LaFinteca offer? <span class="faq-item__plus">▼</span></div>
+          <div class="faq-item__content">A complete payment platform covering every Brazilian rail: Pix (Direto, Automático, QR), Boleto, TED, and Open Finance. We are also developing a digital bank layer designed for business treasury.</div>
         </div>
-        <div class="why-card__visual">Image placeholder</div>
-      </div>
-      <div class="why-card">
-        <div>
-          <h4>EMI-licensed</h4>
-          <p>A digital financial company authorized by the Central Bank of Brazil.</p>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-item__head">How to contact us? <span class="faq-item__plus">▼</span></div>
+          <div class="faq-item__content">Fill out the form, send us an email at info@la-finteca.com, or reach out on social media. Our team responds within one business day.</div>
         </div>
-        <div class="why-card__visual">Image placeholder</div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-item__head">What are the benefits of using LaFinteca? <span class="faq-item__plus">▼</span></div>
+          <div class="faq-item__content">Higher approval rates, faster settlements, less manual workload, and regulatory clarity in the Brazilian market.</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="faq">
-    <h2>FAQ</h2>
-    <div class="faq__list">
-      <div class="faq-item open" onclick="this.classList.toggle('open')">
-        <div class="faq-item__head">What is LaFinteca? <span class="faq-item__plus">▼</span></div>
-        <div class="faq-item__content">LaFinteca is a regulated payment institution authorized by the Central Bank of Brazil. We provide infrastructure for businesses that depend on high-volume, real-time payment flows in the Brazilian market.</div>
+  <!-- CTA Abra a sua conta -->
+  <section class="cta-banner">
+    <div class="cta-banner__inner">
+      <div class="cta-banner__copy">
+        <h2 class="cta-banner__title">Abra a sua conta</h2>
+        <p class="cta-banner__sub">Sem burocracia, sem taxas escondidas.<br>Financeiro simples para o seu negócio.</p>
+        <button class="btn btn-primary"><span>Abrir Conta PJ</span></button>
       </div>
-      <div class="faq-item" onclick="this.classList.toggle('open')">
-        <div class="faq-item__head">What products does LaFinteca offer? <span class="faq-item__plus">▼</span></div>
-        <div class="faq-item__content">A complete payment platform covering every Brazilian rail: Pix (Direto, Automático, QR), Boleto, TED, and Open Finance. We are also developing a digital bank layer designed for business treasury.</div>
-      </div>
-      <div class="faq-item" onclick="this.classList.toggle('open')">
-        <div class="faq-item__head">How to contact us? <span class="faq-item__plus">▼</span></div>
-        <div class="faq-item__content">Fill out the form, send us an email at info@la-finteca.com, or reach out on social media. Our team responds within one business day.</div>
-      </div>
-      <div class="faq-item" onclick="this.classList.toggle('open')">
-        <div class="faq-item__head">What are the benefits of using LaFinteca? <span class="faq-item__plus">▼</span></div>
-        <div class="faq-item__content">Higher approval rates, faster settlements, less manual workload, and regulatory clarity in the Brazilian market.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA banner -->
-  <section class="cta">
-    <div class="cta__inner">
-      <h2>Ready for an advanced<br>payment experience?</h2>
-      <p>Contact our team of specialists for any inquiries.</p>
-      <button class="btn btn-dark"><span>Contact us ›</span></button>
+      <div class="cta-banner__visual">Image placeholder</div>
     </div>
   </section>
 
