@@ -199,8 +199,8 @@
   .hero h1 {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 400;
-    font-size: 60px; line-height: 1.1;
-    letter-spacing: -2px;
+    font-size: 56px; line-height: 1.05;
+    letter-spacing: -1.8px;
     text-transform: uppercase;
     margin: 0 0 24px;
     color: var(--white);
@@ -523,20 +523,24 @@
   .home-block__inner--center { text-align: center; }
   .home-eyebrow {
     display: inline-block;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    background: rgba(191, 254, 67, 0.12);
     color: var(--green);
+    border: 1px solid var(--green);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     margin: 0 0 20px;
   }
   .home-block__title {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 400;
-    font-size: 44px;
+    font-size: 40px;
     line-height: 1.1;
-    letter-spacing: -1.4px;
+    letter-spacing: -1.2px;
     text-transform: uppercase;
     color: var(--white);
     margin: 0 0 24px;
@@ -627,8 +631,8 @@
   }
   .intro-card__icon {
     width: 48px; height: 48px;
-    background: rgba(195,171,255,0.18);
-    color: var(--purple);
+    background: rgba(191,254,67,0.14);
+    color: var(--green);
     display: flex; align-items: center; justify-content: center;
     border-radius: 12px;
     margin-bottom: 24px;
@@ -649,6 +653,178 @@
     margin: 0;
   }
   .intro-cta { margin-top: 48px; }
+
+  /* ==== Conta PJ page ==== */
+  .home-block__title--hero {
+    font-size: 48px;
+    letter-spacing: -1.5px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .contapj-cnpj {
+    display: flex;
+    gap: 8px;
+    max-width: 560px;
+    margin: 36px auto 16px;
+  }
+  .contapj-cnpj input {
+    flex: 1;
+    height: 52px;
+    padding: 0 22px;
+    border-radius: 999px 0 0 999px;
+    border: 1px solid var(--gray-line);
+    background: var(--dark-2);
+    color: var(--white);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    outline: none;
+  }
+  .contapj-cnpj input::placeholder { color: var(--gray-text); }
+  .contapj-cnpj input:focus { border-color: var(--green); }
+  .contapj-cnpj .btn {
+    border-radius: 0 999px 999px 0;
+    height: 52px;
+    padding: 0 28px;
+  }
+  .contapj-anchor {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--green);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--green);
+    padding-bottom: 2px;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  .contapj-anchor:hover { color: var(--white); border-color: var(--white); }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+    text-align: left;
+  }
+
+  .steps-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .steps-list__item {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+    align-items: start;
+    padding: 24px;
+    border-bottom: 1px solid var(--gray-line);
+  }
+  .steps-list__item:last-child { border-bottom: none; }
+  .steps-list__num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--green);
+    letter-spacing: -1px;
+  }
+  .steps-list__body h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--white);
+    margin: 4px 0 8px;
+  }
+  .steps-list__body p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    color: var(--gray-text);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .forwho-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .forwho-card {
+    background: var(--dark-2);
+    border: 1px solid var(--gray-line);
+    border-radius: 14px;
+    padding: 28px;
+  }
+  .forwho-card__tag {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--green);
+    background: rgba(191,254,67,0.12);
+    border: 1px solid var(--green);
+    border-radius: 999px;
+    padding: 4px 12px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .forwho-card h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--white);
+    margin: 0 0 8px;
+  }
+  .forwho-card p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--gray-text);
+    margin: 0;
+  }
+
+  .compare-table {
+    width: 100%;
+    max-width: 960px;
+    margin: 32px auto 0;
+    border-collapse: collapse;
+    font-family: 'IBM Plex Mono', monospace;
+    text-align: left;
+  }
+  .compare-table th, .compare-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--gray-line);
+    font-size: 13px;
+    color: var(--gray-text);
+  }
+  .compare-table th {
+    font-weight: 600;
+    color: var(--white);
+    font-size: 16px;
+    text-transform: none;
+  }
+  .compare-table__hero { color: var(--green); }
+  .compare-table__yes { color: var(--white); }
+  .compare-table tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+  .reviews__grid--two { grid-template-columns: repeat(2, 1fr); max-width: 960px; margin-left: auto; margin-right: auto; }
+
+  .contapj-quote {
+    font-family: 'IBM Plex Mono', monospace;
+    font-style: italic;
+    color: var(--green);
+    font-size: 15px;
+    margin: 24px auto 0;
+    max-width: 540px;
+  }
   .home-split {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -779,9 +955,9 @@
   .cta-banner__title {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 400;
-    font-size: 56px;
+    font-size: 44px;
     line-height: 1.05;
-    letter-spacing: -1.6px;
+    letter-spacing: -1.4px;
     text-transform: uppercase;
     color: var(--white);
     margin: 0 0 24px;
@@ -816,17 +992,23 @@
   .faqs-hero { max-width: 720px; margin: 0 auto 40px; text-align: center; }
   .faqs-hero__label {
     display: inline-block;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase;
+    background: rgba(191, 254, 67, 0.12);
     color: var(--green);
+    border: 1px solid var(--green);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     margin: 0 0 20px;
   }
   .faqs-hero h1 {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 400;
-    font-size: 44px; line-height: 1.1;
-    letter-spacing: -1.4px;
+    font-size: 40px; line-height: 1.1;
+    letter-spacing: -1.2px;
     text-transform: uppercase;
     color: var(--white);
     margin: 0 0 16px;
@@ -957,6 +1139,7 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
   .footer-brand { padding-right: 24px; }
+  .footer-brand__home { display: inline-block; cursor: pointer; }
   .footer-brand .logo { height: 28px; margin-bottom: 24px; display: block; }
   .footer-brand p {
     font-family: 'IBM Plex Mono', monospace;
@@ -1274,7 +1457,7 @@
     <img src="Main%20logo%20white%20(1).svg" alt="LaFinteca" class="header__logo-img">
   </a>
   <nav class="header__menu">
-    <a data-page="home" onclick="goTo('home')" class="active">Conta PJ</a>
+    <a data-page="contapj" onclick="goTo('contapj')">Conta PJ</a>
     <div class="header__menu-item has-submenu">
       <a>About Us <span class="caret">▼</span></a>
       <div class="submenu">
@@ -1288,7 +1471,7 @@
   </nav>
   <div class="header__actions">
     <button class="login-btn">Log in</button>
-    <button class="login-btn login-btn--primary">Open Conta PJ</button>
+    <button class="login-btn login-btn--primary" onclick="goTo('contapj')">Open Conta PJ</button>
   </div>
 </header>
 
@@ -1303,8 +1486,8 @@
         <h1>Quem simplifica,<br>multiplica.</h1>
         <p class="hero__sub">Gerencie o financeiro da sua empresa, faça transferências seguras, e mantenha o controle total sobre despesas e lucro com a Conta PJ da LaFinteca.</p>
         <div class="hero__buttons">
-          <button class="btn btn-primary"><span>Open Conta PJ</span></button>
-          <button class="btn btn-ghost"><span>Learn More</span> <span style="transform: rotate(90deg); display: inline-block;">›</span></button>
+          <button class="btn btn-primary" onclick="goTo('contapj')"><span>Open Conta PJ</span></button>
+          <button class="btn btn-ghost" onclick="goTo('contapj')"><span>Learn More</span> <span style="transform: rotate(90deg); display: inline-block;">›</span></button>
         </div>
       </div>
       <div class="hero__right">
@@ -1341,7 +1524,7 @@
           <p class="intro-card__body">Acompanhe saldo, extrato e movimentações em um painel pensado para quem cuida do financeiro a sério.</p>
         </article>
       </div>
-      <button class="btn btn-primary intro-cta"><span>Saiba mais sobre a conta PJ</span></button>
+      <button class="btn btn-primary intro-cta" onclick="goTo('contapj')"><span>Saiba mais sobre a conta PJ</span></button>
     </div>
   </section>
 
@@ -1454,7 +1637,268 @@
       <div class="cta-banner__copy">
         <h2 class="cta-banner__title">Abra a sua conta</h2>
         <p class="cta-banner__sub">Sem burocracia, sem taxas escondidas.<br>Financeiro simples para o seu negócio.</p>
-        <button class="btn btn-primary"><span>Abrir Conta PJ</span></button>
+        <button class="btn btn-primary" onclick="goTo('contapj')"><span>Abrir Conta PJ</span></button>
+      </div>
+      <div class="cta-banner__visual">Image placeholder</div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============ CONTA PJ PAGE ============ -->
+<div class="page" id="page-contapj">
+
+  <!-- HERO -->
+  <section class="home-block contapj-hero">
+    <div class="home-block__inner home-block__inner--center">
+      <span class="home-eyebrow">Conta PJ</span>
+      <h1 class="home-block__title home-block__title--hero">A conta PJ feita para simplificar a rotina financeira da sua empresa.</h1>
+      <p class="home-block__sub home-block__sub--center">TED, boletos, extratos com filtros e agendamentos — tudo em um só lugar.</p>
+      <form class="contapj-cnpj" onsubmit="event.preventDefault();">
+        <input type="text" placeholder="Digite o CNPJ da sua empresa" autocomplete="off">
+        <button class="btn btn-primary" type="submit"><span>Abrir conta</span></button>
+      </form>
+      <a class="contapj-anchor" href="#contapj-features">Conhecer as funcionalidades ›</a>
+    </div>
+  </section>
+
+  <!-- FEATURES GRID -->
+  <section class="home-block home-block--alt" id="contapj-features">
+    <div class="home-block__inner home-block__inner--center">
+      <span class="home-eyebrow">Funcionalidades</span>
+      <h2 class="home-block__title">Tudo o que sua empresa precisa para movimentar dinheiro com clareza.</h2>
+      <p class="home-block__sub home-block__sub--center">Do saldo ao comprovante, do TED ao agendamento — sem passos desnecessários.</p>
+      <div class="features-grid">
+        <article class="intro-card">
+          <div class="intro-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+          </div>
+          <h3 class="intro-card__title">Saldo em tempo real</h3>
+          <p class="intro-card__body">Acompanhe entradas e saídas atualizadas a qualquer momento.</p>
+        </article>
+        <article class="intro-card">
+          <div class="intro-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h13l-3-3"/><path d="M20 17H7l3 3"/></svg>
+          </div>
+          <h3 class="intro-card__title">TED e transferências</h3>
+          <p class="intro-card__body">Envie e receba via TED para qualquer banco no Brasil.</p>
+        </article>
+        <article class="intro-card">
+          <div class="intro-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="5" x2="5" y2="19"/><line x1="9" y1="5" x2="9" y2="19"/><line x1="13" y1="5" x2="13" y2="19"/><line x1="17" y1="5" x2="17" y2="19"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
+          </div>
+          <h3 class="intro-card__title">Pagamento de boletos</h3>
+          <p class="intro-card__body">Digite a linha ou leia o código de barras direto na conta.</p>
+        </article>
+        <article class="intro-card">
+          <div class="intro-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="9" y1="18" x2="15" y2="18"/></svg>
+          </div>
+          <h3 class="intro-card__title">Extratos com filtros</h3>
+          <p class="intro-card__body">Entradas, saídas e período. Encontre qualquer movimentação rápido.</p>
+        </article>
+        <article class="intro-card">
+          <div class="intro-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>
+          </div>
+          <h3 class="intro-card__title">Agendamentos</h3>
+          <p class="intro-card__body">TED e boletos programados — a conta executa no momento certo.</p>
+        </article>
+        <article class="intro-card">
+          <div class="intro-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><polyline points="14 3 14 8 19 8"/><line x1="12" y1="12" x2="12" y2="18"/><polyline points="9 15 12 18 15 15"/></svg>
+          </div>
+          <h3 class="intro-card__title">Comprovantes e relatórios</h3>
+          <p class="intro-card__body">Exporte extratos e baixe comprovantes em PNG para a contabilidade.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="home-block">
+    <div class="home-block__inner">
+      <div class="home-block__inner--center" style="margin-bottom: 48px;">
+        <span class="home-eyebrow">Como funciona</span>
+        <h2 class="home-block__title">Simples de entender. Simples de usar.</h2>
+      </div>
+      <ol class="steps-list">
+        <li class="steps-list__item">
+          <span class="steps-list__num">01</span>
+          <div class="steps-list__body">
+            <h3>Acesse sua Conta PJ</h3>
+            <p>Entre com usuário e senha. Sem filas, sem papelada.</p>
+          </div>
+        </li>
+        <li class="steps-list__item">
+          <span class="steps-list__num">02</span>
+          <div class="steps-list__body">
+            <h3>Consulte saldo e movimentações</h3>
+            <p>Tela inicial com últimos lançamentos e atalhos para os principais serviços.</p>
+          </div>
+        </li>
+        <li class="steps-list__item">
+          <span class="steps-list__num">03</span>
+          <div class="steps-list__body">
+            <h3>Pague, receba e transfira</h3>
+            <p>TED e boletos com confirmação imediata.</p>
+          </div>
+        </li>
+        <li class="steps-list__item">
+          <span class="steps-list__num">04</span>
+          <div class="steps-list__body">
+            <h3>Agende operações</h3>
+            <p>A conta executa no momento certo, sem precisar lembrar.</p>
+          </div>
+        </li>
+        <li class="steps-list__item">
+          <span class="steps-list__num">05</span>
+          <div class="steps-list__body">
+            <h3>Exporte e compartilhe</h3>
+            <p>Extratos exportáveis. Comprovantes em PNG, prontos para auditoria.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- PRODUCT TOUR -->
+  <section class="home-block home-block--alt">
+    <div class="home-block__inner home-block__inner--center">
+      <span class="home-eyebrow">Tour pelo produto</span>
+      <h2 class="home-block__title">Veja como a Conta PJ funciona na prática.</h2>
+      <p class="home-block__sub home-block__sub--center">Painel completo: saldo do dia, extrato dos últimos 7 dias e atalhos diretos para TED e boletos. Tudo visível sem navegar.</p>
+      <div class="home-block__placeholder home-block__placeholder--xl">Product tour placeholder</div>
+    </div>
+  </section>
+
+  <!-- FOR WHO -->
+  <section class="home-block">
+    <div class="home-block__inner">
+      <div class="home-block__inner--center" style="margin-bottom: 48px;">
+        <span class="home-eyebrow">Para quem</span>
+        <h2 class="home-block__title">A rotina financeira de cada empresa tem suas particularidades.</h2>
+      </div>
+      <div class="forwho-grid">
+        <article class="forwho-card">
+          <span class="forwho-card__tag">PMEs</span>
+          <h3>Operação confiável</h3>
+          <p>Pagar fornecedores e acompanhar o fluxo sem processos lentos.</p>
+        </article>
+        <article class="forwho-card">
+          <span class="forwho-card__tag">E-commerce</span>
+          <h3>Visibilidade em tempo real</h3>
+          <p>Lojas com alto volume diário precisam ver dinheiro entrando e saindo agora.</p>
+        </article>
+        <article class="forwho-card">
+          <span class="forwho-card__tag">Import / Export</span>
+          <h3>Controle e histórico</h3>
+          <p>Operações recorrentes com extrato exportável para auditoria e câmbio.</p>
+        </article>
+        <article class="forwho-card">
+          <span class="forwho-card__tag">Serviços</span>
+          <h3>Cobranças organizadas</h3>
+          <p>Profissionais que recebem via TED, com comprovantes para cada operação.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section class="home-block home-block--alt">
+    <div class="home-block__inner home-block__inner--center">
+      <span class="home-eyebrow">Comparação</span>
+      <h2 class="home-block__title">Clareza onde antes havia complicação.</h2>
+      <p class="home-block__sub home-block__sub--center">Não é sobre comparar. É sobre entender o que muda.</p>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="compare-table__hero">LaFinteca</th>
+            <th>Banco tradicional</th>
+            <th>Planilha</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Acesso à conta</td><td class="compare-table__yes">Web banking instantâneo</td><td>Limitações de horário</td><td>—</td></tr>
+          <tr><td>TED</td><td class="compare-table__yes">Direto, sem fricção</td><td>Fluxos complexos</td><td>Manual</td></tr>
+          <tr><td>Extrato com filtros</td><td class="compare-table__yes">Sim</td><td>Pouco flexível</td><td>Disciplina manual</td></tr>
+          <tr><td>Agendamentos</td><td class="compare-table__yes">Sim</td><td>Burocracia</td><td>Manual</td></tr>
+          <tr><td>Comprovantes</td><td class="compare-table__yes">Exportáveis em PNG</td><td>Variável</td><td>Inexistente</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SECURITY -->
+  <section class="home-block">
+    <div class="home-block__inner home-block__inner--center">
+      <span class="home-eyebrow">Segurança</span>
+      <h2 class="home-block__title">Construída para ser confiável.</h2>
+      <p class="home-block__sub home-block__sub--center">Conta PJ digital sobre infraestrutura regulada pelo Banco Central do Brasil, com tecnologia em ambiente seguro e práticas de acesso protegidas. Acesso por usuário e senha, com recuperação via SMS.</p>
+      <p class="contapj-quote">"Simples por fora. Sólido por dentro."</p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="home-block home-block--alt">
+    <div class="home-block__inner home-block__inner--center">
+      <span class="home-eyebrow">Depoimentos</span>
+      <h2 class="home-block__title">O que dizem quem já usa.</h2>
+      <div class="reviews__grid reviews__grid--two">
+        <article class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__quote">"Citação de 2 a 3 linhas sobre a experiência."</p>
+          <div class="review-card__name">Nome Sobrenome <span class="review-card__placeholder">(placeholder)</span></div>
+          <div class="review-card__date">Cargo, Empresa</div>
+        </article>
+        <article class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__quote">"Espaço para depoimentos reais."</p>
+          <div class="review-card__name">Nome Sobrenome <span class="review-card__placeholder">(placeholder)</span></div>
+          <div class="review-card__date">Cargo, Empresa</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="home-block">
+    <div class="home-block__inner home-block__inner--center">
+      <span class="home-eyebrow">Perguntas frequentes</span>
+      <h2 class="home-block__title">Perguntas frequentes</h2>
+      <div class="faq__list" style="max-width: 800px; margin: 32px auto 0; text-align: left;">
+        <div class="faq-item open" onclick="this.classList.toggle('open')">
+          <div class="faq-item__head">O que é a Conta PJ LaFinteca? <span class="faq-item__plus">▼</span></div>
+          <div class="faq-item__content">É uma conta de pagamento empresarial em reais (BRL), com acesso via web banking, TED, pagamento de boletos, extratos com filtros e agendamentos. Funciona sobre infraestrutura regulada pelo Banco Central do Brasil.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-item__head">A LaFinteca é um banco? <span class="faq-item__plus">▼</span></div>
+          <div class="faq-item__content">A LaFinteca não é um banco. É uma instituição de pagamento autorizada pelo Banco Central do Brasil, regulada e operando dentro das normas exigidas pelo regulador.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-item__head">Quem pode abrir uma Conta PJ? <span class="faq-item__plus">▼</span></div>
+          <div class="faq-item__content">Qualquer empresa com CNPJ ativo no Brasil, representada por sócio-administrador ou procurador com poderes formais para abertura e movimentação de contas.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-item__head">Posso usar Pix? <span class="faq-item__plus">▼</span></div>
+          <div class="faq-item__content">Não no lançamento do MVP. A participação direta no Pix está no roadmap. Hoje, a Conta PJ opera com TED e pagamento de boletos.</div>
+        </div>
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <div class="faq-item__head">A conta tem taxas? <span class="faq-item__plus">▼</span></div>
+          <div class="faq-item__content">A Conta PJ LaFinteca é gratuita. Tarifas específicas, quando aplicáveis, serão sempre comunicadas com transparência antes de qualquer operação.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="cta-banner__inner">
+      <div class="cta-banner__copy">
+        <h2 class="cta-banner__title">Sua empresa merece uma conta que simplesmente funciona.</h2>
+        <p class="cta-banner__sub">Abra sua Conta PJ LaFinteca e gerencie o dinheiro com clareza.</p>
+        <button class="btn btn-primary"><span>Abrir minha Conta PJ agora</span></button>
       </div>
       <div class="cta-banner__visual">Image placeholder</div>
     </div>
@@ -1911,7 +2355,9 @@
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img class="logo" src="Main%20logo%20white%20(1).svg" alt="LaFinteca">
+        <a class="footer-brand__home" onclick="goTo('home')" aria-label="Home">
+          <img class="logo" src="Main%20logo%20white%20(1).svg" alt="LaFinteca">
+        </a>
         <p>Financeiro simples para empresas que crescem no Brasil.</p>
         <div class="social">
           <a href="#" class="social-btn" aria-label="Instagram">
@@ -1936,7 +2382,7 @@
       <div class="footer-col">
         <h4>Produtos</h4>
         <ul>
-          <li><a onclick="goTo('home')">Conta PJ</a></li>
+          <li><a onclick="goTo('contapj')">Conta PJ</a></li>
         </ul>
       </div>
 
@@ -1982,6 +2428,7 @@ function goTo(page) {
   document.querySelectorAll('.header__menu a').forEach(a => a.classList.toggle('active', a.dataset.page === page));
   const urls = {
     home: 'la-finteca.com/',
+    contapj: 'la-finteca.com/conta-pj/',
     about: 'la-finteca.com/about-us/',
     events: 'la-finteca.com/events/',
     blog: 'la-finteca.com/blog/',
