@@ -1711,17 +1711,106 @@
 
     <div class="faqs-topics" id="faqs-topics">
       <button type="button" class="faqs-topic is-active" data-topic="all">Todos</button>
-      <!-- Topic buttons populated once topic list is finalized -->
+      <button type="button" class="faqs-topic" data-topic="sobre">Sobre a LaFinteca</button>
+      <button type="button" class="faqs-topic" data-topic="abertura">Abertura de Conta</button>
+      <button type="button" class="faqs-topic" data-topic="gestao">Gestão da Conta</button>
+      <button type="button" class="faqs-topic" data-topic="conta-pf">Conta PF</button>
+      <button type="button" class="faqs-topic" data-topic="seguranca">Segurança &amp; Acessos</button>
     </div>
 
     <div class="faqs-list" id="faqs-list">
-      <!-- FAQ items injected here once spreadsheet content is supplied.
-           Each item should follow this shape:
-           <div class="faq-item" data-topic="Conta PJ" onclick="this.classList.toggle('open')">
-             <div class="faq-item__head">Question text <span class="faq-item__plus">▼</span></div>
-             <div class="faq-item__content">Answer text.</div>
-           </div>
-      -->
+      <div class="faq-item" data-topic="sobre" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">O que é LaFinteca? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">TBD</div>
+      </div>
+      <div class="faq-item" data-topic="sobre" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">A Conta PJ tem alguma tarifa? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">Nao, a Conta PJ é uma conta de pagamento totalmente gratuita.</div>
+      </div>
+      <div class="faq-item" data-topic="sobre" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">Quais sao os documentos necessários para abrir uma Conta PJ? Onde obtê-los? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">Para a análise de abertura, pedimos o envio digital dos seguintes documentos:<br>Documento de constituição: Contrato Social (ultima alteracao), Estatuto Social ou Requerimento de Empresário/MEI.<br>Comprovante de Inscrição e Situação Cadastral: O cartão CNPJ emitido pela Receita Federal com status &quot;Ativo&quot;.<br>Documentos de Identificação: RG ou CNH (originais e dentro da validade) de todos os sócios e representantes legais.<br>Comprovante de faturamento: Relatório dos últimos 12 meses, assinado pelo contador da empresa ou representante legal.<br><br>É possivel emitir o documento de Situacao Cadastral no site da Receita Federal através do site oficial da Receita Federal</div>
+      </div>
+      <div class="faq-item" data-topic="sobre" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">Como checar o status da abertura da minha conta? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">Depois de completar seu cadastro para a abertura de conta, a nossa equipe avaliará o seu pedido e os documentos enviados. Em até ___ dias úteis, você receberá uma atualização sobre a aprovação e criação de sua conta, bem como sobre os próximos passos.</div>
+      </div>
+      <div class="faq-item" data-topic="sobre" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">Quem pode abrir a conta? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">A solicitação da abertura de sua Conta PJ deverá ser feita obrigatoriamente por:<br><br>1. Sócios-Administradores: Conforme poderes estipulados na cláusula de administração do contrato social.<br>2. Procuradores: Representantes com procuração válida que autorize expressamente a abertura e movimentação de contas em instituições financeiras.</div>
+      </div>
+      <div class="faq-item" data-topic="sobre" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">Posso ter mais de uma pessoa com o mesmo perfil? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">Sim, dentro dos perfis disponibilizados é possivel cadastrar mais de uma pessoa com o mesmo perfil. A Conta PJ permite que a sua empresa disponibilize perfis com diferentes acessos e alçadas à conta, sendo eles:</div>
+      </div>
+      <div class="faq-item" data-topic="sobre" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">Como criar e gerenciar perfis de acesso? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">Dentro de seu perfil, você poderá fazer a gestão de usuários na sessão de Segurança e privacidade, onde poderá administrar quais dispositivos e usuários estão conectados, bem como a alçada e limites de cada perfil. Os acessos são por funcionalidade, o que significa que voce poderá criar perfis com acessos a operações distintas, de acordo com as necessidades e escopos da sua empresa.</div>
+      </div>
+      <div class="faq-item" data-topic="abertura" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">Qual é o tipo de conta LaFinteca oferece? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">A Conta PJ é uma conta de pagamento. Ela permite a realização de saques, pagamentos de contas e transferências entre contas mantidas na mesma instituição e em outras instituições de pagamento ou instituições financeiras (TED e DOC).</div>
+      </div>
+      <div class="faq-item" data-topic="abertura" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">Posso ter mais de uma conta PJ? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">Sim, voce pode abrir mais de uma Conta PJ.</div>
+      </div>
+      <div class="faq-item" data-topic="abertura" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">Eu posso sacar o dinheiro em algum caixa eletronico? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">Infelizmente, ainda não é possivel acessar nossa conta a partir de um caixa eletrônico. Estamos trabalhando nisso! Por enquanto, para sacar dinheiro, você precisará fazer uma transferência para outra conta de sua própria titularidade em um outro banco e providenciar o saque através de seus caixas eletrônicos mais próximos a você.</div>
+      </div>
+      <div class="faq-item" data-topic="abertura" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">O dinheiro rende parado? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">Nao, a Conta PJ ainda não tem investimentos atrelados a ela.</div>
+      </div>
+      <div class="faq-item" data-topic="abertura" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">Como contesto uma transação não reconhecida? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">Para contestar transações não reconhecidas, siga os seguintes passos:<br>1. Entrar em Extrato, <br>2. selecionar a transação que não reconhece <br>3. Clique em contestar transação<br><br>Nossa equipe avaliará o caso e entrará em contato caso sejam necessárias outras informações. Em até ___ dias te daremos um posicionamento, mas vocé poderá consultar o status da sua solicitação através de _____.</div>
+      </div>
+      <div class="faq-item" data-topic="gestao" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">Onde encontrar o comprovante de transferencia? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">No seu extrato, selecione a transação que gostaria de obter o comprovante e clique em Visualizar comprovante.</div>
+      </div>
+      <div class="faq-item" data-topic="gestao" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">Existe limite de valor? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">Não existe limite de valor para as transferências tipo TED.</div>
+      </div>
+      <div class="faq-item" data-topic="gestao" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">Como faço para cancelar uma transferência? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">TBD</div>
+      </div>
+      <div class="faq-item" data-topic="gestao" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">Qual é o horário limite para que a transferência caia no mesmo dia? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">Para que a transferencia caia no mesmo dia, ela precisa ser realizar até ås 17h do mesmo dia. Depois desse horário, voce pode programar uma transferencia para o proximo dia.</div>
+      </div>
+      <div class="faq-item" data-topic="gestao" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">Quanto tempo demora para cair? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">Uma transferência via TED costuma cair na conta do destinatário em poucos minutos, podendo levar até 1 hora, desde que seja realizada em um dia útil, entre as 6h30 e as 17h.</div>
+      </div>
+      <div class="faq-item" data-topic="gestao" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">Quais são as taxas? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">TBD</div>
+      </div>
+      <div class="faq-item" data-topic="conta-pf" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">A conta tem mensalidade? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">Não, a Conta PF é totalmente gratuita.</div>
+      </div>
+      <div class="faq-item" data-topic="conta-pf" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">A Conta PF ‘e Conta Corrente ou Conta Poupança? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">A Conta PJ é uma conta de pagamento. Ela permite a realização de saques, pagamentos de contas e transferências entre contas mantidas na mesma instituição e em outras instituições de pagamento ou instituições financeiras (TED e DOC).</div>
+      </div>
+      <div class="faq-item" data-topic="conta-pf" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">Posso receber salário nela? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">Sim, apesar de nao ser uma conta-salario, você pode receber o salário na sua Conta PF de duas formas: a empresa para qual você trabalha poderá cadastrar o envio do seu salário para sua Conta PF ou você mesmo poderá configurar uma portabilidade automatica desde o banco onde você recebe seu salário para a sua Conta PF.</div>
+      </div>
+      <div class="faq-item" data-topic="seguranca" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">Como entro em contato com o LaFinteca? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">A nossa equipe de atendimento está disponível 24 horas por dia, 7 dias por semana. Existem muitas formas de entrar em contato com a gente. <br><br>- Telefone: Voce acionar meio dos nossos canais de atendimento, no SAC (11) 5000-5000, para Sao Paulo e regiao metropolitana ou no 0800 500 0000, para demais localidades. E para falar com a Ouvidoria, por meio do (11) 5000-5000 para S~ao Paulo e regioes metropolitanas, ou 0800 500 0000 para demais localidades. <br><br>- Chat</div>
+      </div>
+      <div class="faq-item" data-topic="seguranca" onclick="this.classList.toggle('open')">
+        <div class="faq-item__head">Como consigo o documento de procuração? <span class="faq-item__plus">▼</span></div>
+        <div class="faq-item__content">Para obter uma procuração legal da sua empresa, o representante legal que foi definido no Contrato Social deve escrever um documento estipulando quais poderes têm sobre a empresa, e assiná-lo. Na sequência, a procuração deve ser validada e registrada em um Cartório de Notas ou via certificação digital para ter validade jurídica.</div>
+      </div>
       <div class="faqs-empty">Nenhuma pergunta encontrada.</div>
     </div>
   </section>
