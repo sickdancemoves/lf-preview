@@ -2706,7 +2706,7 @@
       <h1 class="home-block__title home-block__title--hero"><span data-lang="pt">A conta PJ feita para simplificar a rotina financeira da sua empresa.</span><span data-lang="en">The Conta PJ built to simplify your company's day-to-day finance.</span></h1>
       <p class="home-block__sub home-block__sub--center"><span data-lang="pt">TED, boletos, extratos com filtros e agendamentos — tudo em um só lugar.</span><span data-lang="en">TED, boletos, filterable statements and scheduled payments — all in one place.</span></p>
       <form class="contapj-cnpj" onsubmit="event.preventDefault();">
-        <input type="text" id="contapj-cnpj-input" name="cnpj" placeholder="Digite o CNPJ da sua empresa" autocomplete="off">
+        <input type="text" id="contapj-cnpj-input" name="cnpj" placeholder="Digite o CNPJ da sua empresa" data-placeholder-pt="Digite o CNPJ da sua empresa" data-placeholder-en="Enter your company's CNPJ" autocomplete="off">
         <button class="btn btn-green" type="submit"><span><span data-lang="pt">Abrir conta</span><span data-lang="en">Open account</span></span></button>
       </form>
     </div>
@@ -3251,7 +3251,7 @@
     <div class="newsletter">
       <h3><span data-lang="pt">Assine as notícias da LaFinteca</span><span data-lang="en">Subscribe to LaFinteca news</span></h3>
       <form class="newsletter-form" onsubmit="event.preventDefault();">
-        <input type="email" id="newsletter-email" name="email" placeholder="Your email">
+        <input type="email" id="newsletter-email" name="email" placeholder="Seu e-mail" data-placeholder-pt="Seu e-mail" data-placeholder-en="Your email">
         <button class="btn btn-dark" type="submit"><span><span data-lang="pt">Assinar</span><span data-lang="en">Subscribe</span></span></button>
       </form>
     </div>
@@ -3343,7 +3343,7 @@
       <span class="faqs-search__icon" aria-hidden="true">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
       </span>
-      <input type="search" id="faqs-search-input" name="faqs-search" placeholder="Digite sua dúvida aqui…" autocomplete="off">
+      <input type="search" id="faqs-search-input" name="faqs-search" placeholder="Digite sua dúvida aqui…" data-placeholder-pt="Digite sua dúvida aqui…" data-placeholder-en="Type your question here…" autocomplete="off">
     </div>
 
     <div class="faqs-topics" id="faqs-topics">
@@ -3534,7 +3534,7 @@
         <a class="footer-brand__home" onclick="goTo('home')" aria-label="Home">
           <img class="logo" src="Main%20logo%20white%20(1).svg" alt="LaFinteca">
         </a>
-        <p>Financeiro simples para empresas que crescem no Brasil.</p>
+        <p><span data-lang="pt">Financeiro simples para empresas que crescem no Brasil.</span><span data-lang="en">Simple finance for businesses growing in Brazil.</span></p>
         <div class="social">
           <a class="social-btn" onclick="event.preventDefault();" aria-label="Instagram">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"></circle></svg>
@@ -3557,50 +3557,54 @@
       <div class="footer-col">
         <h4>LaFinteca</h4>
         <ul>
-          <li><a onclick="goTo('about')">Sobre nós</a></li>
-          <li><a onclick="goTo('events')">Eventos</a></li>
+          <li><a onclick="goTo('about')"><span data-lang="pt">Sobre nós</span><span data-lang="en">About us</span></a></li>
+          <li><a onclick="goTo('events')"><span data-lang="pt">Eventos</span><span data-lang="en">Events</span></a></li>
           <li><a onclick="goTo('blog')">Blog</a></li>
-          <li><a onclick="goTo('careers')">Carreiras</a></li>
+          <li><a onclick="goTo('careers')"><span data-lang="pt">Carreiras</span><span data-lang="en">Careers</span></a></li>
           <li><a onclick="goTo('faqs')">FAQs</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
-        <h4>Produtos</h4>
+        <h4><span data-lang="pt">Produtos</span><span data-lang="en">Products</span></h4>
         <ul>
           <li><a onclick="goTo('contapj')">Conta PJ</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
-        <h4>Transparência</h4>
+        <h4><span data-lang="pt">Transparência</span><span data-lang="en">Transparency</span></h4>
         <ul>
-          <li><a onclick="event.preventDefault();">Política de privacidade</a></li>
-          <li><a onclick="event.preventDefault();">Política de segurança</a></li>
-          <li><a onclick="event.preventDefault();">Termos de Uso</a></li>
+          <li><a onclick="event.preventDefault();"><span data-lang="pt">Política de privacidade</span><span data-lang="en">Privacy policy</span></a></li>
+          <li><a onclick="event.preventDefault();"><span data-lang="pt">Política de segurança</span><span data-lang="en">Security policy</span></a></li>
+          <li><a onclick="event.preventDefault();"><span data-lang="pt">Termos de Uso</span><span data-lang="en">Terms of Use</span></a></li>
           <li><a onclick="event.preventDefault();">PLD/CFTP</a></li>
         </ul>
       </div>
 
       <div class="footer-col footer-contact">
-        <h4>Fale Conosco</h4>
+        <h4><span data-lang="pt">Fale Conosco</span><span data-lang="en">Contact us</span></h4>
         <div class="contact-block">
           <div class="label">SAC</div>
-          <div class="lines">24h/7, todos os dias.
+          <div class="lines"><span data-lang="pt">24h/7, todos os dias.
 (11) 5000-5000
-0800 500 0000</div>
+0800 500 0000</span><span data-lang="en">24/7, every day.
+(11) 5000-5000
+0800 500 0000</span></div>
         </div>
         <div class="contact-block">
-          <div class="label">Ouvidoria</div>
-          <div class="lines">24h/7, todos os dias.
+          <div class="label"><span data-lang="pt">Ouvidoria</span><span data-lang="en">Ombudsman</span></div>
+          <div class="lines"><span data-lang="pt">24h/7, todos os dias.
 (11) 5000-5000
-0800 500 0000</div>
+0800 500 0000</span><span data-lang="en">24/7, every day.
+(11) 5000-5000
+0800 500 0000</span></div>
         </div>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <div class="legal">LaFinteca Instituição de Pagamento LTDA — CNPJ 53.058.329/0001-70. Instituição de pagamento autorizada pelo Banco Central do Brasil, na modalidade de Emissora de Moeda Eletrônica.</div>
+      <div class="legal"><span data-lang="pt">LaFinteca Instituição de Pagamento LTDA — CNPJ 53.058.329/0001-70. Instituição de pagamento autorizada pelo Banco Central do Brasil, na modalidade de Emissora de Moeda Eletrônica.</span><span data-lang="en">LaFinteca Instituição de Pagamento LTDA — CNPJ 53.058.329/0001-70. Payment institution authorized by the Central Bank of Brazil as an E-Money Issuer.</span></div>
       <div class="copy">© 2026 LaFinteca</div>
     </div>
   </div>
@@ -3700,6 +3704,9 @@ document.querySelectorAll('.chrome-tab').forEach(t => {
     options.forEach(o => o.classList.toggle('is-active', o.dataset.langSet === lang));
     toggle.setAttribute('aria-expanded', 'false');
     root.classList.remove('is-open');
+    document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(el => {
+      el.placeholder = el.dataset['placeholder' + lang.charAt(0).toUpperCase() + lang.slice(1)];
+    });
     localStorage.setItem('lf-lang', lang);
   }
 
