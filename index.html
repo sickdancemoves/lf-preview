@@ -3628,11 +3628,22 @@ function goTo(page) {
   };
   const chromeUrl = document.getElementById('chromeUrl');
   if (chromeUrl) chromeUrl.textContent = urls[page];
+  if (location.hash.slice(1) !== page) {
+    history.replaceState(null, '', '#' + page);
+  }
   window.scrollTo(0, 0);
 }
 document.querySelectorAll('.chrome-tab').forEach(t => {
   t.addEventListener('click', () => goTo(t.dataset.page));
 });
+window.addEventListener('hashchange', () => {
+  const p = location.hash.slice(1);
+  if (p && document.getElementById('page-' + p)) goTo(p);
+});
+(function initFromHash() {
+  const p = location.hash.slice(1);
+  if (p && document.getElementById('page-' + p)) goTo(p);
+})();
 
 // Scale the MacBook photo stage (fixed 1200×800 with matrix3d) to fit its responsive wrapper
 (function () {
