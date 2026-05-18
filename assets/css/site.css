@@ -2341,3 +2341,121 @@
     .footer-grid { grid-template-columns: 1fr !important; }
     .reviews-carousel__controls { flex-wrap: wrap; }
   }
+
+  /* ============================================================
+     Hover polish — interactive feedback on cards, CTAs, and links.
+     Restrained: lift + soft shadow, brand-green tint, consistent
+     cubic-bezier easing. Honors prefers-reduced-motion.
+     ============================================================ */
+
+  :root {
+    --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --hover-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    --hover-shadow-green: 0 14px 40px rgba(191, 254, 67, 0.22);
+    --green-deep: #A8E03B; /* ~12% darker than --green, for filled-green CTA hover */
+  }
+
+  /* Reusable card-hover utility. Apply to any future card to opt in. */
+  .card-hover,
+  .intro-card,
+  .forwho-card {
+    transition:
+      transform 0.25s var(--ease-out),
+      box-shadow 0.25s var(--ease-out),
+      border-color 0.25s var(--ease-out);
+  }
+  .card-hover:hover,
+  .intro-card:hover,
+  .forwho-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--hover-shadow);
+  }
+
+  /* intro-card icon: subtle scale + intensify the green pill */
+  .intro-card__icon {
+    transition: transform 0.25s var(--ease-out), background-color 0.25s var(--ease-out);
+  }
+  .intro-card:hover .intro-card__icon {
+    transform: scale(1.08);
+    background: rgba(191, 254, 67, 0.22);
+  }
+
+  /* forwho-card heading shifts toward brand green on hover */
+  .forwho-card h3 {
+    transition: color 0.25s var(--ease-out);
+  }
+  .forwho-card:hover h3 {
+    color: var(--green);
+  }
+
+  /* Filled-green primary CTAs: darker green + lift + glow. */
+  .btn-green,
+  .login-btn--primary {
+    transition:
+      background-color 0.2s var(--ease-out),
+      border-color 0.2s var(--ease-out),
+      color 0.2s var(--ease-out),
+      transform 0.2s var(--ease-out),
+      box-shadow 0.2s var(--ease-out);
+  }
+  .btn-green:hover,
+  .login-btn--primary:hover {
+    background: var(--green-deep);
+    border-color: var(--green-deep);
+    color: var(--dark);
+    transform: scale(1.02);
+    box-shadow: var(--hover-shadow-green);
+  }
+
+  /* Other CTAs: unify easing without changing existing hover behavior */
+  .btn,
+  .btn-primary,
+  .btn-ghost,
+  .btn-dark,
+  .login-btn {
+    transition:
+      background-color 0.2s var(--ease-out),
+      border-color 0.2s var(--ease-out),
+      color 0.2s var(--ease-out);
+  }
+
+  /* Footer links: keep green color shift, add an underline tell */
+  .footer-col a {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 3px;
+    transition:
+      color 0.2s var(--ease-out),
+      text-decoration-color 0.2s var(--ease-out);
+  }
+  .footer-col a:hover {
+    text-decoration-color: var(--green);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card-hover,
+    .intro-card,
+    .forwho-card,
+    .intro-card__icon,
+    .forwho-card h3,
+    .btn,
+    .btn-green,
+    .btn-primary,
+    .btn-ghost,
+    .btn-dark,
+    .login-btn,
+    .login-btn--primary,
+    .footer-col a {
+      transition: none !important;
+    }
+    .card-hover:hover,
+    .intro-card:hover,
+    .forwho-card:hover,
+    .btn-green:hover,
+    .login-btn--primary:hover {
+      transform: none !important;
+    }
+    .intro-card:hover .intro-card__icon {
+      transform: none !important;
+    }
+  }
