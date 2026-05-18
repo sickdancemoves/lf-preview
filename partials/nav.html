@@ -1,0 +1,35 @@
+<header class="header">
+  <a class="header__logo" href="/">
+    <img src="Main%20logo%20white%20(1).svg" alt="LaFinteca" class="header__logo-img">
+  </a>
+  <nav class="header__menu">
+    <a data-page="contapj" href="/contapj/">Conta PJ</a>
+    <div class="header__menu-item has-submenu">
+      <a><span data-lang="pt">Sobre nós</span><span data-lang="en">About Us</span> <span class="caret">▼</span></a>
+      <div class="submenu">
+        <a data-page="about" href="/about/"><span data-lang="pt">Sobre nós</span><span data-lang="en">About us</span></a>
+        <a data-page="events" href="/events/"><span data-lang="pt">Eventos</span><span data-lang="en">Events</span></a>
+        <a data-page="blog" href="/blog/">Blog</a>
+        <a data-page="careers" href="/careers/"><span data-lang="pt">Carreiras</span><span data-lang="en">Careers</span></a>
+        <a data-page="contact" href="/contact/"><span data-lang="pt">Contato</span><span data-lang="en">Contact us</span></a>
+      </div>
+    </div>
+    <span class="header__menu-spacer" aria-hidden="true"></span>
+    <a data-page="contact" href="/contact/"><span data-lang="pt">Atendimento</span><span data-lang="en">Support</span></a>
+  </nav>
+  <div class="header__actions">
+    <div class="lang-switch" id="langSwitch">
+      <button class="lang-switch__toggle" type="button" aria-haspopup="listbox" aria-expanded="false">
+        <svg class="lang-switch__globe" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+        <span class="lang-switch__current" id="langCurrent">PT</span>
+        <span class="lang-switch__caret">▾</span>
+      </button>
+      <ul class="lang-switch__menu" role="listbox">
+        <li><button type="button" class="lang-switch__option" data-lang-set="pt" role="option">PT</button></li>
+        <li><button type="button" class="lang-switch__option" data-lang-set="en" role="option">EN</button></li>
+      </ul>
+    </div>
+    <button class="login-btn"><span data-lang="pt">Entrar</span><span data-lang="en">Log in</span></button>
+    <button class="login-btn login-btn--primary" onclick="location.href='/contapj/'"><span data-lang="pt">Abrir Conta PJ</span><span data-lang="en">Open Conta PJ</span></button>
+  </div>
+</header>
