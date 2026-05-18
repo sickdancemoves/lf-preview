@@ -189,3 +189,47 @@
     start();
   });
 })();
+
+// Scroll-triggered fade-in via IntersectionObserver.
+// Elements with .fade-in-on-scroll start at opacity 0 (via CSS gated on
+// .js-enabled, which is set inline in <head>) and fade in once they cross
+// the 15% visibility threshold. Elements already above the fold on load
+// are revealed immediately so the top of the page doesn't animate in.
+(function () {
+  const els = document.querySelectorAll('.fade-in-on-scroll');
+  if (!els.length) return;
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) {
+    els.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+
+  const viewportH = window.innerHeight;
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  els.forEach(el => {
+    // Elements already in (or above) the viewport on load skip the animation:
+    // remove .fade-in-on-scroll entirely so neither initial state nor transition
+    // applies — the element appears instantly with no fade.
+    const rect = el.getBoundingClientRect();
+    if (rect.top < viewportH * 0.9) {
+      el.classList.remove('fade-in-on-scroll');
+      return;
+    }
+    observer.observe(el);
+  });
+})();

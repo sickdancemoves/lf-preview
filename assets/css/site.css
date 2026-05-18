@@ -2459,3 +2459,39 @@
       transform: none !important;
     }
   }
+
+  /* ============================================================
+     Scroll-triggered fade-in. Quiet, considered, fires once.
+     Initial opacity:0 is only applied when JS has set .js-enabled
+     on <html>; without JS the content is visible as normal.
+     ============================================================ */
+  .js-enabled .fade-in-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform;
+  }
+  .js-enabled .fade-in-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger within multi-card groups: data-stagger="1".."8" -> 0..700ms */
+  .fade-in-on-scroll[data-stagger="2"] { transition-delay: 100ms; }
+  .fade-in-on-scroll[data-stagger="3"] { transition-delay: 200ms; }
+  .fade-in-on-scroll[data-stagger="4"] { transition-delay: 300ms; }
+  .fade-in-on-scroll[data-stagger="5"] { transition-delay: 400ms; }
+  .fade-in-on-scroll[data-stagger="6"] { transition-delay: 500ms; }
+  .fade-in-on-scroll[data-stagger="7"] { transition-delay: 600ms; }
+  .fade-in-on-scroll[data-stagger="8"] { transition-delay: 700ms; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .js-enabled .fade-in-on-scroll {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .fade-in-on-scroll[data-stagger] { transition-delay: 0ms; }
+  }
