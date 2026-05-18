@@ -2495,3 +2495,76 @@
     }
     .fade-in-on-scroll[data-stagger] { transition-delay: 0ms; }
   }
+
+  /* ============================================================
+     Dashboard mockup — count-up balance, transaction stagger,
+     live-pulse on balance, URL bar cursor blink. JS-gated.
+     ============================================================ */
+
+  /* Hide numbers until the dashboard enters viewport (JS reveals
+     by adding .is-counting). Without JS, numbers stay visible. */
+  .js-enabled .dash-mock__balance,
+  .js-enabled .dash-mock__stat {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
+  .js-enabled .dash-mock__balance.is-counting,
+  .js-enabled .dash-mock__stat.is-counting {
+    opacity: 1;
+  }
+
+  /* Transaction-row stagger: hidden initially, revealed all-at-once
+     by JS via .is-revealed on the parent .dash-mock__rows; each row
+     animates with its own transition-delay. */
+  .js-enabled .dash-mock__rows .dash-mock__row {
+    opacity: 0;
+    transform: translateY(8px);
+    transition:
+      opacity 0.4s ease-out,
+      transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .js-enabled .dash-mock__rows.is-revealed .dash-mock__row {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .js-enabled .dash-mock__rows.is-revealed .dash-mock__row:nth-child(1) { transition-delay: 0ms; }
+  .js-enabled .dash-mock__rows.is-revealed .dash-mock__row:nth-child(2) { transition-delay: 150ms; }
+  .js-enabled .dash-mock__rows.is-revealed .dash-mock__row:nth-child(3) { transition-delay: 300ms; }
+  .js-enabled .dash-mock__rows.is-revealed .dash-mock__row:nth-child(4) { transition-delay: 450ms; }
+
+  /* Subtle live pulse: opacity 1 -> 0.85 -> 1 over the first 2s of
+     a 4s cycle, then steady at 1 for 2s. Triggered after count-up. */
+  @keyframes dash-balance-pulse {
+    0%, 50%, 100% { opacity: 1; }
+    25% { opacity: 0.85; }
+  }
+  .dash-mock__balance.is-live {
+    animation: dash-balance-pulse 4s ease-in-out infinite;
+  }
+
+  /* URL-bar blinking cursor */
+  .dash-mock__url::after {
+    content: '▍';
+    display: inline-block;
+    margin-left: 2px;
+    color: inherit;
+    animation: dash-cursor-blink 1s steps(1) infinite;
+  }
+  @keyframes dash-cursor-blink {
+    50% { opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .js-enabled .dash-mock__balance,
+    .js-enabled .dash-mock__stat {
+      opacity: 1;
+      transition: none;
+    }
+    .js-enabled .dash-mock__rows .dash-mock__row {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .dash-mock__balance.is-live { animation: none; }
+    .dash-mock__url::after { animation: none; opacity: 1; }
+  }
