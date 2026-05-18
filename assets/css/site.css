@@ -902,8 +902,10 @@
     white-space: nowrap;
   }
 
-  /* Laptop photo mockup — sized wrapper holds aspect ratio; inner mock is fixed at 1200×800
-     and projectively mapped onto the screen, then scaled to fit the wrapper. */
+  /* Laptop photo mockup — dual-MacBook composition with the dashboards baked
+     into the image. The .laptop-photo__dash live overlay is hidden here;
+     Phase 2 will re-enable it with dual matrix3d projection to bring the
+     count-up animation back on both screens. */
   .laptop-photo {
     position: relative;
     width: 100%;
@@ -911,43 +913,33 @@
     margin: 48px auto 0;
     aspect-ratio: 3 / 2;
   }
+  /* Rectangular edge-fade overlay. Two stacked linear gradients darken
+     all four edges into var(--dark); no central bright-spot (avoids the
+     "stage light" effect a radial gradient produces). */
+  .laptop-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(to bottom, var(--dark) 0%, transparent 18%, transparent 82%, var(--dark) 100%),
+      linear-gradient(to right,  var(--dark) 0%, transparent 12%, transparent 88%, var(--dark) 100%);
+    z-index: 2;
+  }
   .laptop-photo__stage {
     position: absolute;
     top: 0; left: 0;
     width: 1200px;
     height: 800px;
-    background-image: url('assets/macbook-mockup.jpg');
+    background-image: url('assets/macbook-mockup-dual.jpg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     transform-origin: 0 0;
   }
   .laptop-photo__screen { position: absolute; inset: 0; }
-  /* Dashboard fills the 1200×800 stage and gets projected onto the screen quadrilateral.
-     Matrix derived from these four target corners (in 1200×800 stage space):
-       TL (196, 192)  TR (1036, 288)  BR (1032, 600)  BL (196, 652)
-     Source rect: (0,0) → (1200, 800). */
-  .laptop-photo__dash {
-    position: absolute;
-    top: 0; left: 0;
-    width: 1200px;
-    height: 800px;
-    margin: 0;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    background: #0f1015;
-    transform-origin: 0 0;
-    transform: matrix3d(
-      1.111, 0.194, 0, 0.000396,
-      0.00172, 0.581, 0, 0.0000088,
-      0, 0, 1, 0,
-      196, 192, 0, 1
-    );
-  }
-  /* Make the dashboard content fill the 800px height */
-  .laptop-photo__dash .dash-mock__grid { min-height: 0; height: calc(100% - 40px); }
-  .laptop-photo__dash .dash-mock__main { padding: 28px 32px; gap: 16px; }
-  .laptop-photo__dash .dash-mock__nav { padding: 24px 16px; }
+  /* Live dashboard overlay disabled while we use the static dual-laptop image.
+     Markup is preserved so Phase 2 can re-enable per-screen projection. */
+  .laptop-photo__dash { display: none; }
 
   /* Dashboard mock (A nova home da sua equipe) */
   .dash-mock {
