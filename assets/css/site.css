@@ -551,14 +551,37 @@
     margin-bottom: 12px;
   }
   .faq-item__head {
-    display: flex; justify-content: space-between; align-items: center;
+    display: flex; align-items: center; gap: 12px;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 14px; color: var(--white);
   }
+  .faq-item__q { flex: 1; min-width: 0; }
   .faq-item__plus {
     color: var(--purple);
     transition: transform 0.3s;
     font-family: monospace;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+  .faq-item__pendente {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    color: #f5d76e;
+    background: rgba(245, 215, 110, 0.10);
+    border: 1px solid rgba(245, 215, 110, 0.32);
+    border-radius: 999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .faq-item__pendente::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #f5d76e;
+    flex-shrink: 0;
   }
   .faq-item.open .faq-item__plus { transform: rotate(180deg); }
   .faq-item__content {
